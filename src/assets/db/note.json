@@ -1,0 +1,38 @@
+{ "note": [
+    {
+      "note": "A",
+      "hasFlat": true,
+      "hasSharp": true
+    },
+    {
+        "note": "B",
+        "hasFlat": true,
+        "hasSharp": false
+      },
+      {
+        "note": "C",
+        "hasFlat": false,
+        "hasSharp": true
+      },
+      {
+        "note": "D",
+        "hasFlat": true,
+        "hasSharp": true
+      },
+      {
+        "note": "E",
+        "hasFlat": true,
+        "hasSharp": false
+      },
+      {
+        "note": "F",
+        "hasFlat": false,
+        "hasSharp": true
+      },
+      {
+        "note": "G",
+        "hasFlat": true,
+        "hasSharp": true
+      }
+    ]
+  }
