@@ -1,7 +1,6 @@
-import { EAccident } from './accident.enum';
-
 export interface INotes {
-    id: number,
-    name: string,
-    accident: EAccident
+    Chord: string,
+    Notes: string,
+    Scales: string,
+    Extended: string
 }

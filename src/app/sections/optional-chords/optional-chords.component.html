@@ -1,0 +1,45 @@
+<h2>Optional</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of header" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of majorMode">
+      <td *ngFor="let column of header">
+        <div [innerHTML]="item[column]"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Altered Dominant</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of header" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of alteredDominant">
+      <td *ngFor="let column of header">
+        <div [innerHTML]="item[column]"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Symmetric Dominant</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of header" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of symetricDominant">
+      <td *ngFor="let column of header">
+        <div [innerHTML]="item[column]"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>

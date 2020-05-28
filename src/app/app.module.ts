@@ -3,26 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MajorModeComponent } from './scenes/major-mode/major-mode.component';
-import { OptionalChordsComponent } from './scenes/optional-chords/optional-chords.component';
-import { CircleFifhtsComponent } from './scenes/circle-fifhts/circle-fifhts.component';
-import { SecondaryDominantsComponent } from './scenes/secondary-dominants/secondary-dominants.component';
-import { ChartComponent } from './chords/chart/chart.component';
+import { CircleFifhtsComponent } from './sections/circle-fifhts/circle-fifhts.component';
+import { MajorModeComponent } from './sections/major-mode/major-mode.component';
+import { OptionalChordsComponent } from './sections/optional-chords/optional-chords.component';
+import { SecondaryDominantsComponent } from './sections/secondary-dominants/secondary-dominants.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CircleFifhtsComponent,
     MajorModeComponent,
     OptionalChordsComponent,
-    CircleFifhtsComponent,
-    SecondaryDominantsComponent,
-    ChartComponent
+    SecondaryDominantsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
