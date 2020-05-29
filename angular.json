@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tonal-app": {
+    "harmony-possibilities": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tonal-app",
+            "outputPath": "dist/harmony-possibilities",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tonal-app:build"
+            "browserTarget": "harmony-possibilities:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tonal-app:build:production"
+              "browserTarget": "harmony-possibilities:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tonal-app:build"
+            "browserTarget": "harmony-possibilities:build"
           }
         },
         "test": {
@@ -111,15 +111,20 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tonal-app:serve"
+            "devServerTarget": "harmony-possibilities:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tonal-app:serve:production"
+              "devServerTarget": "harmony-possibilities:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "tonal-app"
+    }
+  },
+  "defaultProject": "harmony-possibilities"
 }
