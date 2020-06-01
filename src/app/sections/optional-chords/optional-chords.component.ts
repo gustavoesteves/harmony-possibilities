@@ -35,14 +35,16 @@ export class OptionalChordsComponent implements OnInit {
       Chord: _fifithNote + "7b9, <br>" + _fifithNote + "7#9, <br>" + _fifithNote + "13b9",
       Notes: Chord.get(_fifithNote + "7b9").notes.toString() + ", <br>" + Chord.get(_fifithNote + "7#9").notes.toString() + ", <br>" + Chord.get(_fifithNote + "13b9").notes.toString(),
       Scales: this.tonalService.GetScales(_fifithNote, ["half-whole diminished"]),
-      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "6M") + ")"
+      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "6M") + ")",
+      Cadence: ""
     });
 
     _result.push({
       Chord: _fifithNote + "7b9b13",
       Notes: Chord.get(_fifithNote + "7b9b13").notes.toString(),
       Scales: this.tonalService.GetScales(_fifithNote, ["phrygian dominant"]),
-      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "6m") + ")"
+      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "6m") + ")",
+      Cadence: ""
     });
 
     return _result;
@@ -58,7 +60,8 @@ export class OptionalChordsComponent implements OnInit {
       Chord: _fifithNote + "7b5b9, <br>" + _fifithNote + "9b5b13, <br>" + _fifithNote + "7b5b9b13",
       Notes: Chord.get(_fifithNote + "7b5b9").notes.toString() + ", <br>" + Chord.get(_fifithNote + "9b5b13").notes.toString() + ", <br>" + Chord.get(_fifithNote + "7b5b9b13").notes.toString(),
       Scales: "",
-      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "3m") + ", " + Note.transpose(_fifithNote, "6m") + ")"
+      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "3m") + ", " + Note.transpose(_fifithNote, "6m") + ")",
+      Cadence: ""
     });
 
     return _result;
@@ -74,7 +77,8 @@ export class OptionalChordsComponent implements OnInit {
       Chord: _fifithNote + "7#9#11, <br>" + _fifithNote + "13#9#11, <br>" + _fifithNote + "13b9#11",
       Notes: Chord.get(_fifithNote + "7#9#11").notes.toString() + ", <br>" + Chord.get(_fifithNote + "13#9#11").notes.toString() + ", <br>" + Chord.get(_fifithNote + "13b9#11").notes.toString(),
       Scales: "",
-      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "3m") + ", " + Note.transpose(_fifithNote, "4A")+ ", " + Note.transpose(_fifithNote, "6M") + ")"
+      Extended: "(" + Note.transpose(_fifithNote, "2m") + ", " + Note.transpose(_fifithNote, "3m") + ", " + Note.transpose(_fifithNote, "4A")+ ", " + Note.transpose(_fifithNote, "6M") + ")",
+      Cadence: ""
     });
 
     return _result;

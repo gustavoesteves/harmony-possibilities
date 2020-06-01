@@ -7,6 +7,7 @@ import { CircleFifhtsComponent } from './sections/circle-fifhts/circle-fifhts.co
 import { MajorModeComponent } from './sections/major-mode/major-mode.component';
 import { OptionalChordsComponent } from './sections/optional-chords/optional-chords.component';
 import { SecondaryDominantsComponent } from './sections/secondary-dominants/secondary-dominants.component';
+import { SubstituteDominantsComponent } from './sections/substitute-dominants/substitute-dominants.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SecondaryDominantsComponent } from './sections/secondary-dominants/seco
     CircleFifhtsComponent,
     MajorModeComponent,
     OptionalChordsComponent,
-    SecondaryDominantsComponent
+    SecondaryDominantsComponent,
+    SubstituteDominantsComponent
   ],
   imports: [
     BrowserModule,

@@ -53,7 +53,7 @@ export class TonalService {
   GetScales(_chord: string, scales: string[]) {
     let _reuslt = "";
     for (const _scale of scales) {
-      _reuslt += _scale + " (";
+      _reuslt += _scale + "<br> (";
       for (const _notes of Scale.get(_chord + " " + _scale).notes) {
         _reuslt += _notes + ", ";
       }
