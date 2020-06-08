@@ -8,6 +8,7 @@ import { MajorModeComponent } from './sections/major-mode/major-mode.component';
 import { OptionalChordsComponent } from './sections/optional-chords/optional-chords.component';
 import { SecondaryDominantsComponent } from './sections/secondary-dominants/secondary-dominants.component';
 import { SubstituteDominantsComponent } from './sections/substitute-dominants/substitute-dominants.component';
+import { MinorModeComponent } from './sections/minor-mode/minor-mode.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SubstituteDominantsComponent } from './sections/substitute-dominants/su
     MajorModeComponent,
     OptionalChordsComponent,
     SecondaryDominantsComponent,
-    SubstituteDominantsComponent
+    SubstituteDominantsComponent,
+    MinorModeComponent
   ],
   imports: [
     BrowserModule,

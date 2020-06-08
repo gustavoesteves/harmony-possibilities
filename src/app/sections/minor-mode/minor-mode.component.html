@@ -1,0 +1,60 @@
+<h2>Natural Minor Mode</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of header" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of minorMode">
+      <td *ngFor="let column of header">
+        <div [innerHTML]="item[column]"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Harmonic Minor Mode</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of header" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of harmonicMode">
+      <td *ngFor="let column of header">
+        <div [innerHTML]="item[column]"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Melodic Minor Mode</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of header" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of melodicMode">
+      <td *ngFor="let column of header">
+        <div [innerHTML]="item[column]"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>Dorian Minor Mode</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of header" scope="col">{{column}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of dorianMode">
+      <td *ngFor="let column of header">
+        <div [innerHTML]="item[column]"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>

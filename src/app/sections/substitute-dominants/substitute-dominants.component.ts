@@ -11,6 +11,7 @@ import { Note, Chord } from '@tonaljs/tonal';
 export class SubstituteDominantsComponent implements OnInit {
   header = ["Chord", "Notes", "Scales", "Extended", "Cadence"];
   substituteDominants: INotes[] = [];
+  progressionEg1: string = "";
 
   constructor(private tonalService: TonalService) { }
 
@@ -18,6 +19,21 @@ export class SubstituteDominantsComponent implements OnInit {
     this.tonalService.currentTonality.subscribe(value => {
       const _note = value[value.length - 1];
       this.substituteDominants = this.GetSubstituteDominants(_note);
+
+      // the "II V" SubV's
+      this.progressionEg1 =
+        "VIm7 II7 Vm7 I7 IVmaj7 <br>" +
+        Note.transpose(_note, "6M") + "m7 " + Note.transpose(_note, "2M") + "7 " + 
+        Note.transpose(_note, "5P") + "m7 " + Note.transpose(_note, "1P") + "7 " + Note.transpose(_note, "4P") + "maj7 (e.g.) <br><br>" +
+        "VIm7 II7 Vm7 SubV/IV7 IVmaj7 <br>" +
+        Note.transpose(_note, "6M") + "m7 " + Note.transpose(_note, "2M") + "7 " + 
+        Note.transpose(_note, "5P") + "m7 " + Note.transpose(_note, "4A") + "7 " + Note.transpose(_note, "4P") + "maj7 (with SubV e.g.) <br><br>" +
+        "VIm7 II7 SubV/I SubV/IV7 IVmaj7 <br>" +
+        Note.transpose(_note, "6M") + "m7 " + Note.transpose(_note, "2M") + "7 " + 
+        Note.transpose(_note, "1A") + "7 " + Note.transpose(_note, "4A") + "7 " + Note.transpose(_note, "4P") + "maj7 (with two SubV's e.g.) <br><br>" +
+        "SubV/IIm7 SubV/V7 SubV/Im7 SubV/IV7 IVmaj7 <br>" +
+        Note.transpose(_note, "3m") + "m7 " + Note.transpose(_note, "5A") + "7 " + 
+        Note.transpose(_note, "1A") + "m7 " + Note.transpose(_note, "4A") + "7 " + Note.transpose(_note, "4P") + "maj7 (with four SubV's e.g.) <br><br>";
     });
   }
 

@@ -11,6 +11,10 @@ export class TonalService {
   private tonality = new BehaviorSubject<string[]>([]);
   currentTonality = this.tonality.asObservable();
 
+  //guardando o modo Maior ou Menor
+  private mode = new BehaviorSubject<boolean[]>([]);
+  currentMode = this.mode.asObservable();
+
   constructor() { }
 
   pushTonalityInit(tonality: string[]) {
@@ -22,6 +26,16 @@ export class TonalService {
     const newTonality = this.tonality.value;
     newTonality.push(tonality);
     this.tonality.next(newTonality);
+  }
+
+  pushModeInit(_mode: boolean[]){
+    this.mode.next(_mode);
+  }
+
+  pushMode(_mode: boolean){
+    const newMode = this.mode.value;
+    newMode.push(_mode);
+    this.mode.next(newMode);
   }
 
   returnNotes(arrayNotes: string[]) {

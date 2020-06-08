@@ -16,7 +16,7 @@ export class MajorModeComponent implements OnInit {
 
   ngOnInit() {
     this.tonalService.currentTonality.subscribe(value => {
-      const _note = value[value.length - 1]
+      const _note = value[value.length - 1];
       this.majorMode = this.GetMajorMode(_note);
     });
   }

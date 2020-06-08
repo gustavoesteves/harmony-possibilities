@@ -5,7 +5,6 @@
     <header>
       <h1>Harmony Possibilities</h1>
       <p>A free tool for musicians</p>
-      <app-circle-fifhts></app-circle-fifhts>
       <ul class="actions">
         <li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
       </ul>
@@ -15,47 +14,63 @@
       <p>The operation is as simple as possible, simply choosing the key and the Page displays some possibilities.</p>
       <p>We first display the Major key chords and their extensions for creating new chords, as well as some scales
         that can be used with relative chord.</p>
+      <app-circle-fifhts></app-circle-fifhts>
     </div>
   </section>
 
-  <!-- Section -->
-  <section id="f1">
-    <header>
-      <h2>Major key Harmony</h2>
-    </header>
-    <div class="content">
-      <app-major-mode></app-major-mode>
-    </div>
-  </section>
+  <!-- Major Mode -->
+  <div *ngIf="!isHidden">
+    <!-- Section -->
+    <section id="f1">
+      <header>
+        <h2>Major key Harmony</h2>
+      </header>
+      <div class="content">
+        <app-major-mode></app-major-mode>
+      </div>
+    </section>
 
-  <!-- Section -->
-  <section id="f2">
-    <header>
-      <h2>Optional Chords V7, Altered Dominant and Symmetric Dominant</h2>
-    </header>
-    <div class="content">
-      <app-optional-chords></app-optional-chords>
-    </div>
-  </section>
+    <!-- Section -->
+    <section id="f2">
+      <header>
+        <h2>Optional Chords V7, Altered Dominant and Symmetric Dominant</h2>
+      </header>
+      <div class="content">
+        <app-optional-chords></app-optional-chords>
+      </div>
+    </section>
 
-  <!-- Section -->
-  <section id="f3">
-    <header>
-      <h2>Secondary Dominants, Extended Dominants and the "II V" Progression</h2>
-    </header>
-    <div class="content">
-      <app-secondary-dominants></app-secondary-dominants>
-    </div>
-  </section>
+    <!-- Section -->
+    <section id="f3">
+      <header>
+        <h2>Secondary Dominants, Extended Dominants and the "II V" Progression</h2>
+      </header>
+      <div class="content">
+        <app-secondary-dominants></app-secondary-dominants>
+      </div>
+    </section>
 
-  <!-- Section -->
-  <section id="f4">
-    <header>
-      <h2>Substitute Dominants</h2>
-    </header>
-    <div class="content">
-      <app-substitute-dominants></app-substitute-dominants>
-    </div>
-  </section>
+    <!-- Section -->
+    <section id="f4">
+      <header>
+        <h2>Substitute Dominants, the "II V" for SubV's</h2>
+      </header>
+      <div class="content">
+        <app-substitute-dominants></app-substitute-dominants>
+      </div>
+    </section>
+  </div>
 
+  <!-- Minor Mode -->
+  <div *ngIf="isHidden">
+    <!-- Section -->
+    <section id="f5">
+      <header>
+        <h2>Natural Minor Mode, Harmonic, Melodic, Dorian and Phrygian</h2>
+      </header>
+      <div class="content">
+        <app-minor-mode></app-minor-mode>
+      </div>
+    </section>
+  </div>
 </div>
