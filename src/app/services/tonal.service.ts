@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Chord, Key, Note, Scale } from "@tonaljs/tonal";
+import { Chord, Key, Note, Scale } from '@tonaljs/tonal';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TonalService {
 
-  //guarda o tom escolhido no combo
+  // guarda o tom escolhido no combo
   private tonality = new BehaviorSubject<string[]>([]);
   currentTonality = this.tonality.asObservable();
 
-  //guardando o modo Maior ou Menor
+  // guardando o modo Maior ou Menor
   private mode = new BehaviorSubject<boolean[]>([]);
   currentMode = this.mode.asObservable();
 
@@ -22,86 +22,85 @@ export class TonalService {
   }
 
   pushTonality(tonality: string) {
-    //gravando nova tonalidade
+    // gravando nova tonalidade
     const newTonality = this.tonality.value;
     newTonality.push(tonality);
     this.tonality.next(newTonality);
   }
 
-  pushModeInit(_mode: boolean[]){
-    this.mode.next(_mode);
+  pushModeInit(mode: boolean[]) {
+    this.mode.next(mode);
   }
 
-  pushMode(_mode: boolean){
+  pushMode(mode: boolean) {
     const newMode = this.mode.value;
-    newMode.push(_mode);
+    newMode.push(mode);
     this.mode.next(newMode);
   }
 
   returnNotes(arrayNotes: string[]) {
-    let _notes = "";
+    let notes = '';
     for (const iterator of arrayNotes) {
-      _notes += iterator + ", ";
+      notes += iterator + ', ';
     }
-    return _notes.substr(0, _notes.length - 2);
+    return notes.substr(0, notes.length - 2);
   }
 
-  returnExtended(_note: string)
-  {
-    let result = "";
-    for (const _chord of Chord.extended(_note)) {
-      result += _chord + " <br>";
+  returnExtended(note: string) {
+    let result = '';
+    for (const chord of Chord.extended(note)) {
+      result += chord + ' <br>';
     }
     return result;
   }
 
-  GetSeventhChord(_notes: string[]){
-    let result = "";
+  GetSeventhChord(notes: string[]) {
+    let result = '';
     for (let index = 0; index < 4; index++) {
-      result += _notes[index] + ", ";
+      result += notes[index] + ', ';
     }
 
     return result.substr(0, result.length - 2);
   }
 
-  GetScales(_chord: string, scales: string[]) {
-    let _reuslt = "";
-    for (const _scale of scales) {
-      _reuslt += _scale + "<br> (";
-      for (const _notes of Scale.get(_chord + " " + _scale).notes) {
-        _reuslt += _notes + ", ";
+  GetScales(chord: string, scales: string[]) {
+    let reuslt = '';
+    for (const scale of scales) {
+      reuslt += scale + '<br> (';
+      for (const notes of Scale.get(chord + ' ' + scale).notes) {
+        reuslt += notes + ', ';
       }
-      _reuslt = _reuslt.substr(0, _reuslt.length - 2) + ")";
-      _reuslt += "<br>";
+      reuslt = reuslt.substr(0, reuslt.length - 2) + ')';
+      reuslt += '<br>';
     }
-    return _reuslt;
+    return reuslt;
   }
-  
-  GetScalesTotal(_chord: string){
-    let result = "";
-    for (const scale of Chord.chordScales(_chord)) {
-      result += scale + " (";
-      const _notes = Scale.get(Chord.get(_chord).tonic + " " + scale).notes;
-      for (const _note of _notes) {
-        result += _note + ", ";
+
+  GetScalesTotal(chord: string) {
+    let result = '';
+    for (const scale of Chord.chordScales(chord)) {
+      result += scale + ' (';
+      const notes = Scale.get(Chord.get(chord).tonic + ' ' + scale).notes;
+      for (const note of notes) {
+        result += note + ', ';
       }
       result = result.substr(0, result.length - 2);
-      result += ") <br>";
+      result += ') <br>';
     }
 
     return result.substr(0, result.length - 2);
   }
 
-  GetExtended(_note: string){
-    let result = "";
-    for (const _chord of Chord.extended(_note)) {
-      result += _chord + " (";
-      const _notes = Chord.get(_chord).notes;  
-      for (let index = 0; index < _notes.length; index++) {
-        result += _notes[index] + ", ";
+  GetExtended(note: string) {
+    let result = '';
+    for (const chord of Chord.extended(note)) {
+      result += chord + ' (';
+      const notes = Chord.get(chord).notes;
+      for (const iterator of notes) {
+        result += iterator + ', ';
       }
       result = result.substr(0, result.length - 2);
-      result += ") <br>";
+      result += ') <br>';
     }
 
     return result.substr(0, result.length - 2);
