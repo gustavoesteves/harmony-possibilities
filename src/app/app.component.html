@@ -4,19 +4,31 @@
   <section class="intro">
     <header>
       <h1>Harmony Possibilities</h1>
-      <p>A free tool for musicians</p>
-      <ul class="actions">
-        <li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
-      </ul>
     </header>
     <div class="content">
-      <p>This tool intended to assist musicians with harmonic possibilities.</p>
+      <!--
+              <p>This tool intended to assist musicians with harmonic possibilities.</p>
       <p>The operation is as simple as possible, simply choosing the key and the Page displays some possibilities.</p>
       <p>We first display the Major key chords and their extensions for creating new chords, as well as some scales
         that can be used with relative chord.</p>
+      -->
       <app-circle-fifhts></app-circle-fifhts>
     </div>
   </section>
+
+  <!-- Draw Chords -->
+  <div class="gallery">
+    <div class={{gallery}} (click)="closeModal()">
+      <h2>Common {{naturalChord}} chords</h2>
+      <div #common class="inner"></div>
+      <h2>First {{firstInversion}} chords inversion</h2>
+      <div #first class="inner"></div>
+      <h2>Second {{secondInversion}} chords inversion</h2>
+      <div #second class="inner"></div>
+      <h2>Third {{thirdInversion}} chords inversion</h2>
+      <div #third class="inner"></div>
+    </div>
+  </div>
 
   <!-- Major Mode -->
   <div *ngIf="!isHidden">

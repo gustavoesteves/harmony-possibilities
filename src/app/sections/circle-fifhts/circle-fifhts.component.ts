@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TonalService } from "../../services/tonal.service";
-import { Circle } from "../../services/db/circle.db";
+import { TonalService } from '../../services/tonal.service';
+import { Circle } from '../../services/db/circle.db';
+import { IInstruments } from 'src/app/services/interfaces/instruments.interface';
+import { Instruments } from 'src/app/services/db/instruments.db';
 
 @Component({
   selector: 'app-circle-fifhts',
@@ -9,9 +11,11 @@ import { Circle } from "../../services/db/circle.db";
 })
 export class CircleFifhtsComponent implements OnInit {
   notes: string[] = [];
-  mode: boolean = false;
-  majorModeCSS: string = "button primary large";
-  minorModeCSS: string = "button large";
+  mode = false;
+  majorModeCSS = 'button primary large';
+  minorModeCSS = 'button large';
+  instruments: IInstruments[] = [];
+
 
   constructor(private tonalService: TonalService) {
     this.tonalService.currentMode.subscribe(value => {
@@ -20,23 +24,29 @@ export class CircleFifhtsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tonalService.pushTonalityInit(["C"]);
+    this.tonalService.pushTonalityInit(['C']);
+    this.tonalService.pushInstrumentIni([Instruments[0]]);
     this.notes = Circle;
+    this.instruments = Instruments;
   }
 
   onSelect(item: string): void {
     this.tonalService.pushTonality(item);
   }
 
+  onSelectInstrument(item: string): void {
+    this.tonalService.pushInstrument(item);
+  }
+
   onClick(mode: boolean): void {
     if (mode) {
       this.tonalService.pushMode(mode);
-      this.majorModeCSS = "button large";
-      this.minorModeCSS = "button primary large";
+      this.majorModeCSS = 'button large';
+      this.minorModeCSS = 'button primary large';
     } else {
       this.tonalService.pushMode(mode);
-      this.majorModeCSS = "button primary large";
-      this.minorModeCSS = "button large";
+      this.majorModeCSS = 'button primary large';
+      this.minorModeCSS = 'button large';
     }
   }
 }

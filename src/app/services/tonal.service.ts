@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Chord, Key, Note, Scale } from '@tonaljs/tonal';
+import { Chord, Scale } from '@tonaljs/tonal';
+import { IInstruments } from './interfaces/instruments.interface';
+import { Instruments } from 'src/app/services/db/instruments.db';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,14 @@ export class TonalService {
   // guardando o modo Maior ou Menor
   private mode = new BehaviorSubject<boolean[]>([]);
   currentMode = this.mode.asObservable();
+
+  // guarda o status da div que desenha os acordes
+  private chord = new BehaviorSubject<string[]>([]);
+  currentChord = this.chord.asObservable();
+
+  // guarda o instrumento
+  private instrument = new BehaviorSubject<IInstruments[]>([]);
+  currentInstrument = this.instrument.asObservable();
 
   constructor() { }
 
@@ -36,6 +46,29 @@ export class TonalService {
     const newMode = this.mode.value;
     newMode.push(mode);
     this.mode.next(newMode);
+  }
+
+  pushChordInit(chord: string[]) {
+    this.chord.next(chord);
+  }
+  pushChord(chord: string) {
+    // gravando nova tonalidade
+    const newChord = this.chord.value;
+    newChord.push(chord);
+    this.chord.next(newChord);
+  }
+
+  pushInstrumentIni(instrument: IInstruments[]) {
+    this.instrument.next(instrument);
+  }
+
+  pushInstrument(instrument: string) {
+    let selectedInstrument: IInstruments = { Name: '', Notes: [], NumStrings: 0 };
+    selectedInstrument = Instruments.find(value => value.Name === instrument);
+    // gravando nova tonalidade
+    const newInstrument = this.instrument.value;
+    newInstrument.push(selectedInstrument);
+    this.instrument.next(newInstrument);
   }
 
   returnNotes(arrayNotes: string[]) {
