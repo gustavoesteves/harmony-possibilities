@@ -1848,6 +1848,9 @@ input, select, textarea {
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
+	.loadChords {
+		cursor: pointer;
+	}
 	button,
 	.button {
 		-moz-appearance: none;
@@ -2942,7 +2945,7 @@ input, select, textarea {
 			display: -moz-flex;
 			display: -webkit-flex;
 			display: -ms-flex;
-			display: flex;
+			display: flexbox;
 			-moz-align-items: center;
 			-webkit-align-items: center;
 			-ms-align-items: center;
@@ -3292,10 +3295,6 @@ input, select, textarea {
 					margin-top: 6rem;
 				}
 
-			#wrapper > section.intro {
-				align-items: center;
-			}
-
 				#wrapper > section.intro > header {
 					padding-top: 4rem;
 					width: 100%;
@@ -3310,7 +3309,7 @@ input, select, textarea {
 					}
 
 				#wrapper > section.intro > .content {
-					height: 100vh;
+					height: 80vh;
 					max-width: none;
 				}
 
