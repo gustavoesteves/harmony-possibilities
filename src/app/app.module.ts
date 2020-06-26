@@ -9,6 +9,7 @@ import { OptionalChordsComponent } from './sections/optional-chords/optional-cho
 import { SecondaryDominantsComponent } from './sections/secondary-dominants/secondary-dominants.component';
 import { SubstituteDominantsComponent } from './sections/substitute-dominants/substitute-dominants.component';
 import { MinorModeComponent } from './sections/minor-mode/minor-mode.component';
+import { DrawChordsComponent } from './sections/draw-chords/draw-chords.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MinorModeComponent } from './sections/minor-mode/minor-mode.component';
     OptionalChordsComponent,
     SecondaryDominantsComponent,
     SubstituteDominantsComponent,
-    MinorModeComponent
+    MinorModeComponent,
+    DrawChordsComponent
   ],
   imports: [
     BrowserModule,

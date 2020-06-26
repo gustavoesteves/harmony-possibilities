@@ -1,4 +1,4 @@
-<h2>Secondary Dominants</h2>
+<h2>Acordes de Dominantes Secundárias</h2>
 <table class="table">
   <thead>
     <tr>
@@ -8,12 +8,16 @@
   <tbody>
     <tr *ngFor="let item of secondaryDominants">
       <td *ngFor="let column of header">
-        <div [innerHTML]="item[column]"></div>
+        <div *ngIf="column === 'Chord'">
+          <div [innerHTML]="item.Roman"></div>
+          <div class="loadChords" [innerHTML]="item.Chord" (click)="loadChords(item.Chord)"></div>
+        </div>
+        <div *ngIf="column != 'Chord'" [innerHTML]="item[column]"></div>
       </td>
     </tr>
   </tbody>
 </table>
-<h2>Extended Dominants</h2>
+<h2>Acordes de Dominates Extendidas</h2>
 {{extendedEg1}}<br>
 <p>{{extendedEg2}}</p>
 <h2>The "II V" Progression</h2>

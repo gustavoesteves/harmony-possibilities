@@ -14,7 +14,7 @@ export class TonalService {
   currentTonality = this.tonality.asObservable();
 
   // guardando o modo Maior ou Menor
-  private mode = new BehaviorSubject<boolean[]>([]);
+  private mode = new BehaviorSubject<string[]>([]);
   currentMode = this.mode.asObservable();
 
   // guarda o status da div que desenha os acordes
@@ -38,11 +38,11 @@ export class TonalService {
     this.tonality.next(newTonality);
   }
 
-  pushModeInit(mode: boolean[]) {
+  pushModeInit(mode: string[]) {
     this.mode.next(mode);
   }
 
-  pushMode(mode: boolean) {
+  pushMode(mode: string) {
     const newMode = this.mode.value;
     newMode.push(mode);
     this.mode.next(newMode);

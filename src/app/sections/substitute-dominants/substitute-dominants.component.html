@@ -1,4 +1,4 @@
-<h2>Substitute Dominants</h2>
+<h2>Acordes de Substituição de Dominantes (SubV)</h2>
 <table class="table">
   <thead>
     <tr>
@@ -8,10 +8,14 @@
   <tbody>
     <tr *ngFor="let item of substituteDominants">
       <td *ngFor="let column of header">
-        <div [innerHTML]="item[column]"></div>
+        <div *ngIf="column === 'Chord'">
+          <div [innerHTML]="item.Roman"></div>
+          <div class="loadChords" [innerHTML]="item.Chord" (click)="loadChords(item.Chord)"></div>
+        </div>
+        <div *ngIf="column != 'Chord'" [innerHTML]="item[column]"></div>
       </td>
     </tr>
   </tbody>
 </table>
-<h2>The "II V" for SubV's</h2>
+<h2>A progressão "II V" para SubV's</h2>
 <div [innerHTML]="progressionEg1"></div><br>

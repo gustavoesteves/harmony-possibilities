@@ -11,7 +11,7 @@ import { Instruments } from 'src/app/services/db/instruments.db';
 })
 export class CircleFifhtsComponent implements OnInit {
   notes: string[] = [];
-  mode = false;
+  mode = '';
   majorModeCSS = 'button primary large';
   minorModeCSS = 'button large';
   instruments: IInstruments[] = [];
@@ -38,8 +38,8 @@ export class CircleFifhtsComponent implements OnInit {
     this.tonalService.pushInstrument(item);
   }
 
-  onClick(mode: boolean): void {
-    if (mode) {
+  onClick(mode: string): void {
+    if (mode === 'menor') {
       this.tonalService.pushMode(mode);
       this.majorModeCSS = 'button large';
       this.minorModeCSS = 'button primary large';

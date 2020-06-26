@@ -9,105 +9,124 @@ import { Note, Chord } from '@tonaljs/tonal';
   styleUrls: ['./substitute-dominants.component.css']
 })
 export class SubstituteDominantsComponent implements OnInit {
-  header = ["Chord", "Notes", "Scales", "Extended", "Cadence"];
+  header = ['Chord', 'Notes', 'Scales', 'Extended', 'Cadence'];
   substituteDominants: INotes[] = [];
-  progressionEg1: string = "";
+  progressionEg1 = '';
 
   constructor(private tonalService: TonalService) { }
 
   ngOnInit() {
     this.tonalService.currentTonality.subscribe(value => {
-      const _note = value[value.length - 1];
-      this.substituteDominants = this.GetSubstituteDominants(_note);
+      const note = value[value.length - 1];
+      this.substituteDominants = this.GetSubstituteDominants(note);
 
-      // the "II V" SubV's
+      // the 'II V' SubV's
       this.progressionEg1 =
-        "VIm7 II7 Vm7 I7 IVmaj7 <br>" +
-        Note.transpose(_note, "6M") + "m7 " + Note.transpose(_note, "2M") + "7 " + 
-        Note.transpose(_note, "5P") + "m7 " + Note.transpose(_note, "1P") + "7 " + Note.transpose(_note, "4P") + "maj7 (e.g.) <br><br>" +
-        "VIm7 II7 Vm7 SubV/IV7 IVmaj7 <br>" +
-        Note.transpose(_note, "6M") + "m7 " + Note.transpose(_note, "2M") + "7 " + 
-        Note.transpose(_note, "5P") + "m7 " + Note.transpose(_note, "4A") + "7 " + Note.transpose(_note, "4P") + "maj7 (with SubV e.g.) <br><br>" +
-        "VIm7 II7 SubV/I SubV/IV7 IVmaj7 <br>" +
-        Note.transpose(_note, "6M") + "m7 " + Note.transpose(_note, "2M") + "7 " + 
-        Note.transpose(_note, "1A") + "7 " + Note.transpose(_note, "4A") + "7 " + Note.transpose(_note, "4P") + "maj7 (with two SubV's e.g.) <br><br>" +
-        "SubV/IIm7 SubV/V7 SubV/Im7 SubV/IV7 IVmaj7 <br>" +
-        Note.transpose(_note, "3m") + "m7 " + Note.transpose(_note, "5A") + "7 " + 
-        Note.transpose(_note, "1A") + "m7 " + Note.transpose(_note, "4A") + "7 " + Note.transpose(_note, "4P") + "maj7 (with four SubV's e.g.) <br><br>";
+        'VIm7 II7 Vm7 I7 IVmaj7 <br>' +
+        Note.transpose(note, '6M') + 'm7 ' + Note.transpose(note, '2M') + '7 ' +
+        Note.transpose(note, '5P') + 'm7 ' + Note.transpose(note, '1P') + '7 ' +
+        Note.transpose(note, '4P') + 'maj7 (ex.) <br><br>' +
+        'VIm7 II7 Vm7 SubV/IV7 IVmaj7 <br>' +
+        Note.transpose(note, '6M') + 'm7 ' + Note.transpose(note, '2M') + '7 ' +
+        Note.transpose(note, '5P') + 'm7 ' + Note.transpose(note, '4A') + '7 ' +
+        Note.transpose(note, '4P') + 'maj7 (com SubV ex.) <br><br>' +
+        'VIm7 II7 SubV/I SubV/IV7 IVmaj7 <br>' +
+        Note.transpose(note, '6M') + 'm7 ' + Note.transpose(note, '2M') + '7 ' +
+        Note.transpose(note, '1A') + '7 ' + Note.transpose(note, '4A') + '7 ' +
+        Note.transpose(note, '4P') + 'maj7 (com duas SubV ex.) <br> <br>' +
+        'SubV/IIm7 SubV/V7 SubV/Im7 SubV/IV7 IVmaj7 <br>' +
+        Note.transpose(note, '3m') + 'm7 ' + Note.transpose(note, '5A') + '7 ' +
+        Note.transpose(note, '1A') + 'm7 ' + Note.transpose(note, '4A') + '7 ' +
+        Note.transpose(note, '4P') + 'maj7 (com quatro SubV ex.)<br><br>';
     });
   }
 
-  GetSubstituteDominants(_note: string) {
-    let _result: INotes[] = [];
-    let _changeNote: string = "";
+  GetSubstituteDominants(note: string) {
+    const result: INotes[] = [];
+    let changeNote = '';
 
     // subV/I
-    _changeNote = Note.transpose(_note, "2m");
-    _result.push({
+    changeNote = Note.transpose(note, '2m');
+    result.push({
       Chord:
-        "subV/I <br>" + _changeNote + "7 <br>",
-      Notes: Chord.get(_changeNote + "7").notes.toString(),
-      Scales: this.tonalService.GetScales(Note.transpose(_changeNote, "4A"), ["altered"]),
-      Extended: "(9, #11, 13) <br>" + "(" + Note.transpose(_changeNote, "2M") + ", " + Note.transpose(_changeNote, "4A") + ", " + Note.transpose(_changeNote, "6M") + ")",
-      Cadence: "[IIm7 subV/I] Imaj7 <br>" + "[" + Note.transpose(_note, "2M") + "m7 " + _changeNote + "7] " + _note + "maj7"
+        'subV/I <br>' + changeNote + '7 <br>',
+      Notes: Chord.get(changeNote + '7').notes.toString(),
+      Scales: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Extended: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadence: '[IIm7 subV/I] Imaj7 <br>' + '[' + Note.transpose(note, '2M') + 'm7 ' + changeNote + '7] ' + note + 'maj7'
     });
 
     // subV/II
-    _changeNote = Note.transpose(_note, "3m");
-    _result.push({
+    changeNote = Note.transpose(note, '3m');
+    result.push({
       Chord:
-        "subV/II <br>" + _changeNote + "7 <br>",
-      Notes: Chord.get(_changeNote + "7").notes.toString(),
-      Scales: this.tonalService.GetScales(Note.transpose(_changeNote, "4A"), ["altered"]),
-      Extended: "(9, #11, 13) <br>" + "(" + Note.transpose(_changeNote, "2M") + ", " + Note.transpose(_changeNote, "4A") + ", " + Note.transpose(_changeNote, "6M") + ")",
-      Cadence: "[IIIm7 subV/II] IIm7 <br>" + "[" + Note.transpose(_note, "3M") + "m7 " + _changeNote + "7] " + Note.transpose(_note, "2M") + "m7"
+        'subV/II <br>' + changeNote + '7 <br>',
+      Notes: Chord.get(changeNote + '7').notes.toString(),
+      Scales: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Extended: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadence: '[IIIm7 subV/II] IIm7 <br>' + '[' + Note.transpose(note, '3M') + 'm7 ' +
+        changeNote + '7] ' + Note.transpose(note, '2M') + 'm7'
     });
 
     // subV/III
-    _changeNote = Note.transpose(_note, "4P");
-    _result.push({
+    changeNote = Note.transpose(note, '4P');
+    result.push({
       Chord:
-        "subV/III <br>" + _changeNote + "7 <br>",
-      Notes: Chord.get(_changeNote + "7").notes.toString(),
-      Scales: this.tonalService.GetScales(Note.transpose(_changeNote, "4A"), ["altered"]),
-      Extended: "(9, #11, 13) <br>" + "(" + Note.transpose(_changeNote, "2M") + ", " + Note.transpose(_changeNote, "4A") + ", " + Note.transpose(_changeNote, "6M") + ")",
-      Cadence: "[#IVm7 subV/III] IIIm7 <br>" + "[" + Note.transpose(_note, "4A") + "m7 " + _changeNote + "7] " + Note.transpose(_note, "3M") + "m7"
+        'subV/III <br>' + changeNote + '7 <br>',
+      Notes: Chord.get(changeNote + '7').notes.toString(),
+      Scales: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Extended: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadence: '[#IVm7 subV/III] IIIm7 <br>' + '[' + Note.transpose(note, '4A') + 'm7 ' +
+        changeNote + '7] ' + Note.transpose(note, '3M') + 'm7'
     });
 
     // subV/IV
-    _changeNote = Note.transpose(_note, "4A");
-    _result.push({
+    changeNote = Note.transpose(note, '4A');
+    result.push({
       Chord:
-        "subV/IV <br>" + _changeNote + "7 <br>",
-      Notes: Chord.get(_changeNote + "7").notes.toString(),
-      Scales: this.tonalService.GetScales(Note.transpose(_changeNote, "4A"), ["altered"]),
-      Extended: "(9, #11, 13) <br>" + "(" + Note.transpose(_changeNote, "2M") + ", " + Note.transpose(_changeNote, "4A") + ", " + Note.transpose(_changeNote, "6M") + ")",
-      Cadence: "[Vm7 subV/IV] IVmaj7 <br>" + "[" + Note.transpose(_note, "5P") + "m7 " + _changeNote + "7] " + Note.transpose(_note, "4P") + "maj7"
+        'subV/IV <br>' + changeNote + '7 <br>',
+      Notes: Chord.get(changeNote + '7').notes.toString(),
+      Scales: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Extended: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadence: '[Vm7 subV/IV] IVmaj7 <br>' + '[' + Note.transpose(note, '5P') + 'm7 ' +
+        changeNote + '7] ' + Note.transpose(note, '4P') + 'maj7'
     });
 
     // subV/V
-    _changeNote = Note.transpose(_note, "6m");
-    _result.push({
+    changeNote = Note.transpose(note, '6m');
+    result.push({
       Chord:
-        "subV/V <br>" + _changeNote + "7 <br>",
-      Notes: Chord.get(_changeNote + "7").notes.toString(),
-      Scales: this.tonalService.GetScales(Note.transpose(_changeNote, "4A"), ["altered"]),
-      Extended: "(9, #11, 13) <br>" + "(" + Note.transpose(_changeNote, "2M") + ", " + Note.transpose(_changeNote, "4A") + ", " + Note.transpose(_changeNote, "6M") + ")",
-      Cadence: "[VIm7 subV/V] V7 <br>" + "[" + Note.transpose(_note, "6M") + "m7 " + _changeNote + "7] " + Note.transpose(_note, "5P") + "7"
+        'subV/V <br>' + changeNote + '7 <br>',
+      Notes: Chord.get(changeNote + '7').notes.toString(),
+      Scales: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Extended: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadence: '[VIm7 subV/V] V7 <br>' + '[' + Note.transpose(note, '6M') + 'm7 ' +
+        changeNote + '7] ' + Note.transpose(note, '5P') + '7'
     });
 
     // subV/VI
-    _changeNote = Note.transpose(_note, "7m");
-    _result.push({
+    changeNote = Note.transpose(note, '7m');
+    result.push({
       Chord:
-        "subV/VI <br>" + _changeNote + "7 <br>",
-      Notes: Chord.get(_changeNote + "7").notes.toString(),
-      Scales: this.tonalService.GetScales(Note.transpose(_changeNote, "4A"), ["altered"]),
-      Extended: "(9, #11, 13) <br>" + "(" + Note.transpose(_changeNote, "2M") + ", " + Note.transpose(_changeNote, "4A") + ", " + Note.transpose(_changeNote, "6M") + ")",
-      Cadence: "[VIIm7b5 subV/V] VIm7 <br>" + "[" + Note.transpose(_note, "7M") + "m7 " + _changeNote + "7] " + Note.transpose(_note, "6M") + "m7"
+        'subV/VI <br>' + changeNote + '7 <br>',
+      Notes: Chord.get(changeNote + '7').notes.toString(),
+      Scales: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Extended: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadence: '[VIIm7b5 subV/V] VIm7 <br>' + '[' + Note.transpose(note, '7M') + 'm7 ' +
+        changeNote + '7] ' + Note.transpose(note, '6M') + 'm7'
     });
 
-    return _result;
+    return result;
   }
 
+  loadChords(chord: string) {
+    this.tonalService.pushMode('draw');
+    this.tonalService.pushChord(chord);
+  }
 }

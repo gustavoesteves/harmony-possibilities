@@ -106,6 +106,7 @@ export class MajorModeComponent implements OnInit {
   }
 
   loadChords(chord: string) {
+    this.tonalService.pushMode('draw');
     this.tonalService.pushChord(chord);
   }
 }

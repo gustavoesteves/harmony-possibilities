@@ -1,14 +1,14 @@
-<h2>Tonal Mode</h2>
+<h2>Modo Tonal</h2>
 <ul class="actions">
-  <li><a href="#" class={{majorModeCSS}} (click)="onClick(false)">Major Mode</a></li>
-  <li><a href="#" class={{minorModeCSS}} (click)="onClick(true)">Minor Mode</a></li>
+  <li><a href="#" class={{majorModeCSS}} (click)="onClick('maior')">Modo Maior</a></li>
+  <li><a href="#" class={{minorModeCSS}} (click)="onClick('menor')">Modo Menor</a></li>
 </ul>
 <br>
-<h2>Tonality</h2>
+<h2>Tonalidade</h2>
 <select class="form-control" id="SelectCircleFifhts" (change)="onSelect($event.target.value)">
   <option *ngFor="let item of notes">{{item}}</option>
 </select>
-<h2>Instrument</h2>
+<h2>Instrumento</h2>
 <select class="form-control" id="SelectInstrument" (change)="onSelectInstrument($event.target.value)">
   <option *ngFor="let item of instruments">{{item.Name}}</option>
 </select>

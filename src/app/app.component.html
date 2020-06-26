@@ -3,7 +3,7 @@
   <!-- Intro -->
   <section class="intro">
     <header>
-      <h1>Harmony Possibilities</h1>
+      <h1>Possibilidades Harmônicas</h1>
     </header>
     <div class="content">
       <!--
@@ -17,30 +17,15 @@
   </section>
 
   <!-- Draw Chords -->
-  <div class="gallery">
-    <div class={{gallery}} (click)="closeModal()">
-      <h2>Common {{naturalChord}} chords</h2>
-      <div #common class="inner"></div>
-      <h2>First {{firstInversion}} chords inversion</h2>
-      <div #first class="inner"></div>
-      <h2>Second {{secondInversion}} chords inversion</h2>
-      <div #second class="inner"></div>
-      <h2>Third {{thirdInversion}} chords inversion</h2>
-      <div #third class="inner"></div>
-    </div>
+  <div *ngIf="menu === 'draw'" (click)="onClickDraw()">
+    <!-- Section -->
+    <app-draw-chords></app-draw-chords>
   </div>
 
   <!-- Major Mode -->
-  <div *ngIf="!isHidden">
+  <div *ngIf="menu === 'maior'">
     <!-- Section -->
-    <section id="f1">
-      <header>
-        <h2>Major key Harmony</h2>
-      </header>
-      <div class="content">
-        <app-major-mode></app-major-mode>
-      </div>
-    </section>
+    <app-major-mode></app-major-mode>
 
     <!-- Section -->
     <section id="f2">
@@ -74,7 +59,7 @@
   </div>
 
   <!-- Minor Mode -->
-  <div *ngIf="isHidden">
+  <div *ngIf="menu === 'menor'">
     <!-- Section -->
     <section id="f5">
       <header>
