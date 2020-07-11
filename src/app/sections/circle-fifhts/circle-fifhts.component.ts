@@ -49,4 +49,8 @@ export class CircleFifhtsComponent implements OnInit {
       this.minorModeCSS = 'button large';
     }
   }
+
+  onClickMotivo() {
+    this.tonalService.pushMode('sequence');
+  }
 }

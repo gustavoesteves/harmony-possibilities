@@ -3,6 +3,12 @@ import { BehaviorSubject } from 'rxjs';
 import { Chord, Scale } from '@tonaljs/tonal';
 import { IInstruments } from './interfaces/instruments.interface';
 import { Instruments } from 'src/app/services/db/instruments.db';
+import { IPhrases } from './interfaces/phrases.interface';
+import { MajorPhrase1 } from './db/major.phrase1.db';
+import { MajorPhrase2 } from './db/major.phrase2.db';
+import { MajorPhrase3 } from './db/major.phrase3.db';
+import { MajorPhrase4 } from './db/major.phrase4.db';
+import { IRondo } from './interfaces/rondo.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +30,15 @@ export class TonalService {
   // guarda o instrumento
   private instrument = new BehaviorSubject<IInstruments[]>([]);
   currentInstrument = this.instrument.asObservable();
+
+  // guarda o motivo
+  private motivo = new BehaviorSubject<IPhrases[][]>([]);
+  currentMotivo = this.motivo.asObservable();
+
+  // guarda o motivo e acordes
+  private motivoChords = new BehaviorSubject<IRondo[][]>([]);
+  currentMotivoChords = this.motivoChords.asObservable();
+
 
   constructor() { }
 
@@ -70,6 +85,49 @@ export class TonalService {
     newInstrument.push(selectedInstrument);
     this.instrument.next(newInstrument);
   }
+
+  pushMotivoInit() {
+    const newMotivo: IPhrases[] = [];
+    newMotivo.push(this.BuildPhrase());
+    newMotivo.push(this.BuildPhrase());
+    newMotivo.push(this.BuildPhrase());
+    this.motivo.next([newMotivo]);
+  }
+
+  pushMotivo() {
+    const newMotivo: IPhrases[] = [];
+    newMotivo.push(this.BuildPhrase());
+    newMotivo.push(this.BuildPhrase());
+    newMotivo.push(this.BuildPhrase());
+    this.motivo.next([newMotivo]);
+  }
+
+  pushMotivoChords(motivoChords: IRondo[]) {
+    const newMotivo: IRondo[] = motivoChords;
+    this.motivoChords.next([newMotivo]);
+  }
+
+  BuildPhrase(): IPhrases {
+    const result: IPhrases = { Comp: [] };
+    let f = MajorPhrase1[Math.floor(Math.random() * (MajorPhrase1.length - 1))];
+    for (const iterator of f.Comp) {
+      result.Comp.push(iterator);
+    }
+    f = MajorPhrase2[Math.floor(Math.random() * (MajorPhrase1.length - 1))];
+    for (const iterator of f.Comp) {
+      result.Comp.push(iterator);
+    }
+    f = MajorPhrase3[Math.floor(Math.random() * (MajorPhrase1.length - 1))];
+    for (const iterator of f.Comp) {
+      result.Comp.push(iterator);
+    }
+    f = MajorPhrase4[Math.floor(Math.random() * (MajorPhrase1.length - 1))];
+    for (const iterator of f.Comp) {
+      result.Comp.push(iterator);
+    }
+    return result;
+  }
+
 
   returnNotes(arrayNotes: string[]) {
     let notes = '';

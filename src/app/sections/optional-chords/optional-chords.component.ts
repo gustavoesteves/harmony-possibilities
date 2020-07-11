@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chord, Note, Scale } from '@tonaljs/tonal';
 import { INotes } from '../../services/interfaces/notes.interface';
 import { TonalService } from '../../services/tonal.service';
+import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 
 @Component({
   selector: 'app-optional-chords',
@@ -10,7 +11,7 @@ import { TonalService } from '../../services/tonal.service';
 })
 export class OptionalChordsComponent implements OnInit {
   header = ['Chord', 'Notes', 'Scales', 'Extended'];
-  majorMode: INotes[] = [];
+  majorMode: INoteExtended[] = [];
   alteredDominant: INotes[] = [];
   symetricDominant: INotes[] = [];
 
@@ -26,13 +27,14 @@ export class OptionalChordsComponent implements OnInit {
   }
 
   GetOptionalChords(note: string) {
-    const result: INotes[] = [];
+    const result: INoteExtended[] = [];
 
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
 
     result.push({
-      Chord: fifithNote + '7b9, <br>' + fifithNote + '7#9, <br>' + fifithNote + '13b9',
+      Roman: 'V7b9',
+      Chord: fifithNote + '7b9',
       Notes: Chord.get(fifithNote + '7b9').notes.toString() + ', <br>' +
         Chord.get(fifithNote + '7#9').notes.toString() + ', <br>' + Chord.get(fifithNote + '13b9').notes.toString(),
       Scales: this.tonalService.GetScales(fifithNote, ['half-whole diminished']),
@@ -41,6 +43,27 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
+      Roman: 'V7#9',
+      Chord: fifithNote + '7#9',
+      Notes: Chord.get(fifithNote + '7b9').notes.toString() + ', <br>' +
+        Chord.get(fifithNote + '7#9').notes.toString() + ', <br>' + Chord.get(fifithNote + '13b9').notes.toString(),
+      Scales: this.tonalService.GetScales(fifithNote, ['half-whole diminished']),
+      Extended: '(' + Note.transpose(fifithNote, '2m') + ', ' + Note.transpose(fifithNote, '6M') + ')',
+      Cadence: ''
+    });
+
+    result.push({
+      Roman: 'V13b9',
+      Chord: fifithNote + '13b9',
+      Notes: Chord.get(fifithNote + '7b9').notes.toString() + ', <br>' +
+        Chord.get(fifithNote + '7#9').notes.toString() + ', <br>' + Chord.get(fifithNote + '13b9').notes.toString(),
+      Scales: this.tonalService.GetScales(fifithNote, ['half-whole diminished']),
+      Extended: '(' + Note.transpose(fifithNote, '2m') + ', ' + Note.transpose(fifithNote, '6M') + ')',
+      Cadence: ''
+    });
+
+    result.push({
+      Roman: 'V7b9b13',
       Chord: fifithNote + '7b9b13',
       Notes: Chord.get(fifithNote + '7b9b13').notes.toString(),
       Scales: this.tonalService.GetScales(fifithNote, ['phrygian dominant']),

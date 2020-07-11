@@ -10,7 +10,8 @@ export class AppComponent implements OnInit {
   menu = '';
 
   constructor(private tonalService: TonalService) {
-    this.tonalService.pushModeInit(['maior']);
+    this.tonalService.pushModeInit(['sequence']);
+    this.tonalService.pushMotivoInit();
   }
 
   ngOnInit() {

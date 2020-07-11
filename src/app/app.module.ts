@@ -10,6 +10,8 @@ import { SecondaryDominantsComponent } from './sections/secondary-dominants/seco
 import { SubstituteDominantsComponent } from './sections/substitute-dominants/substitute-dominants.component';
 import { MinorModeComponent } from './sections/minor-mode/minor-mode.component';
 import { DrawChordsComponent } from './sections/draw-chords/draw-chords.component';
+import { HarmonySequencyComponent } from './sections/harmony-sequency/harmony-sequency.component';
+import { XmlmusicGenerateComponent } from './sections/xmlmusic-generate/xmlmusic-generate.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DrawChordsComponent } from './sections/draw-chords/draw-chords.componen
     SecondaryDominantsComponent,
     SubstituteDominantsComponent,
     MinorModeComponent,
-    DrawChordsComponent
+    DrawChordsComponent,
+    HarmonySequencyComponent,
+    XmlmusicGenerateComponent
   ],
   imports: [
     BrowserModule,

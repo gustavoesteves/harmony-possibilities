@@ -16,6 +16,17 @@
     </div>
   </section>
 
+  <!-- Harmony-Sequence -->
+  <div *ngIf="menu === 'sequence'" (click)="onClickDraw()">
+    <!-- Section -->
+    <app-harmony-sequency></app-harmony-sequency>
+  </div>
+
+  <!-- XMLMusic -->
+  <div *ngIf="menu === 'xmlmusic'">
+    <app-xmlmusic-generate></app-xmlmusic-generate>
+  </div>
+
   <!-- Draw Chords -->
   <div *ngIf="menu === 'draw'" (click)="onClickDraw()">
     <!-- Section -->
@@ -30,7 +41,7 @@
     <!-- Section -->
     <section id="f2">
       <header>
-        <h2>Optional Chords V7, Altered Dominant and Symmetric Dominant</h2>
+        <h2>V7 Acordes Opcionais, Dominantes Alteradas e Dominantes Simétricas</h2>
       </header>
       <div class="content">
         <app-optional-chords></app-optional-chords>
