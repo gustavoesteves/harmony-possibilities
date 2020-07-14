@@ -24,8 +24,6 @@ export class CircleFifhtsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tonalService.pushTonalityInit(['C']);
-    this.tonalService.pushInstrumentIni([Instruments[0]]);
     this.notes = Circle;
     this.instruments = Instruments;
   }

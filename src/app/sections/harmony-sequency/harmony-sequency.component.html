@@ -4,6 +4,9 @@
     </header>
     <div class="content">
         <ul class="actions">
+            <select class="form-control" id="SelectEsquema" (change)="onSelect($event.target.value)">
+                <option *ngFor="let item of esquemas">{{item.Nome}}</option>
+            </select>
             <li><button class="button primary large" (click)="onClick()">Frase Aleatória</button></li>
             <li><button class="button primary large" (click)="onClickXML()">Gerar XMLMusic</button></li>
         </ul>
