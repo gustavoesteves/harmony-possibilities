@@ -253,7 +253,7 @@ export class TonalService {
         return Note.transpose(note, '2M') + '7';
       }
       case 'V/VI': {
-        return Note.transpose(note, '2M') + '7';
+        return Note.transpose(note, '3M') + '7';
       }
       case 'I6': {
         return Note.transpose(note, '3M') + '/' + note;
