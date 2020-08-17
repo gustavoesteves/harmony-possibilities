@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "harmony-possibilities"
+  "defaultProject": "harmony-possibilities",
+  "cli": {
+    "analytics": false
+  }
 }
