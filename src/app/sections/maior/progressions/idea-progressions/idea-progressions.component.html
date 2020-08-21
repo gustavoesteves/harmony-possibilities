@@ -1,0 +1,62 @@
+<section>
+  <div class="content">
+    <div class="row">
+      <div class="col-4 col-12-medium">
+        <h2>Gerando frases aleatórias</h2>
+        <p>Baseados na tabela acima usaremos um algorítimo para gerar frases aleatórias para estudo.</p>
+        <p>Para gerar mais possibilidades daremos a opção de gerar frases com acordes naturais, com sétima,
+          com suas inversões (naturais e sétima) e com as notas de alteração segundo a tabela do modo maior.
+        </p>
+      </div>
+      <div class="col-8 col-12-medium">
+        <div class="row">
+          <div class="col-6 col-12-medium">
+            <h3>Qualidade dos acordes</h3>
+            <ul class="actions">
+              <li><button type="button" class={{modoNatural}} (click)="changeModoFrase(1)">Natural</button></li>
+              <li><button type="button" class={{modoSetima}} (click)="changeModoFrase(2)">Sétima</button></li>
+              <li><button type="button" class={{modoInversao}} (click)="changeModoFrase(3)">Inversões</button>
+              </li>
+            </ul>
+            <ul class="actions">
+              <li><button type="button" class={{modoAlteracao}} (click)="changeModoFrase(4)">Alterações</button>
+              <li><button type="button" class={{modoSecundaria}} (click)="changeModoFrase(5)">Secundárias</button>
+              <li><button type="button" class={{modoSub}} (click)="changeModoFrase(6)">Sub Dominante</button>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-12-medium">
+            <h3>Quantidade de compassos</h3>
+            <ul class="actions">
+              <li><button type="button" class={{comp4}} (click)="changeCompasso(4)">4</button></li>
+              <li><button type="button" class={{comp6}} (click)="changeCompasso(6)">6</button></li>
+              <li><button type="button" class={{comp8}} (click)="changeCompasso(8)">8</button></li>
+              <li><button type="button" class={{comp12}} (click)="changeCompasso(12)">12</button></li>
+              <li><button type="button" class={{comp16}} (click)="changeCompasso(16)">16</button></li>
+            </ul>
+          </div>
+        </div>
+        <ul class="actions">
+          <li>
+            <button class="button primary" (click)="fraseGenarator()">Gerar Frase</button>
+          </li>
+          <li><button class="button primary">Exportar MuseScore</button></li>
+        </ul>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <th *ngFor="let column of header" scope="col">{{column}}</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of fraseGerada">
+                <td *ngFor="let column of header">
+                  <div [innerHTML]="item[column]"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

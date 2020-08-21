@@ -8,11 +8,11 @@
   <tbody>
     <tr *ngFor="let item of minorMode">
       <td *ngFor="let column of header">
-        <div *ngIf="column === 'Chord'">
+        <div *ngIf="column === 'Acorde'">
           <div [innerHTML]="item.Roman"></div>
-          <div class="loadChords" [innerHTML]="item.Chord" (click)="loadChords(item.Chord)"></div>
+          <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
         </div>
-        <div *ngIf="column != 'Chord'" [innerHTML]="item[column]"></div>
+        <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
       </td>
     </tr>
   </tbody>
@@ -27,11 +27,11 @@
   <tbody>
     <tr *ngFor="let item of harmonicMode">
       <td *ngFor="let column of header">
-        <div *ngIf="column === 'Chord'">
+        <div *ngIf="column === 'Acorde'">
           <div [innerHTML]="item.Roman"></div>
-          <div class="loadChords" [innerHTML]="item.Chord" (click)="loadChords(item.Chord)"></div>
+          <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
         </div>
-        <div *ngIf="column != 'Chord'" [innerHTML]="item[column]"></div>
+        <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
       </td>
     </tr>
   </tbody>
@@ -46,11 +46,11 @@
   <tbody>
     <tr *ngFor="let item of melodicMode">
       <td *ngFor="let column of header">
-        <div *ngIf="column === 'Chord'">
+        <div *ngIf="column === 'Acorde'">
           <div [innerHTML]="item.Roman"></div>
-          <div class="loadChords" [innerHTML]="item.Chord" (click)="loadChords(item.Chord)"></div>
+          <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
         </div>
-        <div *ngIf="column != 'Chord'" [innerHTML]="item[column]"></div>
+        <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
       </td>
     </tr>
   </tbody>
@@ -65,11 +65,11 @@
   <tbody>
     <tr *ngFor="let item of dorianMode">
       <td *ngFor="let column of header">
-        <div *ngIf="column === 'Chord'">
+        <div *ngIf="column === 'Acorde'">
           <div [innerHTML]="item.Roman"></div>
-          <div class="loadChords" [innerHTML]="item.Chord" (click)="loadChords(item.Chord)"></div>
+          <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
         </div>
-        <div *ngIf="column != 'Chord'" [innerHTML]="item[column]"></div>
+        <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
       </td>
     </tr>
   </tbody>
@@ -84,11 +84,11 @@
   <tbody>
     <tr *ngFor="let item of phrygianMode">
       <td *ngFor="let column of header">
-        <div *ngIf="column === 'Chord'">
+        <div *ngIf="column === 'Acorde'">
           <div [innerHTML]="item.Roman"></div>
-          <div class="loadChords" [innerHTML]="item.Chord" (click)="loadChords(item.Chord)"></div>
+          <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
         </div>
-        <div *ngIf="column != 'Chord'" [innerHTML]="item[column]"></div>
+        <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
       </td>
     </tr>
   </tbody>

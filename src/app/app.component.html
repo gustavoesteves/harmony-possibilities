@@ -1,84 +1,131 @@
 <div id="wrapper">
 
-  <!-- Intro -->
-  <section class="intro">
-    <header>
-      <h1>Possibilidades Harmônicas</h1>
-    </header>
-    <div class="content">
-      <!--
-              <p>This tool intended to assist musicians with harmonic possibilities.</p>
-      <p>The operation is as simple as possible, simply choosing the key and the Page displays some possibilities.</p>
-      <p>We first display the Major key chords and their extensions for creating new chords, as well as some scales
-        that can be used with relative chord.</p>
-      -->
-      <app-circle-fifhts></app-circle-fifhts>
-    </div>
-  </section>
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
 
-  <!-- Harmony-Sequence -->
-  <div *ngIf="menu === 'sequence'" (click)="onClickDraw()">
-    <!-- Section -->
-    <app-harmony-sequency></app-harmony-sequency>
-  </div>
-
-  <!-- XMLMusic -->
-  <div *ngIf="menu === 'xmlmusic'">
-    <app-xmlmusic-generate></app-xmlmusic-generate>
-  </div>
-
-  <!-- Draw Chords -->
-  <div *ngIf="menu === 'draw'" (click)="onClickDraw()">
-    <!-- Section -->
-    <app-draw-chords></app-draw-chords>
-  </div>
-
-  <!-- Major Mode -->
-  <div *ngIf="menu === 'maior'">
-    <!-- Section -->
-    <app-major-mode></app-major-mode>
-
-    <!-- Section -->
-    <section id="f2">
-      <header>
-        <h2>V7 Acordes Opcionais, Dominantes Alteradas e Dominantes Simétricas</h2>
+      <!-- Header -->
+      <header id="header">
+        <a class="logo"><strong>Harmonia</strong> by Piquizeiro Record</a>
+        <ul class="icons">
+          <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+          <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+          <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+          <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+        </ul>
       </header>
-      <div class="content">
+
+      <!-- Main Page -->
+
+      <!-- Draw Chords -->
+      <div *ngIf="menu === 'draw'" (click)="onClickDraw()">
+        <!-- Section -->
+        <app-draw-chords></app-draw-chords>
+      </div>
+
+      <!-- Major Mode -->
+      <div *ngIf="menu === 'maior'">
+        <!-- Section -->
+        <app-major-mode></app-major-mode>
         <app-optional-chords></app-optional-chords>
-      </div>
-    </section>
-
-    <!-- Section -->
-    <section id="f3">
-      <header>
-        <h2>Secondary Dominants, Extended Dominants and the "II V" Progression</h2>
-      </header>
-      <div class="content">
         <app-secondary-dominants></app-secondary-dominants>
-      </div>
-    </section>
-
-    <!-- Section -->
-    <section id="f4">
-      <header>
-        <h2>Substitute Dominants, the "II V" for SubV's</h2>
-      </header>
-      <div class="content">
         <app-substitute-dominants></app-substitute-dominants>
+        <app-tabela-maior></app-tabela-maior>
+        <app-idea-progressions></app-idea-progressions>
       </div>
-    </section>
+
+    </div>
   </div>
 
-  <!-- Minor Mode -->
-  <div *ngIf="menu === 'menor'">
-    <!-- Section -->
-    <section id="f5">
-      <header>
-        <h2>Natural Minor Mode, Harmonic, Melodic, Dorian and Phrygian</h2>
-      </header>
-      <div class="content">
-        <app-minor-mode></app-minor-mode>
-      </div>
-    </section>
+  <!-- Sidebar -->
+  <div id="sidebar" class={{sidebar}}>
+    <div class="inner">
+
+      <!-- Search -->
+      <section class="alt">
+        <form method="post" action="#">
+          <select name="demo-category" id="demo-category">
+            <option value="">Tonalidade</option>
+            <option value="1">C</option>
+            <option value="2">G</option>
+            <option value="3">A</option>
+            <option value="4">E</option>
+            <option value="5">B</option>
+            <option value="6">F&#9839;</option>
+            <option value="7">G&#9837;</option>
+            <option value="8">C&#9839;</option>
+            <option value="9">D&#9837;</option>
+            <option value="10">G&#9839;</option>
+            <option value="11">A&#9837;</option>
+            <option value="12">D&#9839;</option>
+            <option value="13">E&#9837;</option>
+            <option value="14">A&#9839;</option>
+            <option value="15">B&#9837;</option>
+            <option value="16">F</option>
+          </select>
+        </form>
+      </section>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <header class="major">
+          <h2>Menu</h2>
+        </header>
+        <ul>
+          <li>
+            <span class={{modoMaior}} (click)="modoMaiorChange()">Maior</span>
+            <ul>
+              <li><a href="#">Acordes</a></li>
+              <li><a href="#">Dominantes</a></li>
+              <li><a href="#">Dominantes secundárias</a></li>
+              <li><a href="#">Subdominantes</a></li>
+            </ul>
+          </li>
+          <li>
+            <span class={{modoMenor}} (click)="modoMenorChange()">Menor</span>
+            <ul>
+              <li><a href="#">Acordes</a></li>
+              <li><a href="#">Dominantes</a></li>
+              <li><a href="#">Dominantes secundárias</a></li>
+              <li><a href="#">Subdominantes</a></li>
+            </ul>
+          </li>
+          <li>
+            <span class={{modoModal}} (click)="modoModalChange()">Modal</span>
+            <ul>
+              <li><a href="#">Acordes</a></li>
+              <li><a href="#">Dominantes</a></li>
+              <li><a href="#">Dominantes secundárias</a></li>
+              <li><a href="#">Subdominantes</a></li>
+            </ul>
+          </li>
+          <li>
+            <span class={{harmonia}} (click)="configHarmonia()">Harmonia Aplicada</span>
+            <ul>
+              <li><a href="#">O Choro</a></li>
+              <li><a href="#">Sambas</a></li>
+              <li><a href="#">Frevo</a></li>
+              <li><a href="#">A valsa Mineira</a></li>
+            </ul>
+          </li>
+          <li>
+            <span class={{config}} (click)="configChange()">Configurações</span>
+            <ul>
+              <li><a href="#">Caminhos e Variáveis</a></li>
+              <li><a href="#">Intrumentos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <p class="copyright">&copy; Pequizeiro Record. All rights reserved.</p>
+      </footer>
+
+    </div>
+    <a class="toggle" (click)="changeSideBar()">Toggle</a>
   </div>
+
 </div>
