@@ -5,6 +5,7 @@ import { ITranslate } from '../../services/interfaces/translate.interface';
 import { Chord } from '@tonaljs/tonal';
 import * as ChordFingering from 'chord-fingering';
 import { ChordBox } from 'vexchords';
+import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 
 @Component({
   selector: 'app-draw-chords',
@@ -39,12 +40,12 @@ export class DrawChordsComponent implements OnInit {
     });
   }
 
-  DrawChords(chord: string) {
+  DrawChords(chord: INoteExtended) {
     if (chord != null) {
       // carregando variaveis de tela
-      const notesTriade = this.GetNotes(chord);
+      const notesTriade = this.GetNotes(chord.Acorde);
       notesTriade.pop();
-      this.naturalTriadeChord = chord;
+      this.naturalTriadeChord = chord.Acorde;
       this.firstTriadeInversion = chord + '/' + notesTriade[1];
       this.secondTriadeInversion = chord + '/' + notesTriade[2];
       // fazendo os desenhos na div
@@ -53,8 +54,8 @@ export class DrawChordsComponent implements OnInit {
       this.FindAndDrawChords(notesTriade, notesTriade[2], this.divTriadeSecond.nativeElement);
 
       // pegando as notas do acorde
-      const notes = this.GetNotes(chord);
-      this.naturalChord = chord;
+      const notes = this.GetNotes(chord.Acorde);
+      this.naturalChord = chord.Acorde;
       this.firstInversion = chord + '/' + notes[1];
       this.secondInversion = chord + '/' + notes[2];
       this.thirdInversion = chord + '/' + notes[3];

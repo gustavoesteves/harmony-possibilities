@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TonalService } from 'src/app/services/tonal.service';
 import { INotes } from 'src/app/services/interfaces/notes.interface';
 import { Note, Chord } from '@tonaljs/tonal';
+import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 
 @Component({
   selector: 'app-secondary-dominants',
@@ -181,8 +182,7 @@ export class SecondaryDominantsComponent implements OnInit {
     return result;
   }
 
-  loadChords(chord: string) {
-    this.tonalService.pushMode('draw');
+  loadChords(chord: INoteExtended) {
     this.tonalService.pushChord(chord);
   }
 }

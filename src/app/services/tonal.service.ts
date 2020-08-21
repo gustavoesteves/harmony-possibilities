@@ -15,6 +15,7 @@ import { MainorPhrase1 } from './db/mainor.phrase1.db';
 import { MainorPhrase2 } from './db/mainor.phrase2.db';
 import { MainorPhrase3 } from './db/mainor.phrase3.db';
 import { MainorPhrase4 } from './db/mainor.phrase4.db';
+import { INoteExtended } from './interfaces/notesExtended.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class TonalService {
   currentMode = this.mode.asObservable();
 
   // guarda o status da div que desenha os acordes
-  private chord = new BehaviorSubject<string[]>([]);
+  private chord = new BehaviorSubject<INoteExtended[]>([]);
   currentChord = this.chord.asObservable();
 
   // guarda o instrumento
@@ -72,10 +73,10 @@ export class TonalService {
     this.mode.next(newMode);
   }
 
-  pushChordInit(chord: string[]) {
+  pushChordInit(chord: INoteExtended[]) {
     this.chord.next(chord);
   }
-  pushChord(chord: string) {
+  pushChord(chord: INoteExtended) {
     // gravando nova tonalidade
     const newChord = this.chord.value;
     newChord.push(chord);

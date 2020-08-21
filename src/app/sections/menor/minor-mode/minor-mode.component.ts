@@ -453,8 +453,7 @@ export class MinorModeComponent implements OnInit {
     return minorMode;
   }
 
-  loadChords(chord: string) {
-    this.tonalService.pushMode('draw');
+  loadChords(chord: INoteExtended) {
     this.tonalService.pushChord(chord);
   }
 

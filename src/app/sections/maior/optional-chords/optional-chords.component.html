@@ -24,7 +24,7 @@
               <td *ngFor="let column of header">
                 <div *ngIf="column === 'Acorde'">
                   <div [innerHTML]="item.Roman"></div>
-                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
+                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
                 </div>
                 <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
               </td>
@@ -43,7 +43,7 @@
               <td *ngFor="let column of header">
                 <div *ngIf="column === 'Acorde'">
                   <div [innerHTML]="item.Roman"></div>
-                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
+                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
                 </div>
                 <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
               </td>
@@ -62,7 +62,7 @@
               <td *ngFor="let column of header">
                 <div *ngIf="column === 'Acorde'">
                   <div [innerHTML]="item.Roman"></div>
-                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item.Acorde)"></div>
+                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
                 </div>
                 <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
               </td>
