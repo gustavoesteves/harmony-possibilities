@@ -19,9 +19,13 @@
       <!-- Main Page -->
 
       <!-- Draw Chords -->
-      <div *ngIf="menu === 'draw'" (click)="onClickDraw()">
-        <!-- Section -->
-        <app-draw-chords></app-draw-chords>
+      <div class="popup" id="popup">
+        <div class="popup-inner">
+          <div class="popup__text">
+            <app-draw-chords></app-draw-chords>
+          </div>
+          <a class="popup__close" href="#">X</a>
+        </div>
       </div>
 
       <!-- Major Mode -->

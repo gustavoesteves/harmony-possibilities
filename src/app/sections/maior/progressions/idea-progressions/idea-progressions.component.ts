@@ -24,6 +24,9 @@ export class IdeaProgressionsComponent implements OnInit {
   comp12 = 'button small';
   comp16 = 'button small';
   compNumber = 4;
+  final1 = 'button primary small';
+  final5 = 'button small';
+  finalNote = 0;
   note = '';
 
   constructor(private tonalService: TonalService) {
@@ -182,14 +185,101 @@ export class IdeaProgressionsComponent implements OnInit {
   fraseGenarator() {
     this.fraseGerada = [];
     let firstChord = Math.floor(Math.random() * 6);
+    let finalizaTonica = 0;
     this.fraseGerada.push({ Compasso: 1, Acorde: this.loadChords(firstChord) });
     for (let index = 1; index < this.compNumber; index++) {
-      firstChord = this.findNext(firstChord);
+      if (index === (this.compNumber - 2)) {
+        if (this.finalNote === 0) {
+          // verificando o antipenultimo acorde
+          switch (firstChord) {
+            case 0:
+              finalizaTonica = Math.floor(Math.random() * 4);
+              switch (finalizaTonica) {
+                case 0:
+                  firstChord = this.findNext(0);
+                  break;
+                case 1:
+                  firstChord = this.findNext(1);
+                  break;
+                case 1:
+                  firstChord = this.findNext(4);
+                  break;
+                case 1:
+                  firstChord = this.findNext(6);
+                  break;
+              }
+              break;
+            case 1:
+              firstChord = 4;
+              break;
+            case 2:
+              finalizaTonica = Math.floor(Math.random() * 2);
+              switch (finalizaTonica) {
+                case 0:
+                  firstChord = this.findNext(1);
+                  break;
+                case 1:
+                  firstChord = this.findNext(3);
+                  break;
+              }
+              break;
+            case 3:
+              firstChord = 1;
+              break;
+            case 4:
+              firstChord = 5;
+              break;
+            case 5:
+              finalizaTonica = Math.floor(Math.random() * 2);
+              switch (finalizaTonica) {
+                case 0:
+                  firstChord = this.findNext(1);
+                  break;
+                case 1:
+                  firstChord = this.findNext(3);
+                  break;
+              }
+              break;
+            case 6:
+
+              break;
+          }
+        }
+        else if (this.finalNote === 4) { }
+      }
+      else if (index === (this.compNumber - 1)) {
+        firstChord = this.finalNote;
+      }
+      else {
+        firstChord = this.findNext(firstChord);
+      }
       this.fraseGerada.push({ Compasso: index + 1, Acorde: this.loadChords(firstChord) });
     }
   }
 
   findNext(chord: number) {
+    if (this.modoFrase === Modo.Secundária) {
+      switch (chord) {
+        case 0:
+          chord = 3;
+          break;
+        case 1:
+          chord = 4;
+          break;
+        case 2:
+          chord = 5;
+          break;
+        case 3:
+          chord = 2;
+          break;
+        case 5:
+          chord = 1;
+          break;
+        case 6:
+          chord = 2;
+          break;
+      }
+    }
     if (chord !== 0) {
       if (chord === 1) {
         // I V
@@ -355,5 +445,16 @@ export class IdeaProgressionsComponent implements OnInit {
       this.compNumber = 16;
     }
   }
-  
+
+  changeFinalization(value: number) {
+    this.finalNote = value;
+    if (value === 0) {
+      this.final1 = 'button primary small';
+      this.final5 = 'button small';
+    } else if (value === 4) {
+      this.final1 = 'button small';
+      this.final5 = 'button primary small';
+    }
+  }
+
 }
