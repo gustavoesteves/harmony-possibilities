@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TonalService } from '../../services/tonal.service';
-import { Circle } from '../../services/db/circle.db';
+import { TonalService } from '../../../services/tonal.service';
+import { Circle } from '../../../services/db/circle.db';
 import { IInstruments } from 'src/app/services/interfaces/instruments.interface';
 import { Instruments } from 'src/app/services/db/instruments.db';
 

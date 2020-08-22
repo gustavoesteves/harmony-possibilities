@@ -52,7 +52,8 @@ export class OptionalChordsComponent implements OnInit {
         Note.transpose(fifithNote, '2A') + ', ' +
         Note.transpose(fifithNote, '6m') + ', ' +
         Note.transpose(fifithNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     return result;

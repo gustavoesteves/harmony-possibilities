@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TonalService } from '../../services/tonal.service';
-import { IPhrases } from '../../services/interfaces/phrases.interface';
-import { IRondo } from '../../services/interfaces/rondo.interface';
+import { TonalService } from '../../../services/tonal.service';
+import { IPhrases } from '../../../services/interfaces/phrases.interface';
+import { IRondo } from '../../../services/interfaces/rondo.interface';
 import { IEsquema } from 'src/app/services/interfaces/esquema.interface';
 import { Esquema } from 'src/app/services/db/esquema.db';
+import { Chorinho } from 'src/app/services/frases/chorinho.frase';
 
 @Component({
   selector: 'app-harmony-sequency',
@@ -23,24 +24,24 @@ export class HarmonySequencyComponent implements OnInit {
   };
   esquemas: IEsquema[] = [];
 
-  constructor(private tonalService: TonalService) {
+  constructor(private tonalService: TonalService, private chorinho: Chorinho) {
     this.esquemas = Esquema;
   }
 
   ngOnInit(): void {
-    this.tonalService.currentEsquema.subscribe(value => {
+    this.chorinho.currentEsquema.subscribe(value => {
       this.esquema = value[value.length - 1];
-      this.tonalService.ChangeEsquema(this.esquema, this.frase, this.note);
+      this.chorinho.ChangeEsquema(this.esquema, this.frase, this.note);
     });
-    this.tonalService.currentMotivoChords.subscribe(value => {
+    this.chorinho.currentMotivoChords.subscribe(value => {
       this.body = value[value.length - 1];
     });
-    this.tonalService.currentFrase.subscribe(value => {
+    this.chorinho.currentFrase.subscribe(value => {
       this.frase = value[value.length - 1];
     });
     this.tonalService.currentTonality.subscribe(value => {
       this.note = value[value.length - 1];
-      this.tonalService.GetCompasso(this.esquema, this.frase, this.note);
+      this.chorinho.GetCompasso(this.esquema, this.frase, this.note);
     });
   }
 
@@ -56,7 +57,7 @@ export class HarmonySequencyComponent implements OnInit {
 
   onSelect(item: string): void {
     const esquema: IEsquema = Esquema.find(value => value.Nome === item);
-    this.tonalService.pushEsquema(esquema);
+    this.chorinho.pushEsquema(esquema);
   }
 
 }

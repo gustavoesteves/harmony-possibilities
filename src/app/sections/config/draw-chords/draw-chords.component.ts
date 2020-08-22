@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { TonalService } from '../../services/tonal.service';
-import { IInstruments } from '../../services/interfaces/instruments.interface';
-import { ITranslate } from '../../services/interfaces/translate.interface';
+import { TonalService } from '../../../services/tonal.service';
+import { IInstruments } from '../../../services/interfaces/instruments.interface';
+import { ITranslate } from '../../../services/interfaces/translate.interface';
 import { Chord } from '@tonaljs/tonal';
 import * as ChordFingering from 'chord-fingering';
 import { ChordBox } from 'vexchords';
@@ -13,34 +13,44 @@ import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interfa
   styleUrls: ['./draw-chords.component.css']
 })
 export class DrawChordsComponent implements OnInit {
-  @ViewChild('commonTriade', { static: true }) divTriadeCommon: ElementRef;
-  @ViewChild('firstTriade', { static: true }) divTriadeFirst: ElementRef;
-  @ViewChild('secondTriade', { static: true }) divTriadeSecond: ElementRef;
+  @ViewChild('drawChordsChart', { static: true }) divDrawChordsChart: ElementRef;
+
   @ViewChild('common', { static: true }) divCommon: ElementRef;
-  @ViewChild('first', { static: true }) divFirst: ElementRef;
-  @ViewChild('second', { static: true }) divSecond: ElementRef;
-  @ViewChild('third', { static: true }) divThird: ElementRef;
-  naturalTriadeChord = '';
-  firstTriadeInversion = '';
-  secondTriadeInversion = '';
-  naturalChord = '';
-  firstInversion = '';
-  secondInversion = '';
-  thirdInversion = '';
+  
   instrument: IInstruments;
+  menuAcordes = '';
+  acorde = '';
 
-  constructor(private tonalService: TonalService) { }
-
-  ngOnInit(): void {
+  constructor(private tonalService: TonalService) {
     this.tonalService.currentInstrument.subscribe(value => {
       this.instrument = value[value.length - 1];
     });
     this.tonalService.currentChord.subscribe(value => {
-      this.DrawChords(value[value.length - 1]);
+      this.InitializationChords(value[value.length - 1]);
     });
   }
 
-  DrawChords(chord: INoteExtended) {
+  ngOnInit(): void {
+  }
+
+  InitializationChords(value: INoteExtended) {
+
+    if (value != null) {
+      // montando menu
+      this.menuAcordes = '<button type="button" class="button primary small fit">segundo</button>';
+      /*
+      this.acorde = value.Acordes[0];
+      this.menuAcordes = '<ul class="actions stacked">';
+      for (let index = 0; index < value.Acordes.length - 1; index++) {
+        this.menuAcordes += '<li><button type="button" class="button primary small fit">' + value.Acordes[index] + '</button></li>';
+      }
+      this.menuAcordes += '</ul>';
+      */
+    } else {
+      // this.divDrawChordsChart.nativeElement.innerHTML = '';
+    }
+
+    /*
     if (chord != null) {
       // carregando variaveis de tela
       const notesTriade = this.GetNotes(chord.Acorde);
@@ -70,6 +80,11 @@ export class DrawChordsComponent implements OnInit {
       this.divSecond.nativeElement.innnerHTML = '';
       this.divThird.nativeElement.innnerHTML = '';
     }
+    */
+  }
+
+  drawChords(value: string) {
+    console.log(value);
   }
 
   FindAndDrawChords(notes: string[], bass: string, selector: any) {

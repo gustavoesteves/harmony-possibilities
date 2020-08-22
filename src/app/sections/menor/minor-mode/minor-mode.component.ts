@@ -42,7 +42,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIm7
@@ -53,7 +54,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIImaj7
@@ -64,7 +66,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IVm7
@@ -75,7 +78,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // Vm7
@@ -86,7 +90,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(11) <br>' + '(' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VI'''maj7
@@ -98,7 +103,8 @@ export class MinorModeComponent implements OnInit {
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' +
         Note.transpose(chordNote, '4A') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VII7
@@ -109,7 +115,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     return minorMode;
@@ -127,7 +134,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'mM7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['harmonic minor']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIm7
@@ -138,7 +146,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIImaj7
@@ -149,7 +158,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7#5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['lydian augmented']),
       Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4P') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IVm7
@@ -160,7 +170,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // V7
@@ -171,7 +182,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VImaj7
@@ -183,7 +195,8 @@ export class MinorModeComponent implements OnInit {
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M')
         + ', ' + Note.transpose(chordNote, '4A') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VIIm7b5
@@ -194,7 +207,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'dim7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['diminished whole tone']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '3M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     return minorMode;
@@ -212,7 +226,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'mM7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['melodic minor']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIm7
@@ -223,7 +238,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2m') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIImaj7
@@ -234,7 +250,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7#5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['lydian augmented']),
       Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4A') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IVm7
@@ -245,7 +262,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIIm7
@@ -256,7 +274,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IVmaj7
@@ -267,7 +286,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VIIm7b5
@@ -278,7 +298,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '3M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     return minorMode;
@@ -296,7 +317,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIm7
@@ -307,7 +329,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2m') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIImaj7
@@ -318,7 +341,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IVm7
@@ -329,7 +353,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIIm7
@@ -340,7 +365,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IVmaj7
@@ -351,7 +377,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VII7
@@ -362,7 +389,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     return minorMode;
@@ -380,7 +408,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIm7
@@ -391,7 +420,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIImaj7
@@ -402,7 +432,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IVm7
@@ -413,7 +444,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // IIIm7
@@ -424,7 +456,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VImaj7
@@ -436,7 +469,8 @@ export class MinorModeComponent implements OnInit {
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' +
         Note.transpose(chordNote, '4P') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     // VII7
@@ -447,7 +481,8 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      Cadência: ''
+      Cadência: '',
+      Acordes: []
     });
 
     return minorMode;

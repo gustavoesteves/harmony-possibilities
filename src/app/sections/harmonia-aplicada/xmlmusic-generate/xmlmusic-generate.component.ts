@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TonalService } from 'src/app/services/tonal.service';
+import { Chorinho } from 'src/app/services/frases/chorinho.frase';
 
 @Component({
   selector: 'app-xmlmusic-generate',
@@ -59,10 +59,10 @@ export class XmlmusicGenerateComponent implements OnInit {
   CXV = '';
   CXVI = '';
 
-  constructor(private tonalService: TonalService) { }
+  constructor(private chorinho: Chorinho) { }
 
   ngOnInit(): void {
-    this.tonalService.currentMotivoChords.subscribe(value => {
+    this.chorinho.currentMotivoChords.subscribe(value => {
       const rondo = value[value.length - 1];
       this.AI = rondo[0].Frase1.replace('<br>', '\n');
       this.AII = rondo[1].Frase1.replace('<br>', '\n');
