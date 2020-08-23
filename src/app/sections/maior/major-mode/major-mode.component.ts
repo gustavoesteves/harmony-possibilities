@@ -57,7 +57,7 @@ export class MajorModeComponent implements OnInit {
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
       Cadência: '',
       Acordes: [
-        chordNote,
+        chordNote + 'm',
         chordNote + 'm7',
         Note.transpose(note, '4M') + '/' + chordNote + 'm',
         Note.transpose(note, '6M') + '/' + chordNote + 'm',

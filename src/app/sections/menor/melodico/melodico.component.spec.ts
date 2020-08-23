@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CircleFifhtsComponent } from './circle-fifhts.component';
+import { MelodicoComponent } from './melodico.component';
 
-describe('CircleFifhtsComponent', () => {
-  let component: CircleFifhtsComponent;
-  let fixture: ComponentFixture<CircleFifhtsComponent>;
+describe('MelodicoComponent', () => {
+  let component: MelodicoComponent;
+  let fixture: ComponentFixture<MelodicoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CircleFifhtsComponent ]
+      declarations: [ MelodicoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CircleFifhtsComponent);
+    fixture = TestBed.createComponent(MelodicoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IdeaProgressionsComponent } from './idea-progressions.component';
+import { HarmonicoComponent } from './harmonico.component';
 
-describe('IdeaProgressionsComponent', () => {
-  let component: IdeaProgressionsComponent;
-  let fixture: ComponentFixture<IdeaProgressionsComponent>;
+describe('HarmonicoComponent', () => {
+  let component: HarmonicoComponent;
+  let fixture: ComponentFixture<HarmonicoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IdeaProgressionsComponent ]
+      declarations: [ HarmonicoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IdeaProgressionsComponent);
+    fixture = TestBed.createComponent(HarmonicoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

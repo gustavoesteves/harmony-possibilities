@@ -9,7 +9,7 @@ import { Chorinho } from './services/frases/chorinho.frase';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  sidebar = 'inactive';
+  sidebar = '';
   modoMaior = 'opener';
   modoMenor = 'opener';
   modoModal = 'opener';
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private tonalService: TonalService, private chorinho: Chorinho) {
     this.tonalService.pushModeInit(['sequence']);
     this.tonalService.pushTonalityInit(['C']);
-    this.tonalService.pushInstrumentIni([Instruments[0]]);
+    this.tonalService.pushInstrumentIni([Instruments[6]]);
     this.chorinho.BuildChordProgressionInit();
     this.tonalService.pushMode('home');
   }
@@ -63,6 +63,10 @@ export class AppComponent implements OnInit {
   changeSideBar() {
     if (this.sidebar === "") { this.sidebar = "inactive" }
     else { this.sidebar = "" }
+  }
+
+  onSelect(item: string): void {
+    this.tonalService.pushTonality(item);
   }
 
 }

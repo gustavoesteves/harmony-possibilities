@@ -1,21 +1,35 @@
-<h2>Acordes de Substituição de Dominantes (SubV)</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th *ngFor="let column of header" scope="col">{{column}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of substituteDominants">
-      <td *ngFor="let column of header">
-        <div *ngIf="column === 'Acorde'">
-          <div [innerHTML]="item.Roman"></div>
-          <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
-        </div>
-        <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<h2>A progressão "II V" para SubV's</h2>
-<div [innerHTML]="progressionEg1"></div><br>
+<section>
+  <div class="content">
+    <header>
+      <h1>O Modo Maior</h1>
+      <p>Subdominantes</p>
+    </header>
+    <div class="row">
+      <div class="col-4 col-12-medium">
+      </div>
+      <div class="col-8 col-12-medium">
+        <h2>Acordes de Substituição de Dominantes (SubV)</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th *ngFor="let column of header" scope="col">{{column}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of substituteDominants">
+              <td *ngFor="let column of header">
+                <div *ngIf="column === 'Acorde'">
+                  <div [innerHTML]="item.Roman"></div>
+                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
+                </div>
+                <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>A progressão "II V" para SubV's</h2>
+        <div [innerHTML]="progressionEg1"></div><br>
+      </div>
+    </div>
+  </div>
+</section>

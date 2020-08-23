@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabelaMaiorComponent } from './tabela-maior.component';
+import { DoricoComponent } from './dorico.component';
 
-describe('TabelaMaiorComponent', () => {
-  let component: TabelaMaiorComponent;
-  let fixture: ComponentFixture<TabelaMaiorComponent>;
+describe('DoricoComponent', () => {
+  let component: DoricoComponent;
+  let fixture: ComponentFixture<DoricoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabelaMaiorComponent ]
+      declarations: [ DoricoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TabelaMaiorComponent);
+    fixture = TestBed.createComponent(DoricoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

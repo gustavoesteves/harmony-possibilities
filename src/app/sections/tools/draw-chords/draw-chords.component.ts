@@ -3,9 +3,10 @@ import { TonalService } from '../../../services/tonal.service';
 import { IInstruments } from '../../../services/interfaces/instruments.interface';
 import { ITranslate } from '../../../services/interfaces/translate.interface';
 import { Chord } from '@tonaljs/tonal';
-import * as ChordFingering from 'chord-fingering';
+import { findFingerings } from 'chord-fingering';
 import { ChordBox } from 'vexchords';
 import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
+import { Instruments } from 'src/app/services/db/instruments.db';
 
 @Component({
   selector: 'app-draw-chords',
@@ -14,100 +15,123 @@ import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interfa
 })
 export class DrawChordsComponent implements OnInit {
   @ViewChild('drawChordsChart', { static: true }) divDrawChordsChart: ElementRef;
-
-  @ViewChild('common', { static: true }) divCommon: ElementRef;
-  
   instrument: IInstruments;
-  menuAcordes = '';
+  instruments: IInstruments[] = [];
+  menuAcordes = [];
   acorde = '';
 
   constructor(private tonalService: TonalService) {
+  }
+
+  ngOnInit(): void {
     this.tonalService.currentInstrument.subscribe(value => {
       this.instrument = value[value.length - 1];
     });
     this.tonalService.currentChord.subscribe(value => {
       this.InitializationChords(value[value.length - 1]);
     });
+    this.instruments = Instruments;
   }
 
-  ngOnInit(): void {
+  onSelectInstrument(item: string): void {
+    this.tonalService.pushInstrument(item);
+    // montando acorde
+    this.drawChords();
   }
 
   InitializationChords(value: INoteExtended) {
-
     if (value != null) {
       // montando menu
-      this.menuAcordes = '<button type="button" class="button primary small fit">segundo</button>';
-      /*
       this.acorde = value.Acordes[0];
-      this.menuAcordes = '<ul class="actions stacked">';
+      this.menuAcordes.length = 0;
       for (let index = 0; index < value.Acordes.length - 1; index++) {
-        this.menuAcordes += '<li><button type="button" class="button primary small fit">' + value.Acordes[index] + '</button></li>';
+        this.menuAcordes.push(value.Acordes[index]);
       }
-      this.menuAcordes += '</ul>';
-      */
-    } else {
-      // this.divDrawChordsChart.nativeElement.innerHTML = '';
+      // montando acorde
+      this.drawChords();
     }
-
-    /*
-    if (chord != null) {
-      // carregando variaveis de tela
-      const notesTriade = this.GetNotes(chord.Acorde);
-      notesTriade.pop();
-      this.naturalTriadeChord = chord.Acorde;
-      this.firstTriadeInversion = chord + '/' + notesTriade[1];
-      this.secondTriadeInversion = chord + '/' + notesTriade[2];
-      // fazendo os desenhos na div
-      this.FindAndDrawChords(notesTriade, notesTriade[0], this.divTriadeCommon.nativeElement);
-      this.FindAndDrawChords(notesTriade, notesTriade[1], this.divTriadeFirst.nativeElement);
-      this.FindAndDrawChords(notesTriade, notesTriade[2], this.divTriadeSecond.nativeElement);
-
-      // pegando as notas do acorde
-      const notes = this.GetNotes(chord.Acorde);
-      this.naturalChord = chord.Acorde;
-      this.firstInversion = chord + '/' + notes[1];
-      this.secondInversion = chord + '/' + notes[2];
-      this.thirdInversion = chord + '/' + notes[3];
-      // fazendo os desenhos na div
-      this.FindAndDrawChords(notes, notes[0], this.divCommon.nativeElement);
-      this.FindAndDrawChords(notes, notes[1], this.divFirst.nativeElement);
-      this.FindAndDrawChords(notes, notes[2], this.divSecond.nativeElement);
-      this.FindAndDrawChords(notes, notes[3], this.divThird.nativeElement);
-    } else {
-      this.divCommon.nativeElement.innerHTML = '';
-      this.divFirst.nativeElement.innnerHTML = '';
-      this.divSecond.nativeElement.innnerHTML = '';
-      this.divThird.nativeElement.innnerHTML = '';
-    }
-    */
   }
 
-  drawChords(value: string) {
-    console.log(value);
+  drawChords() {
+    const notesTriade = this.GetNotes(this.acorde);
+    this.FindAndDrawChords(notesTriade, notesTriade[0], this.divDrawChordsChart.nativeElement);
+  }
+
+  onSelect(item: string): void {
+    this.acorde = item;
+    this.drawChords();
   }
 
   FindAndDrawChords(notes: string[], bass: string, selector: any) {
     selector.innerHTML = '';
-    const findsChords = ChordFingering.findFingerings(notes, [], bass, this.instrument.Notes);
-    for (const newChord of findsChords) {
-      const chordTranslate = this.GetTranslate(newChord);
+    let findsChords: string[] = [];
+    findsChords.push(findFingerings(notes, [], bass, this.instrument.Notes));
 
-      new ChordBox(selector, {
-        numStrings: this.instrument.NumStrings,
-        numFrets: 5
-      }).draw({
-        chord: chordTranslate.Chord,
-        position: chordTranslate.Position,
-        tuning: this.instrument.Notes
-      });
+    // verificando se quantidade de acordes esta muito baixa para retirar a quinta    
+    if (findsChords[0].length < 10 && notes.length > 3) {
+      let quintaFora: string[] = [];
+      let contaQuinta = 0;
+      for (const note of notes) {
+        if (contaQuinta !== 2) { quintaFora.push(note); }
+        contaQuinta++;
+      }
+      findsChords.push(findFingerings(quintaFora, [], bass, this.instrument.Notes));
+    }
+    // imprimindo acordes na tela
+    let count = 0;
+    for (let i = 0; i < findsChords.length; i++) {
+      for (let j = 0; j < findsChords[i].length; j++) {
+        if (count < 24) {
+          const chordTranslate = this.GetTranslate(findsChords[i][j]);
+          new ChordBox(selector, {
+            numStrings: this.instrument.NumStrings,
+            numFrets: 5
+          }).draw({
+            chord: chordTranslate.Chord,
+            position: chordTranslate.Position,
+            tuning: this.instrument.Notes
+          });
+        }
+        count++;
+      }
     }
   }
 
+
   GetNotes(chord: string): Array<string> {
     const result: Array<string> = [];
-    for (const note of Chord.get(chord).notes) {
-      result.push(note);
+    if (chord.indexOf('/') > 0 && chord.indexOf('6') < 0) {
+      console.log('tem sim: ' + chord + ' - ' + chord.indexOf('/') + ' - ' + chord.substr(chord.length - 1, 1));
+      const inversion: Array<string> = [];
+      if (chord.indexOf('m') > 0) {
+        // tratamento para acordes invertidos menores
+        for (const note of Chord.get(chord.substr(chord.length - 2, 2)).notes) {
+          inversion.push(note);
+        }
+        result.push(chord.substr(chord.length - 4, 1));
+        for (const note of inversion) {
+          if (result[0] !== note) {
+            result.push(note);
+          }
+        }
+      }
+      else {
+        // tratamento para acordes invertidos maiores
+        for (const note of Chord.get(chord.substr(chord.length - 1, 1)).notes) {
+          inversion.push(note);
+        }
+        result.push(chord.substr(chord.length - 3, 1));
+        for (const note of inversion) {
+          if (result[0] !== note) {
+            result.push(note);
+          }
+        }
+      }
+    } else {
+      // acordes sem inversão
+      for (const note of Chord.get(chord).notes) {
+        result.push(note);
+      }
     }
     return result;
   }

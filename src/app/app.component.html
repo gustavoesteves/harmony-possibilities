@@ -7,11 +7,9 @@
       <!-- Header -->
       <header id="header">
         <ul class="icons">
-          <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-          <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-          <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+          <li><a href="https://twitter.com/gustavoaesteves" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="https://github.com/gustavoesteves" class="icon brands fa-github"><span class="label">Github</span></a></li>
+          <li><a href="https://www.instagram.com/gustavoaesteves/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
         </ul>
       </header>
 
@@ -32,13 +30,43 @@
 
       <!-- Major Mode -->
       <div *ngIf="menu === 'maior'">
-        <!-- Section -->
         <app-major-mode></app-major-mode>
+      </div>
+      <div *ngIf="menu === 'optional-chods'">
         <app-optional-chords></app-optional-chords>
+      </div>
+      <div *ngIf="menu === 'secondary-dominants'">
         <app-secondary-dominants></app-secondary-dominants>
+      </div>
+      <div *ngIf="menu === 'substitute-dominants'">
         <app-substitute-dominants></app-substitute-dominants>
-        <app-tabela-maior></app-tabela-maior>
-        <app-idea-progressions></app-idea-progressions>
+      </div>
+
+      <!-- Minor Mode -->
+      <div *ngIf="menu === 'natural'">
+        <app-minor-mode></app-minor-mode>
+      </div>
+      <div *ngIf="menu === 'hamonico'">
+        <app-harmonico></app-harmonico>
+      </div>
+      <div *ngIf="menu === 'melodico'">
+        <app-melodico></app-melodico>
+      </div>
+      <div *ngIf="menu === 'dorico'">
+        <app-dorico></app-dorico>
+      </div>
+      <div *ngIf="menu === 'frigio'">
+        <app-frigio></app-frigio>
+      </div>
+
+      <!-- Harmonia Aplicada -->
+      <div *ngIf="menu === 'frase-maior'">
+        <app-frase-maior></app-frase-maior>
+      </div>
+
+      <!-- Configurações -->
+      <div *ngIf="menu === 'instrumentos'">
+        <app-circle-fifhts></app-circle-fifhts>
       </div>
 
     </div>
@@ -51,24 +79,24 @@
       <!-- Search -->
       <section class="alt">
         <form method="post" action="#">
-          <select name="demo-category" id="demo-category">
+          <select name="demo-category" id="demo-category" (change)="onSelect($event.target.value)">
             <option value="">Tonalidade</option>
-            <option value="1">C</option>
-            <option value="2">G</option>
-            <option value="3">A</option>
-            <option value="4">E</option>
-            <option value="5">B</option>
-            <option value="6">F&#9839;</option>
-            <option value="7">G&#9837;</option>
-            <option value="8">C&#9839;</option>
-            <option value="9">D&#9837;</option>
-            <option value="10">G&#9839;</option>
-            <option value="11">A&#9837;</option>
-            <option value="12">D&#9839;</option>
-            <option value="13">E&#9837;</option>
-            <option value="14">A&#9839;</option>
-            <option value="15">B&#9837;</option>
-            <option value="16">F</option>
+            <option value="C">C</option>
+            <option value="G">G</option>
+            <option value="A">A</option>
+            <option value="E">E</option>
+            <option value="B">B</option>
+            <option value="F#">F&#9839;</option>
+            <option value="Gb">G&#9837;</option>
+            <option value="C#">C&#9839;</option>
+            <option value="Db">D&#9837;</option>
+            <option value="G#">G&#9839;</option>
+            <option value="Ab">A&#9837;</option>
+            <option value="D#">D&#9839;</option>
+            <option value="Eb">E&#9837;</option>
+            <option value="A#">A&#9839;</option>
+            <option value="Bb">B&#9837;</option>
+            <option value="F">F</option>
           </select>
         </form>
       </section>
@@ -86,15 +114,19 @@
             <span class={{modoMaior}} (click)="openMenu('maior')">Maior</span>
             <ul>
               <li><a (click)="changeMenu('maior')">Acordes</a></li>
-              <li><a href="#">Dominantes</a></li>
-              <li><a href="#">Dominantes secundárias</a></li>
-              <li><a href="#">Subdominantes</a></li>
+              <li><a (click)="changeMenu('optional-chods')">Dominantes</a></li>
+              <li><a (click)="changeMenu('secondary-dominants')">Dominantes secundárias</a></li>
+              <li><a (click)="changeMenu('substitute-dominants')">Subdominantes</a></li>
             </ul>
           </li>
           <li>
             <span class={{modoMenor}} (click)="openMenu('menor')">Menor</span>
             <ul>
-              <li><a href="#">Acordes</a></li>
+              <li><a (click)="changeMenu('natural')">Natural</a></li>
+              <li><a (click)="changeMenu('hamonico')">Harmônico</a></li>
+              <li><a (click)="changeMenu('melodico')">Melódico</a></li>
+              <li><a (click)="changeMenu('dorico')">Dórico</a></li>
+              <li><a (click)="changeMenu('frigio')">Frígio</a></li>
               <li><a href="#">Dominantes</a></li>
               <li><a href="#">Dominantes secundárias</a></li>
               <li><a href="#">Subdominantes</a></li>
@@ -112,7 +144,7 @@
           <li>
             <span class={{harmonia}} (click)="openMenu('harmonia')">Harmonia Aplicada</span>
             <ul>
-              <li><a href="#">Frases aleatórias Maior</a></li>
+              <li><a (click)="changeMenu('frase-maior')">Frases aleatórias Maior</a></li>
               <li><a href="#">Frases aleatórias Menor</a></li>
               <li><a href="#">O Choro</a></li>
               <li><a href="#">Sambas</a></li>
@@ -124,7 +156,7 @@
             <span class={{config}} (click)="openMenu('config')">Configurações</span>
             <ul>
               <li><a href="#">Caminhos e Variáveis</a></li>
-              <li><a href="#">Intrumentos</a></li>
+              <li><a (click)="changeMenu('instrumentos')">Intrumentos</a></li>
             </ul>
           </li>
         </ul>
@@ -144,7 +176,6 @@
 
       <!-- Footer -->
       <footer id="footer">
-        <p class="copyright">&copy; Pequizeiro Record. All rights reserved.</p>
       </footer>
 
     </div>
