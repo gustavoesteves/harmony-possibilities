@@ -60,13 +60,16 @@
       </div>
 
       <!-- Harmonia Aplicada -->
+
+      <!-- Ferramentas -->
       <div *ngIf="menu === 'frase-maior'">
         <app-frase-maior></app-frase-maior>
       </div>
-
-      <!-- Configurações -->
-      <div *ngIf="menu === 'instrumentos'">
-        <app-circle-fifhts></app-circle-fifhts>
+      <div *ngIf="menu === 'construtor-acordes'">
+        <app-construtor-acordes></app-construtor-acordes>
+      </div>
+      <div *ngIf="menu === 'construtor-escalas'">
+        <app-construtor-escalas></app-construtor-escalas>
       </div>
 
     </div>
@@ -142,21 +145,22 @@
             </ul>
           </li>
           <li>
-            <span class={{harmonia}} (click)="openMenu('harmonia')">Harmonia Aplicada</span>
+            <span class={{config}} (click)="openMenu('config')">Ferramentas</span>
             <ul>
               <li><a (click)="changeMenu('frase-maior')">Frases aleatórias Maior</a></li>
               <li><a href="#">Frases aleatórias Menor</a></li>
-              <li><a href="#">O Choro</a></li>
-              <li><a href="#">Sambas</a></li>
-              <li><a href="#">Frevo</a></li>
-              <li><a href="#">A valsa Mineira</a></li>
+              <li><a (click)="changeMenu('construtor-acordes')">Construtor de acordes</a></li>
+              <li><a (click)="changeMenu('construtor-escalas')">Construtor de escalas</a></li>
             </ul>
           </li>
           <li>
-            <span class={{config}} (click)="openMenu('config')">Configurações</span>
+            <span class={{harmonia}} (click)="openMenu('harmonia')">Harmonia Aplicada</span>
             <ul>
-              <li><a href="#">Caminhos e Variáveis</a></li>
-              <li><a (click)="changeMenu('instrumentos')">Intrumentos</a></li>
+              <li><a href="#">Choro</a></li>
+              <li><a href="#">Samba</a></li>
+              <li><a href="#">Baião</a></li>
+              <li><a href="#">Frevo</a></li>
+              <li><a href="#">Valsa Mineira</a></li>
             </ul>
           </li>
         </ul>
