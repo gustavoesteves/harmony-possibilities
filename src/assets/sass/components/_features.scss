@@ -77,6 +77,10 @@
 			}
 		}
 
+		.extended {
+			width: calc(100% - #{$gutter});
+		}
+
 		@include breakpoint('<=medium') {
 			margin: 0 0 _size(element-margin) 0;
 			width: 100%;

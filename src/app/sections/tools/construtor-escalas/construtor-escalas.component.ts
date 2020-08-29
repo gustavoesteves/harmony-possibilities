@@ -47,6 +47,7 @@ export class ConstrutorEscalasComponent implements OnInit {
       this.checkedNotes.find(value => value.note === note).value = max;
     }
     else { this.checkedNotes.find(value => value.note === note).value = 0; }
+    this.gerarAcorde();
   }
 
   gerarAcorde() {
@@ -59,6 +60,7 @@ export class ConstrutorEscalasComponent implements OnInit {
 
   onSelectInstrument(item: string): void {
     this.instrument = Instruments.find(value => value.Name === item);
+    this.gerarAcorde();
   }
 
   drawChords() {
