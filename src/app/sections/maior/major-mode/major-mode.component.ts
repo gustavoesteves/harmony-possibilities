@@ -30,7 +30,7 @@ export class MajorModeComponent implements OnInit {
       Roman: 'Imaj7',
       Acorde: note + 'maj7',
       Notas: Chord.get(note + 'maj7').notes.toString(),
-      Escalas: this.tonalService.GetScales(note, ['major', 'lydian']),
+      Escalas: this.tonalService.GetScales(note, ['ionian', 'lydian']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(note, '2M') + ', ' + Note.transpose(note, '6M') + ')',
       Cadência: '',
       Acordes: [
@@ -86,7 +86,7 @@ export class MajorModeComponent implements OnInit {
       Roman: 'IVmaj7',
       Acorde: chordNote + 'maj7',
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
+      Escalas: this.tonalService.GetScales(chordNote, ['ionian', 'lydian']),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' +
         Note.transpose(chordNote, '4A') + ', ' + Note.transpose(chordNote, '6M') + ')',
       Cadência: '',

@@ -34,11 +34,40 @@ export class ConstrutorAcordesComponent implements OnInit {
     { note: 'Bb', checked: false, value: 0 },
     { note: 'B', checked: false, value: 0 },
   ];
+  checkedIntervals = [
+    { note: 'T', checked: false, value: 0 },
+    { note: '2m', checked: false, value: 0 },
+    { note: '2M', checked: false, value: 0 },
+    { note: '3m', checked: false, value: 0 },
+    { note: '3M', checked: false, value: 0 },
+    { note: '4J', checked: false, value: 0 },
+    { note: '4a/5dim', checked: false, value: 0 },
+    { note: '5J', checked: false, value: 0 },
+    { note: '5a/6m', checked: false, value: 0 },
+    { note: '6M', checked: false, value: 0 },
+    { note: '7m', checked: false, value: 0 },
+    { note: '7M', checked: false, value: 0 }
+  ];
   notesTriade = [];
+  menuAtivo = 'notas';
+  btnNotas = 'button primary small';
+  btnIntervalos = 'button small';
 
   constructor(private drawService: DrawService) { }
 
   ngOnInit(): void {
+  }
+
+  changeView(ativo: string) {
+    this.menuAtivo = ativo;
+    if (ativo === 'intervalos') {
+      this.btnNotas = 'button small';
+      this.btnIntervalos = 'button primary small';
+    }
+    else if (ativo === 'notas') {
+      this.btnNotas = 'button primary small';
+      this.btnIntervalos = 'button small';
+    }
   }
 
   gravaValor(status: boolean, note: string) {

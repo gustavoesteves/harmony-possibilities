@@ -12,7 +12,6 @@ export class DrawService {
     GetNotes(chord: string): Array<string> {
         const result: Array<string> = [];
         if (chord.indexOf('/') > 0 && chord.indexOf('6') < 0) {
-            console.log('tem sim: ' + chord + ' - ' + chord.indexOf('/') + ' - ' + chord.substr(chord.length - 1, 1));
             const inversion: Array<string> = [];
             if (chord.indexOf('m') > 0) {
                 // tratamento para acordes invertidos menores

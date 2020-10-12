@@ -18,6 +18,10 @@ export class DrawChordsComponent implements OnInit {
   instruments: IInstruments[] = [];
   menuAcordes = [];
   acorde = '';
+  btnAcorde = 'button primary small';
+  btnFuncao = 'button small';
+  menuAtivo = 'acorde';
+  checkedNotes = [];
 
   constructor(private tonalService: TonalService, private drawService: DrawService) {
   }
@@ -32,10 +36,30 @@ export class DrawChordsComponent implements OnInit {
     this.instruments = Instruments;
   }
 
+  changeView(ativo: string) {
+    this.menuAtivo = ativo;
+    if (ativo === 'acorde') {
+      this.btnFuncao = 'button small';
+      this.btnAcorde = 'button primary small';
+    }
+    else if (ativo === 'funcao') {
+      this.btnFuncao = 'button primary small';
+      this.btnAcorde = 'button small';
+    }
+  }
+
   onSelectInstrument(item: string): void {
     this.tonalService.pushInstrument(item);
     // montando acorde
     this.drawChords();
+  }
+
+  gravaValor(status: boolean, note: string) {
+    if (status) {
+      let max = Math.max.apply(Math, this.checkedNotes.map(function (o) { return o.value; })) + 1;
+      this.checkedNotes.find(value => value.note === note).value = max;
+    }
+    else { this.checkedNotes.find(value => value.note === note).value = 0; }
   }
 
   InitializationChords(value: INoteExtended) {
@@ -48,6 +72,18 @@ export class DrawChordsComponent implements OnInit {
       }
       // montando acorde
       this.drawChords();
+      // montando as notas de funções harmonicas
+      this.montaNotasFuncao(value);
+    }
+  }
+
+  montaNotasFuncao(value: INoteExtended) {
+    this.checkedNotes.length = 0;
+    for (const nota of value.Notas) {
+      this.checkedNotes.push({ note: nota, checked: false, value: 0 });
+    }
+    for (const extencao of value.Extenções) {
+      this.checkedNotes.push({ note: extencao, checked: false, value: 0 });
     }
   }
 
@@ -80,7 +116,7 @@ export class DrawChordsComponent implements OnInit {
     let count = 0;
     for (let i = 0; i < findsChords.length; i++) {
       for (let j = 0; j < findsChords[i].length; j++) {
-        if (count < 24) {
+        if (count < 21) {
           const chordTranslate = this.drawService.GetTranslate(findsChords[i][j]);
           new ChordBox(selector, {
             numStrings: this.instrument.NumStrings,

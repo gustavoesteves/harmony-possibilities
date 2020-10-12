@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-2 col-12-medium">
+  <div class="col-3 col-12-medium">
     <h3>Intrumentos</h3>
     <section class="alt">
       <form>
@@ -8,16 +8,37 @@
         </select>
       </form>
     </section>
-    <h3>Acordes</h3>
-    <section class="alt">
-      <form>
-        <select name="demo-category" id="demo-category" (change)="onSelect($event.target.value)">
-          <option *ngFor="let item of menuAcordes" >{{item}}</option>
-        </select>
-      </form>
-    </section>
+    <h3>Visualize por Acordes ou Funções harmônicas</h3>
+    <form>
+      <ul class="actions">
+        <li><button type="button" class={{btnAcorde}} (click)="changeView('acorde')">Acordes</button></li>
+        <li><button type="button" class={{btnFuncao}} (click)="changeView('funcao')">Funçôes</button></li>
+      </ul>
+    </form>
+    <div *ngIf="menuAtivo === 'acorde'">
+      <h3>Acordes</h3>
+      <section class="alt">
+        <form>
+          <select name="demo-category" id="demo-category" (change)="onSelect($event.target.value)">
+            <option *ngFor="let item of menuAcordes">{{item}}</option>
+          </select>
+        </form>
+      </section>
+    </div>
+    <div *ngIf="menuAtivo === 'funcao'">
+      <h3>Escolha as notas</h3>
+      <section class="alt">
+        <form>
+          <span *ngFor="let item of checkedNotes">
+            <input type="checkbox" name="item.note" [attr.id]="item.note" [(ngModel)]="item.checked"
+              (change)="gravaValor(item.checked, item.note)" />
+            <label [attr.for]="item.note">{{ item.note }}</label>
+          </span>
+        </form>
+      </section>
+    </div>
   </div>
-  <div class="col-10 col-12-medium">
+  <div class="col-9 col-12-medium">
     <h2>Diagrama de acordes em {{acorde}}</h2>
     <div #drawChordsChart class="inner"></div>
   </div>
