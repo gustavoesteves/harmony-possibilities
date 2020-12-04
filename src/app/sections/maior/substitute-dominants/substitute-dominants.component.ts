@@ -49,10 +49,11 @@ export class SubstituteDominantsComponent implements OnInit {
     // subV/I
     changeNote = Note.transpose(note, '2m');
     result.push({
+      Romano: '',
       Acorde:
         'subV/I <br>' + changeNote + '7 <br>',
       Notas: Chord.get(changeNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered'], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
       Cadência: '[IIm7 subV/I] Imaj7 <br>' + '[' + Note.transpose(note, '2M') + 'm7 ' + changeNote + '7] ' + note + 'maj7'
@@ -61,10 +62,11 @@ export class SubstituteDominantsComponent implements OnInit {
     // subV/II
     changeNote = Note.transpose(note, '3m');
     result.push({
+      Romano: '',
       Acorde:
         'subV/II <br>' + changeNote + '7 <br>',
       Notas: Chord.get(changeNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered'], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '4A') + ', ' +
@@ -78,10 +80,11 @@ export class SubstituteDominantsComponent implements OnInit {
     // subV/III
     changeNote = Note.transpose(note, '4P');
     result.push({
+      Romano: '',
       Acorde:
         'subV/III <br>' + changeNote + '7 <br>',
       Notas: Chord.get(changeNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered'], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '4A') + ', ' +
@@ -95,10 +98,11 @@ export class SubstituteDominantsComponent implements OnInit {
     // subV/IV
     changeNote = Note.transpose(note, '4A');
     result.push({
+      Romano: '',
       Acorde:
         'subV/IV <br>' + changeNote + '7 <br>',
       Notas: Chord.get(changeNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered'], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
       Cadência: '[Vm7 subV/IV] IVmaj7 <br>' + '[' + Note.transpose(note, '5P') + 'm7 ' +
@@ -108,10 +112,11 @@ export class SubstituteDominantsComponent implements OnInit {
     // subV/V
     changeNote = Note.transpose(note, '6m');
     result.push({
+      Romano: '',
       Acorde:
         'subV/V <br>' + changeNote + '7 <br>',
       Notas: Chord.get(changeNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered'], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
       Cadência: '[VIm7 subV/V] V7 <br>' + '[' + Note.transpose(note, '6M') + 'm7 ' +
@@ -121,10 +126,11 @@ export class SubstituteDominantsComponent implements OnInit {
     // subV/VI
     changeNote = Note.transpose(note, '7m');
     result.push({
+      Romano: '',
       Acorde:
         'subV/VI <br>' + changeNote + '7 <br>',
       Notas: Chord.get(changeNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered']),
+      Escalas: this.tonalService.GetScales(Note.transpose(changeNote, '4A'), ['altered'], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '4A') + ', ' + Note.transpose(changeNote, '6M') + ')',
       Cadência: '[VIIm7b5 subV/V] VIm7 <br>' + '[' + Note.transpose(note, '7M') + 'm7 ' +

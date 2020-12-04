@@ -10,12 +10,23 @@ import { Chorinho } from './services/frases/chorinho.frase';
 })
 export class AppComponent implements OnInit {
   sidebar = '';
-  modoMaior = 'opener';
-  modoMenor = 'opener';
-  modoModal = 'opener';
   harmonia = 'opener';
   config = 'opener';
+  contemporaneo = 'opener';
+  classico = 'opener';
   menu = '';
+  menuSelecionado: IConfigMenu[] = [
+    { Name: 'maior', Status: '' },
+    { Name: 'optional-chods', Status: '' },
+    { Name: 'secondary-dominants', Status: '' },
+    { Name: 'progressao-segunda-quinta', Status: '' },
+    { Name: 'substitute-dominants', Status: '' },
+    { Name: 'natural', Status: '' },
+    { Name: 'hamonico', Status: '' },
+    { Name: 'melodico', Status: '' },
+    { Name: 'dorico', Status: '' },
+    { Name: 'frigio', Status: '' },
+  ];
 
   constructor(private tonalService: TonalService, private chorinho: Chorinho) {
     this.tonalService.pushModeInit(['sequence']);
@@ -34,29 +45,22 @@ export class AppComponent implements OnInit {
   onClickDraw() { }
 
   changeMenu(menu: string) {
+    for (const menu of this.menuSelecionado) {
+      menu.Status = '';
+    }
+    this.menuSelecionado.find(_ => _.Name === menu).Status = 'ActiveMenu';
     this.tonalService.pushMode(menu);
   }
 
   openMenu(menu: string) {
-    if (menu === 'maior') {
-      if (this.modoMaior === "opener") { this.modoMaior = "opener active" }
-      else { this.modoMaior = "opener" }
-    }
-    if (menu === 'menor') {
-      if (this.modoMenor === "opener") { this.modoMenor = "opener active" }
-      else { this.modoMenor = "opener" }
-    }
-    if (menu === 'modal') {
-      if (this.modoModal === "opener") { this.modoModal = "opener active" }
-      else { this.modoModal = "opener" }
+    if (menu === 'contemporaneo') {
+      this.contemporaneo = this.contemporaneo === 'opener' ? 'opener active' : 'opener';
     }
     if (menu === 'harmonia') {
-      if (this.harmonia === "opener") { this.harmonia = "opener active" }
-      else { this.harmonia = "opener" }
+      this.harmonia = this.harmonia === "opener" ? 'opener active' : 'opener';
     }
     if (menu === 'config') {
-      if (this.config === "opener") { this.config = "opener active" }
-      else { this.config = "opener" }
+      this.config = this.config === "opener" ? 'opener active' : 'opener';
     }
   }
 
@@ -70,3 +74,9 @@ export class AppComponent implements OnInit {
   }
 
 }
+
+interface IConfigMenu {
+  Name: string;
+  Status: string;
+}
+

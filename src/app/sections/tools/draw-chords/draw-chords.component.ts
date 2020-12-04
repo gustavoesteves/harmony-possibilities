@@ -6,6 +6,7 @@ import { ChordBox } from 'vexchords';
 import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 import { Instruments } from 'src/app/services/db/instruments.db';
 import { DrawService } from 'src/app/services/draw.service';
+import { INotes } from 'src/app/services/interfaces/notes.interface';
 
 @Component({
   selector: 'app-draw-chords',
@@ -62,7 +63,8 @@ export class DrawChordsComponent implements OnInit {
     else { this.checkedNotes.find(value => value.note === note).value = 0; }
   }
 
-  InitializationChords(value: INoteExtended) {
+  InitializationChords(value: INotes) {
+    /*
     if (value != null) {
       // montando menu
       this.acorde = value.Acordes[0];
@@ -75,6 +77,7 @@ export class DrawChordsComponent implements OnInit {
       // montando as notas de funções harmonicas
       this.montaNotasFuncao(value);
     }
+    */
   }
 
   montaNotasFuncao(value: INoteExtended) {

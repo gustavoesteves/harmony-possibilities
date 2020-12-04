@@ -4,6 +4,9 @@ import { Chord, Scale, Note } from '@tonaljs/tonal';
 import { IInstruments } from './interfaces/instruments.interface';
 import { Instruments } from 'src/app/services/db/instruments.db';
 import { INoteExtended } from './interfaces/notesExtended.interface';
+import { Escalas } from './db/escalas.db';
+import { INotes } from './interfaces/notes.interface';
+import { IEscala } from './interfaces/escala.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +22,7 @@ export class TonalService {
   currentMode = this.mode.asObservable();
 
   // guarda o status da div que desenha os acordes
-  private chord = new BehaviorSubject<INoteExtended[]>([]);
+  private chord = new BehaviorSubject<INotes[]>([]);
   currentChord = this.chord.asObservable();
 
   // guarda o instrumento
@@ -53,7 +56,7 @@ export class TonalService {
     this.chord.next(chord);
   }
 
-  pushChord(chord: INoteExtended) {
+  pushChord(chord: INotes) {
     // gravando nova tonalidade
     const newChord = this.chord.value;
     newChord.push(chord);
@@ -101,17 +104,48 @@ export class TonalService {
     return result.substr(0, result.length - 2);
   }
 
-  GetScales(chord: string, scales: string[]) {
+  GetScales(note: string, scales: string[], acordes: string[], notas: string[]) {
     let reuslt = '';
-    for (const scale of scales) {
-      reuslt += scale + '<br> (';
-      for (const notes of Scale.get(chord + ' ' + scale).notes) {
-        reuslt += notes + ', ';
+    if (scales.length > 0) {
+      for (const scale of scales) {
+        reuslt += scale + this.GetScale(note, scale);
       }
-      reuslt = reuslt.substr(0, reuslt.length - 2) + ')';
-      reuslt += '<br>';
+    } else if (acordes.length > 0) {
+      for (const acorde of acordes) {
+        for (const escala of Escalas) {
+          if (escala.Acordes.find(_ => _ === acorde)) {
+            reuslt += escala.Nome + this.GetScale(note, escala.Nome);
+          }
+        }
+      }
+    } else if (notas.length > 0) {
+      let temEscala = false;
+      for (const escala of Escalas) {
+        for (const nota of notas) {
+          if (escala.Notas.find(_ => _ === nota) === undefined) {
+            temEscala = false;
+            break;
+          } else {
+            temEscala = true;
+          }
+        }
+        if (temEscala) {
+          reuslt += escala.Nome + this.GetScale(note, escala.Nome);
+        }
+      }
     }
     return reuslt;
+  }
+
+  GetScale(note: string, scala: string): string {
+    let selectedScale: IEscala = Escalas.find(_ => _.Nome === scala);
+    let result = '<br> (';
+    for (const intervalo of selectedScale.Notas) {
+      result += Note.transpose(note, intervalo) + ', ';
+    }
+    result = result.substr(0, result.length - 2) + ')';
+    result += '<br>';
+    return result;
   }
 
   GetScalesTotal(chord: string) {

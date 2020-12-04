@@ -7,9 +7,12 @@
       <!-- Header -->
       <header id="header">
         <ul class="icons">
-          <li><a href="https://twitter.com/gustavoaesteves" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="https://github.com/gustavoesteves" class="icon brands fa-github"><span class="label">Github</span></a></li>
-          <li><a href="https://www.instagram.com/gustavoaesteves/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+          <li><a href="https://twitter.com/gustavoaesteves" class="icon brands fa-twitter"><span
+                class="label">Twitter</span></a></li>
+          <li><a href="https://github.com/gustavoesteves" class="icon brands fa-github"><span
+                class="label">Github</span></a></li>
+          <li><a href="https://www.instagram.com/gustavoaesteves/" class="icon brands fa-instagram"><span
+                class="label">Instagram</span></a></li>
         </ul>
       </header>
 
@@ -37,6 +40,9 @@
       </div>
       <div *ngIf="menu === 'secondary-dominants'">
         <app-secondary-dominants></app-secondary-dominants>
+      </div>
+      <div *ngIf="menu === 'progressao-segunda-quinta'">
+        <app-progressao-segunda-quinta></app-progressao-segunda-quinta>
       </div>
       <div *ngIf="menu === 'substitute-dominants'">
         <app-substitute-dominants></app-substitute-dominants>
@@ -114,37 +120,55 @@
           <li>
             <a (click)="changeMenu('home')">Home</a>
           </li>
+
           <li>
-            <span class={{modoMaior}} (click)="openMenu('maior')">O Modo Maior</span>
+            <span class={{contemporaneo}} (click)="openMenu('contemporaneo')">Abordagem conteporânea</span>
             <ul>
-              <li><a (click)="changeMenu('maior')">Acordes</a></li>
-              <li><a (click)="changeMenu('optional-chods')">Dominantes</a></li>
-              <li><a (click)="changeMenu('secondary-dominants')">Dominantes secundárias</a></li>
-              <li><a (click)="changeMenu('substitute-dominants')">Subdominantes</a></li>
+              <li>
+                <span>O Modo Maior</span>
+                <ul>
+                  <li><a class={{menuSelecionado[0].Status}} (click)="changeMenu('maior')">Acordes</a></li>
+                  <li><a class={{menuSelecionado[1].Status}} (click)="changeMenu('optional-chods')">Dominantes</a></li>
+                  <li><a class={{menuSelecionado[2].Status}} (click)="changeMenu('secondary-dominants')">Dominantes secundárias</a></li>
+                  <li><a class={{menuSelecionado[3].Status}} (click)="changeMenu('progressao-segunda-quinta')">A progressão II-7 &#8594; V7</a></li>
+                  <li><a class={{menuSelecionado[4].Status}} (click)="changeMenu('substitute-dominants')">Subdominantes</a></li>
+                </ul>
+              </li>
+              <li>
+                <span>O Modo Menor</span>
+                <ul>
+                  <li><a class={{menuSelecionado[5].Status}} (click)="changeMenu('natural')">Natural</a></li>
+                  <li><a class={{menuSelecionado[6].Status}} (click)="changeMenu('hamonico')">Harmônico</a></li>
+                  <li><a class={{menuSelecionado[7].Status}} (click)="changeMenu('melodico')">Melódico</a></li>
+                  <li><a class={{menuSelecionado[8].Status}} (click)="changeMenu('dorico')">Dórico</a></li>
+                  <li><a class={{menuSelecionado[9].Status}} (click)="changeMenu('frigio')">Frígio</a></li>
+                  <li><a class="" href="#">Dominantes</a></li>
+                  <li><a class="" href="#">Dominantes secundárias</a></li>
+                  <li><a class="" href="#">Subdominantes</a></li>
+                </ul>
+              </li>
+              <li>
+                <span>A Harmonia Modal</span>
+                <ul>
+                  <li><a href="#">Acordes</a></li>
+                  <li><a href="#">Dominantes</a></li>
+                  <li><a href="#">Dominantes secundárias</a></li>
+                  <li><a href="#">Subdominantes</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
+
           <li>
-            <span class={{modoMenor}} (click)="openMenu('menor')">O Modo Menor</span>
+            <span class={{classico}}>Abordagem clássica</span>
             <ul>
-              <li><a (click)="changeMenu('natural')">Natural</a></li>
-              <li><a (click)="changeMenu('hamonico')">Harmônico</a></li>
-              <li><a (click)="changeMenu('melodico')">Melódico</a></li>
-              <li><a (click)="changeMenu('dorico')">Dórico</a></li>
-              <li><a (click)="changeMenu('frigio')">Frígio</a></li>
-              <li><a href="#">Dominantes</a></li>
-              <li><a href="#">Dominantes secundárias</a></li>
-              <li><a href="#">Subdominantes</a></li>
+              <li>
+                <span>O modo maior e acordes próprios da escala</span>
+                <ul></ul>
+              </li>
             </ul>
           </li>
-          <li>
-            <span class={{modoModal}} (click)="openMenu('modal')">A Harmonia Modal</span>
-            <ul>
-              <li><a href="#">Acordes</a></li>
-              <li><a href="#">Dominantes</a></li>
-              <li><a href="#">Dominantes secundárias</a></li>
-              <li><a href="#">Subdominantes</a></li>
-            </ul>
-          </li>
+
           <li>
             <span class={{config}} (click)="openMenu('config')">Ferramentas</span>
             <ul>
@@ -154,6 +178,7 @@
               <li><a (click)="changeMenu('construtor-escalas')">Construtor de escalas</a></li>
             </ul>
           </li>
+
           <li>
             <span class={{harmonia}} (click)="openMenu('harmonia')">Harmonia Aplicada</span>
             <ul>

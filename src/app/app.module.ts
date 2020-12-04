@@ -25,6 +25,8 @@ import { SambaComponent } from './sections/harmonia-aplicada/samba/samba.compone
 import { BaiaoComponent } from './sections/harmonia-aplicada/baiao/baiao.component';
 import { FrevoComponent } from './sections/harmonia-aplicada/frevo/frevo.component';
 import { ValsaMineiraComponent } from './sections/harmonia-aplicada/valsa-mineira/valsa-mineira.component';
+import { ProgressaoSegundaQuintaComponent } from './sections/maior/progressao-segunda-quinta/progressao-segunda-quinta.component';
+import { DescricaoComponent } from './sections/maior/descricao/descricao.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { ValsaMineiraComponent } from './sections/harmonia-aplicada/valsa-mineir
     SambaComponent,
     BaiaoComponent,
     FrevoComponent,
-    ValsaMineiraComponent
+    ValsaMineiraComponent,
+    ProgressaoSegundaQuintaComponent,
+    DescricaoComponent
   ],
   imports: [
     BrowserModule,
