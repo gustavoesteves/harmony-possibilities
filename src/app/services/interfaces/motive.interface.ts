@@ -1,5 +1,5 @@
 export interface IMotive {
     Compasso: string;
-    Romano: string;
+    Grau: string;
     Chord: string;
 }

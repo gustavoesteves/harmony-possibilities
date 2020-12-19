@@ -32,6 +32,9 @@
       </div>
 
       <!-- Major Mode -->
+      <div *ngIf="menu === 'descricao-maior'">
+        <app-descricao></app-descricao>
+      </div>
       <div *ngIf="menu === 'maior'">
         <app-major-mode></app-major-mode>
       </div>
@@ -49,6 +52,9 @@
       </div>
 
       <!-- Minor Mode -->
+      <div *ngIf="menu === 'descricao-menor'">
+        <app-menor-descricao></app-menor-descricao>
+      </div>
       <div *ngIf="menu === 'natural'">
         <app-minor-mode></app-minor-mode>
       </div>
@@ -125,17 +131,17 @@
             <span class={{contemporaneo}} (click)="openMenu('contemporaneo')">Abordagem conteporânea</span>
             <ul>
               <li>
-                <span>O Modo Maior</span>
+                <span class={{menuSelecionado[10].Status}} (click)="changeMenu('descricao-maior')">O Modo Maior</span>
                 <ul>
                   <li><a class={{menuSelecionado[0].Status}} (click)="changeMenu('maior')">Acordes</a></li>
                   <li><a class={{menuSelecionado[1].Status}} (click)="changeMenu('optional-chods')">Dominantes</a></li>
                   <li><a class={{menuSelecionado[2].Status}} (click)="changeMenu('secondary-dominants')">Dominantes secundárias</a></li>
-                  <li><a class={{menuSelecionado[3].Status}} (click)="changeMenu('progressao-segunda-quinta')">A progressão II-7 &#8594; V7</a></li>
+                  <li><a class={{menuSelecionado[3].Status}} (click)="changeMenu('progressao-segunda-quinta')">A progressão II- &#8594; V</a></li>
                   <li><a class={{menuSelecionado[4].Status}} (click)="changeMenu('substitute-dominants')">Subdominantes</a></li>
                 </ul>
               </li>
               <li>
-                <span>O Modo Menor</span>
+                <span class={{menuSelecionado[11].Status}} (click)="changeMenu('descricao-menor')">O Modo Menor</span>
                 <ul>
                   <li><a class={{menuSelecionado[5].Status}} (click)="changeMenu('natural')">Natural</a></li>
                   <li><a class={{menuSelecionado[6].Status}} (click)="changeMenu('hamonico')">Harmônico</a></li>

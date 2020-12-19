@@ -9,6 +9,7 @@ import { TonalService } from 'src/app/services/tonal.service';
   styleUrls: ['./progressao-segunda-quinta.component.css']
 })
 export class ProgressaoSegundaQuintaComponent implements OnInit {
+  header = ['Acorde', 'Notas', 'Escalas', 'Extenções', 'Cadência'];
   twoFiveSecondaryDominant: INotes[] = [];
 
   constructor(private tonalService: TonalService) {
@@ -16,7 +17,7 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       const note = value[value.length - 1];
       this.twoFiveSecondaryDominant = this.GetTwoFiveSecondaryDominant(note);
     });
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -28,81 +29,128 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
     // II de V7/II
     changeNote = Note.transpose(note, '3M');
     result.push({
-      Romano: '',
-      Acorde: 'II de V7/II <br>' +
-        changeNote + 'm7, <br>' +
-        changeNote + 'm7b5',
-      Notas:
-        Chord.get(changeNote + 'm7').notes.toString() + ', <br>' +
-        Chord.get(changeNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(changeNote, ['Mixolídio'], [], []),
-      Extenções: '(9, 11) <br>' +
-        '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6M') + ')',
-      Cadência: ''
+      Grau: 'II- de V/II',
+      Acorde: changeNote + 'm7',
+      Notas: Chord.get(changeNote + 'm7').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '6m']),
+      Extenções: '(11) <br>' +
+        '(' + Note.transpose(changeNote, '4M') + ')',
+      Cadência: changeNote + 'm7' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'm7'
     });
 
-    // II de V7/III
+    result.push({
+      Grau: 'II- b5 de V/II',
+      Acorde: changeNote + 'm7b5',
+      Notas: Chord.get(changeNote + 'm7b5').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
+      Extenções: '(11) <br>' +
+        '(' + Note.transpose(changeNote, '4M') + ')',
+      Cadência:
+        changeNote + 'm7b5' + ' &#8594; ' +
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7'
+    });
+
     changeNote = Note.transpose(note, '4A');
     result.push({
-      Romano: '',
-      Acorde: 'II de V7/III <br>' +
-        changeNote + 'm7, <br>' +
-        changeNote + 'm7b5',
-      Notas:
-        Chord.get(changeNote + 'm7').notes.toString() + ', <br>' +
-        Chord.get(changeNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(changeNote, ['Mixolídio'], [], []),
-      Extenções: '(9, 11) <br>' +
-        '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6M') + ')',
-      Cadência: ''
+      Grau: 'II- de V/III',
+      Acorde: changeNote + 'm7',
+      Notas: Chord.get(changeNote + 'm7').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '6m']),
+      Extenções: '(11, b13) <br>' +
+        '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6m') + ')',
+      Cadência: changeNote + 'm7' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'm7'
     });
 
-    // II de V7/IV
-    changeNote = Note.transpose(note, '5M');
     result.push({
-      Romano: '',
-      Acorde: 'II de V7/IV <br>' +
-        changeNote + 'm7, <br>' +
-        changeNote + 'm7b5',
-      Notas:
-        Chord.get(changeNote + 'm7').notes.toString() + ', <br>' +
-        Chord.get(changeNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(changeNote, ['Mixolídio'], [], []),
-      Extenções: '(9, 11) <br>' +
-        '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6M') + ')',
-      Cadência: ''
+      Grau: 'II- b5 de V/III',
+      Acorde: changeNote + 'm7b5',
+      Notas: Chord.get(changeNote + 'm7b5').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
+      Extenções: '(11, b13) <br>' +
+        '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6m') + ')',
+      Cadência: changeNote + 'm7b5' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'm7'
     });
 
-    // II de V7/V
+    changeNote = Note.transpose(note, '5P');
+    result.push({
+      Grau: 'II- de V/IV',
+      Acorde: changeNote + 'm7',
+      Notas: Chord.get(changeNote + 'm7').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '6m']),
+      Extenções: '(9, 13) <br>' +
+        '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadência: changeNote + 'm7' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'Maj7'
+    });
+
+    result.push({
+      Grau: 'II- b5 de V/IV',
+      Acorde: changeNote + 'm7b5',
+      Notas: Chord.get(changeNote + 'm7b5').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
+      Extenções: '(9, 13) <br>' +
+        '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      Cadência: changeNote + 'm7b5' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'Maj7'
+    });
+
     changeNote = Note.transpose(note, '6M');
     result.push({
-      Romano: '',
-      Acorde: 'II de V7/V <br>' +
-        changeNote + 'm7, <br>' +
-        changeNote + 'm7b5',
-      Notas:
-        Chord.get(changeNote + 'm7').notes.toString() + ', <br>' +
-        Chord.get(changeNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(changeNote, ['Mixolídio'], [], []),
+      Grau: 'II- de V/V',
+      Acorde: changeNote + 'm7',
+      Notas: Chord.get(changeNote + 'm7').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '2M']),
       Extenções: '(9, 11) <br>' +
-        '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6M') + ')',
-      Cadência: ''
+        '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '4P') + ')',
+      Cadência: changeNote + 'm7' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'm7'
     });
 
-    // II de V7/VI
+    result.push({
+      Grau: 'II- b5 de V/V',
+      Acorde: changeNote + 'm7b5',
+      Notas: Chord.get(changeNote + 'm7b5').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '4P', '2M']),
+      Extenções: '(9, 11) <br>' +
+        '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '4P') + ')',
+      Cadência: changeNote + 'm7b5' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'm7'
+    });
+
     changeNote = Note.transpose(note, '7M');
     result.push({
-      Romano: '',
-      Acorde: 'II de V7/VI <br>' +
-        changeNote + 'm7, <br>' +
-        changeNote + 'm7b5',
-      Notas:
-        Chord.get(changeNote + 'm7').notes.toString() + ', <br>' +
-        Chord.get(changeNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(changeNote, ['Mixolídio'], [], []),
-      Extenções: '(9, 11) <br>' +
-        '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6M') + ')',
-      Cadência: ''
+      Grau: 'II- de V/VI',
+      Acorde: changeNote + 'm7',
+      Notas: Chord.get(changeNote + 'm7').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '6m', '2m']),
+      Extenções: '(9, b13) <br>' +
+        '(' + Note.transpose(changeNote, '2m') + ', ' + Note.transpose(changeNote, '6m') + ')',
+      Cadência: changeNote + 'm7' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'm7'
+    });
+
+    result.push({
+      Grau: 'II- de V/VI',
+      Acorde: changeNote + 'm7b5',
+      Notas: Chord.get(changeNote + 'm7b5').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '6m', '2m']),
+      Extenções: '(9, b13) <br>' +
+        '(' + Note.transpose(changeNote, '2m') + ', ' + Note.transpose(changeNote, '6m') + ')',
+      Cadência: changeNote + 'm7b5' + ' &#8594; ' +
+      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+      Note.transpose(changeNote, '7m') + 'm7'
     });
 
     return result;

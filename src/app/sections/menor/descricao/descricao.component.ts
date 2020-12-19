@@ -3,24 +3,24 @@ import { Note } from '@tonaljs/tonal';
 import { TonalService } from 'src/app/services/tonal.service';
 
 @Component({
-  selector: 'app-descricao',
+  selector: 'app-menor-descricao',
   templateUrl: './descricao.component.html',
   styleUrls: ['./descricao.component.css']
 })
-export class DescricaoComponent implements OnInit {
+export class DescricaoMenorComponent implements OnInit {
   ligado = 'button primary small';
   desligado = 'button small';
   btnGrau = this.ligado;
   btnAcorde = this.desligado;
   note = '';
   notes = [
-    { note: 'Imaj7' },
-    { note: 'IIm7' },
-    { note: 'IIIm7' },
-    { note: 'IVmaj7' },
-    { note: 'V7' },
-    { note: 'VIm7' },
-    { note: 'VIIm7b5' }
+    { note: 'I-' },
+    { note: 'II- b5' },
+    { note: 'III' },
+    { note: 'IV-' },
+    { note: 'V-' },
+    { note: 'VI' },
+    { note: 'VII ' }
   ];
   notasDescritivas = [
     { note: 'Imaj7' },
@@ -37,11 +37,11 @@ export class DescricaoComponent implements OnInit {
       this.note = value[value.length - 1];
       this.notasDescritivas[0].note = this.note;
       this.notasDescritivas[1].note = Note.transpose(this.note, '2M');
-      this.notasDescritivas[2].note = Note.transpose(this.note, '3M');
+      this.notasDescritivas[2].note = Note.transpose(this.note, '3m');
       this.notasDescritivas[3].note = Note.transpose(this.note, '4M');
       this.notasDescritivas[4].note = Note.transpose(this.note, '5M');
-      this.notasDescritivas[5].note = Note.transpose(this.note, '6M');
-      this.notasDescritivas[6].note = Note.transpose(this.note, '7M');
+      this.notasDescritivas[5].note = Note.transpose(this.note, '6m');
+      this.notasDescritivas[6].note = Note.transpose(this.note, '7m');
     });
   }
 
@@ -62,23 +62,23 @@ export class DescricaoComponent implements OnInit {
   }
 
   changeAcorde() {
-    this.notes[0].note = this.note + 'maj7';
-    this.notes[1].note = Note.transpose(this.note, '2M') + 'm7';
-    this.notes[2].note = Note.transpose(this.note, '3M') + 'm7';
-    this.notes[3].note = Note.transpose(this.note, '4M') + 'maj7';
-    this.notes[4].note = Note.transpose(this.note, '5M') + '7';
-    this.notes[5].note = Note.transpose(this.note, '6M') + 'm7';
-    this.notes[6].note = Note.transpose(this.note, '7M') + 'm7b5';
+    this.notes[0].note = this.note + 'm';
+    this.notes[1].note = Note.transpose(this.note, '2M') + 'mb5';
+    this.notes[2].note = Note.transpose(this.note, '3m');
+    this.notes[3].note = Note.transpose(this.note, '4M') + 'm';
+    this.notes[4].note = Note.transpose(this.note, '5M') + 'm';
+    this.notes[5].note = Note.transpose(this.note, '6m');
+    this.notes[6].note = Note.transpose(this.note, '7m');
   }
 
   changeGrau() {
-    this.notes[0].note = 'Imaj7';
-    this.notes[1].note = 'IIm7';
-    this.notes[2].note = 'IIIm7';
-    this.notes[3].note = 'IVmaj7';
-    this.notes[4].note = 'V7';
-    this.notes[5].note = 'VIm7';
-    this.notes[6].note = 'VIIm7b5';
+    this.notes[0].note = 'I-';
+    this.notes[1].note = 'II- b5';
+    this.notes[2].note = 'III';
+    this.notes[3].note = 'IV-';
+    this.notes[4].note = 'V';
+    this.notes[5].note = 'VI';
+    this.notes[6].note = 'VII';
   }
 
 }

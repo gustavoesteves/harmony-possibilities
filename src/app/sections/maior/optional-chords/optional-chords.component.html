@@ -5,9 +5,10 @@
       <p>Dominantes</p>
     </header>
     <div class="row">
-      <div class="col-4 col-12-medium">
-        <p>Os acordes Dominantes podem ser com intervalos Opcionais, Alterados ou Simétricos tem o poder de criar uma instabilidade tonal maior
-          que nos força a resolução V7 &#8594; Imaj7.
+      <div class="col-3 col-12-medium">
+        <p>Os acordes Dominantes podem ter tensões com intervalos Opcionais, Alterados ou Simétricosque criam uma
+          instabilidade tonal maior
+          que nos força a resolução V7 &#8594; Imaj7. Além deles mostraremos também o acorde suspenso.
         </p>
         <p>
           Para os acordes Alterados (b5) ainda poderíamos pensar em resolver o V7 &#8594; Imaj7, como V7b5b9 &#8594;
@@ -25,7 +26,28 @@
           <li>Todas as escalas Dominantes contem a fundamental, 3a maior e 7a menor</li>
         </ul>
       </div>
-      <div class="col-8 col-12-medium">
+      <div class="col-9 col-12-medium">
+        <h2>Acorde suspenso</h2>
+        <p>O acorde suspenso ou sus4, é quase uma entidade harmônica independente comumente utilizada em algumas
+          cadências. Não existe propriamente uma dissonância.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th *ngFor="let column of header" scope="col">{{column}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of acordeSus">
+              <td *ngFor="let column of header">
+                <div *ngIf="column === 'Acorde'">
+                  <div [innerHTML]="item.Roman"></div>
+                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
+                </div>
+                <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <h2>Opcionais</h2>
         <p>
           Vamos separa os opcionais em três categorias: V7(b9 13), V7(b9 b13) e V7(b9 #9 b13). Em cada uma das três

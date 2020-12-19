@@ -1,5 +1,5 @@
 export interface INotes {
-    Romano: string;
+    Grau: string;
     Acorde: string;
     Notas: string;
     Escalas: string;

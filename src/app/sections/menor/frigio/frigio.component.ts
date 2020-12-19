@@ -29,7 +29,7 @@ export class FrigioComponent implements OnInit {
     // Im7
     chordNote = Note.transpose(note, '1P');
     minorMode.push({
-      Romano: 'Im7',
+      Grau: 'Im7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
@@ -40,7 +40,7 @@ export class FrigioComponent implements OnInit {
     // IIm7
     chordNote = Note.transpose(note, '2m');
     minorMode.push({
-      Romano: 'IImaj7',
+      Grau: 'IImaj7',
       Acorde: chordNote + 'maj7',
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
@@ -51,7 +51,7 @@ export class FrigioComponent implements OnInit {
     // IIImaj7
     chordNote = Note.transpose(note, '3m');
     minorMode.push({
-      Romano: 'III7',
+      Grau: 'III7',
       Acorde: chordNote + '7',
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
@@ -62,7 +62,7 @@ export class FrigioComponent implements OnInit {
     // IVm7
     chordNote = Note.transpose(note, '4P');
     minorMode.push({
-      Romano: 'IVm7',
+      Grau: 'IVm7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
@@ -73,7 +73,7 @@ export class FrigioComponent implements OnInit {
     // IIIm7
     chordNote = Note.transpose(note, '5P');
     minorMode.push({
-      Romano: 'Vm7b5',
+      Grau: 'Vm7b5',
       Acorde: chordNote + 'm7b5',
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
@@ -84,7 +84,7 @@ export class FrigioComponent implements OnInit {
     // VImaj7
     chordNote = Note.transpose(note, '6m');
     minorMode.push({
-      Romano: 'VImaj7',
+      Grau: 'VImaj7',
       Acorde: chordNote + 'maj7',
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
@@ -96,7 +96,7 @@ export class FrigioComponent implements OnInit {
     // VII7
     chordNote = Note.transpose(note, '7m');
     minorMode.push({
-      Romano: 'VIIm7',
+      Grau: 'VIIm7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),

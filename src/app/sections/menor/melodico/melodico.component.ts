@@ -29,10 +29,10 @@ export class MelodicoComponent implements OnInit {
     // Im7
     chordNote = Note.transpose(note, '1P');
     minorMode.push({
-      Romano: 'ImMaj7',
+      Grau: 'ImMaj7',
       Acorde: chordNote + 'mMaj7',
       Notas: Chord.get(chordNote + 'mM7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['melodic minor']),
+      Escalas: this.tonalService.GetScales(chordNote, ['melodic minor'], [], []),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
       Cadência: '',
     });
@@ -40,10 +40,10 @@ export class MelodicoComponent implements OnInit {
     // IIm7
     chordNote = Note.transpose(note, '2M');
     minorMode.push({
-      Romano: 'IIm7',
+      Grau: 'IIm7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
+      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian'], [], []),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2m') + ', ' + Note.transpose(chordNote, '4M') + ')',
       Cadência: '',
     });
@@ -51,10 +51,10 @@ export class MelodicoComponent implements OnInit {
     // IIImaj7
     chordNote = Note.transpose(note, '3m');
     minorMode.push({
-      Romano: 'IIImaj7#5',
+      Grau: 'IIImaj7#5',
       Acorde: chordNote + 'maj7#5',
       Notas: Chord.get(chordNote + 'maj7#5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['lydian augmented']),
+      Escalas: this.tonalService.GetScales(chordNote, ['lydian augmented'], [], []),
       Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4A') + ')',
       Cadência: '',
     });
@@ -62,10 +62,10 @@ export class MelodicoComponent implements OnInit {
     // IVm7
     chordNote = Note.transpose(note, '4P');
     minorMode.push({
-      Romano: 'IV7',
+      Grau: 'IV7',
       Acorde: chordNote + '7',
       Notas: Chord.get(chordNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
+      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian'], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
       Cadência: '',
     });
@@ -73,10 +73,10 @@ export class MelodicoComponent implements OnInit {
     // IIIm7
     chordNote = Note.transpose(note, '5P');
     minorMode.push({
-      Romano: 'V7',
+      Grau: 'V7',
       Acorde: chordNote + '7',
       Notas: Chord.get(chordNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
+      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian'], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6m') + ')',
       Cadência: '',
     });
@@ -84,10 +84,10 @@ export class MelodicoComponent implements OnInit {
     // IVmaj7
     chordNote = Note.transpose(note, '6M');
     minorMode.push({
-      Romano: 'VIm7b5',
+      Grau: 'VIm7b5',
       Acorde: chordNote + 'm7b5',
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
+      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished'], [], []),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
       Cadência: '',
     });
@@ -95,10 +95,10 @@ export class MelodicoComponent implements OnInit {
     // VIIm7b5
     chordNote = Note.transpose(note, '7M');
     minorMode.push({
-      Romano: 'VIIm7b5',
+      Grau: 'VIIm7b5',
       Acorde: chordNote + 'm7b5',
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
+      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished'], [], []),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '3M') + ', ' + Note.transpose(chordNote, '6m') + ')',
       Cadência: '',
     });

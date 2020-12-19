@@ -6,7 +6,7 @@ export const Escalas: IEscala[] = [
     { Nome: 'Frígio', Notas: ['1P', '2m', '3m', '4P', '5P', '6m', '7m'], Acordes: ['m7'] },
     { Nome: 'Lídio', Notas: ['1P', '2M', '3M', '4A', '5P', '6M', '7M'], Acordes: ['Maj7'] },
     { Nome: 'Mixolídio', Notas: ['1P', '2M', '3M', '4P', '5P', '6M', '7m'], Acordes: ['7'] },
-    { Nome: 'Eólico', Notas: ['1P', '2M', '3m', '4P', '5P', '6m', '7m'], Acordes: ['m7'] },
+    { Nome: 'Eólio', Notas: ['1P', '2M', '3m', '4P', '5P', '6m', '7m'], Acordes: ['m7'] },
     { Nome: 'Lócrio', Notas: ['1P', '2m', '3m', '4P', '5d', '6m', '7m'], Acordes: ['m7b5'] },
 
     { Nome: 'Alterada', Notas: ['1P', '2m', '3m', '4P', '5P', '6M', '7M'], Acordes: ['7alt', 'm7b5'] },
@@ -14,7 +14,7 @@ export const Escalas: IEscala[] = [
     { Nome: 'Frígio #6', Notas: ['1P', '2m', '3m', '4P', '5P', '6M', '7m'], Acordes: ['m7'] },
     { Nome: 'Lídio #5', Notas: ['1P', '2M', '3M', '4A', '5A', '6M', '7M'], Acordes: ['Maj7#5'] },
     { Nome: 'Mixolídio #4', Notas: ['1P', '2M', '3M', '4A', '5P', '6M', '7m'], Acordes: ['7'] },
-    { Nome: 'Eólico #3', Notas: ['1P', '2M', '3M', '4P', '5P', '6m', '7m'], Acordes: ['7'] },
+    { Nome: 'Eólio #3', Notas: ['1P', '2M', '3M', '4P', '5P', '6m', '7m'], Acordes: ['7'] },
     { Nome: 'Meia diminuta', Notas: ['1P', '2M', '3m', '4P', '5d', '6m', '7m'], Acordes: ['m7b5'] },
 
     { Nome: 'Jônico #5', Notas: ['1P', '2M', '3M', '4P', '5A', '6M', '7M'], Acordes: ['Maj7#5'] },
@@ -22,7 +22,7 @@ export const Escalas: IEscala[] = [
     { Nome: 'Frígio #3', Notas: ['1P', '2m', '3M', '4P', '5P', '6m', '7m'], Acordes: ['7'] },
     { Nome: 'Lídio #2', Notas: ['1P', '2A', '3M', '4A', '5P', '6M', '7M'], Acordes: ['Maj7'] },
     { Nome: 'Dominante alterada', Notas: ['1P', '2m', '3m', '3M', '5d', '6m', '7m'], Acordes: ['dim7', '7b5'] },
-    { Nome: 'Eólico #7', Notas: ['1P', '2M', '3m', '4P', '5P', '6m', '7M'], Acordes: ['mMaj7'] },
+    { Nome: 'Eólio #7', Notas: ['1P', '2M', '3m', '4P', '5P', '6m', '7M'], Acordes: ['mMaj7'] },
     { Nome: 'Lócrio #6', Notas: ['1P', '2m', '3m', '4P', '5d', '6M', '7m'], Acordes: ['m7b5'] },
 
     { Nome: 'Jônico b6', Notas: ['1P', '2M', '3M', '4P', '5P', '6m', '7M'], Acordes: ['Maj7'] },

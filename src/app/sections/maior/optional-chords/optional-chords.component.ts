@@ -11,6 +11,7 @@ import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interfa
 })
 export class OptionalChordsComponent implements OnInit {
   header = ['Acorde', 'Notas', 'Escalas', 'Extenções'];
+  acordeSus: INotes[] = [];
   primeiraOpcional: INotes[] = [];
   segundaOpcional: INotes[] = [];
   terceiraOpcional: INotes[] = [];
@@ -22,6 +23,7 @@ export class OptionalChordsComponent implements OnInit {
   ngOnInit() {
     this.tonalService.currentTonality.subscribe(value => {
       const note = value[value.length - 1];
+      this.acordeSus = this.GetAcordeSus(note);
       this.primeiraOpcional = this.GetOptionalChords(note);
       this.segundaOpcional = this.GetSegundaOpcional(note);
       this.terceiraOpcional = this.GetTerceiraOpcional(note);
@@ -30,13 +32,33 @@ export class OptionalChordsComponent implements OnInit {
     });
   }
 
+  GetAcordeSus(note: string) {
+    const result: INotes[] = [];
+    // Fifth
+    const fifithNote = Note.transpose(note, '5P');
+    result.push({
+      Grau: '',
+      Acorde: fifithNote + '7 (sus4)',
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '4P'),
+      Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M','5P', '7m', '4P']),
+      Extenções: '',
+      Cadência: ''
+    });
+
+    return result;
+  }
+
   GetOptionalChords(note: string) {
     const result: INotes[] = [];
 
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (b9)',
       Notas: Chord.get(fifithNote + '7b9').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [
@@ -48,7 +70,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (13)',
       Notas: Chord.get(fifithNote + '13').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [
@@ -60,7 +82,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (b9 13)',
       Notas: Chord.get(fifithNote + '13b9').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [
@@ -80,11 +102,11 @@ export class OptionalChordsComponent implements OnInit {
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (b13)',
       Notas: Chord.get(fifithNote + '7b6').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [
-        'Eólico #3',
+        'Eólio #3',
         'Frígio #3'], [], []),
       Extenções: '(13b) <br>' +
         '(' + Note.transpose(fifithNote, '6m') + ')',
@@ -92,7 +114,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (b9 b13)',
       Notas: Chord.get(fifithNote + '7b9b13').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [
@@ -112,7 +134,7 @@ export class OptionalChordsComponent implements OnInit {
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (#9)',
       Notas: Chord.get(fifithNote + '7#9').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m']),
@@ -122,7 +144,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (b9 #9)',
       Notas: Chord.get(fifithNote + '7b9#9').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m']),
@@ -133,7 +155,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (#9 b13)',
       Notas: Chord.get(fifithNote + '7#9b13').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m', '6m']),
@@ -144,7 +166,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7 (b9 #9 b13)',
       Notas: Chord.get(fifithNote + '7#9').notes.toString(),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m', '6m']),
@@ -163,7 +185,7 @@ export class OptionalChordsComponent implements OnInit {
 
     const fifithNote = Note.transpose(note, '5P');
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5',
       Notas:
         fifithNote + ',' +
@@ -176,7 +198,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5(b9)',
       Notas:
         fifithNote + ',' +
@@ -191,7 +213,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5(#9)',
       Notas:
         fifithNote + ',' +
@@ -206,7 +228,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5(b13)',
       Notas:
         fifithNote + ',' +
@@ -221,7 +243,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5(b9 #9)',
       Notas:
         fifithNote + ',' +
@@ -238,7 +260,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5(b9 b13)',
       Notas:
         fifithNote + ',' +
@@ -255,7 +277,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5(#9 b13)',
       Notas:
         fifithNote + ',' +
@@ -272,7 +294,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7b5(b9 #9 b13)',
       Notas:
         fifithNote + ',' +
@@ -300,7 +322,7 @@ export class OptionalChordsComponent implements OnInit {
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7(b9 13)',
       Notas:
         fifithNote + ',' +
@@ -317,7 +339,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7(#9 13)',
       Notas:
         fifithNote + ',' +
@@ -334,7 +356,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7(#11 13)',
       Notas:
         fifithNote + ',' +
@@ -351,7 +373,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7(b9 #9 13)',
       Notas:
         fifithNote + ',' +
@@ -370,7 +392,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7(#9 #11 13)',
       Notas:
         fifithNote + ',' +
@@ -389,7 +411,7 @@ export class OptionalChordsComponent implements OnInit {
     });
 
     result.push({
-      Romano: '',
+      Grau: '',
       Acorde: fifithNote + '7(b9 #9 #11 13)',
       Notas:
         fifithNote + ',' +

@@ -9,7 +9,7 @@ import { INotes } from 'src/app/services/interfaces/notes.interface';
   styleUrls: ['./harmonico.component.css']
 })
 export class HarmonicoComponent implements OnInit {
-  header = ['Roman', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
+  header = ['Grau', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
   harmonicMode: INotes[] = [];
 
   constructor(private tonalService: TonalService) {
@@ -29,10 +29,10 @@ export class HarmonicoComponent implements OnInit {
     // Im7
     chordNote = Note.transpose(note, '1P');
     minorMode.push({
-      Romano: 'ImMaj7',
+      Grau: 'ImMaj7',
       Acorde: chordNote + 'mMaj7',
       Notas: Chord.get(chordNote + 'mM7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['harmonic minor']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '2M', '4P', '7M']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
       Cadência: '',
     });
@@ -40,21 +40,21 @@ export class HarmonicoComponent implements OnInit {
     // IIm7
     chordNote = Note.transpose(note, '2M');
     minorMode.push({
-      Romano: 'IIm7b5',
+      Grau: 'IIm7b5',
       Acorde: chordNote + 'm7b5',
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
-      Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5d', '6M', '4P', '7m']),
+      Extenções: '(11, 13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6M') + ')',
       Cadência: '',
     });
 
     // IIImaj7
     chordNote = Note.transpose(note, '3m');
     minorMode.push({
-      Romano: 'IIImaj7#5',
+      Grau: 'IIImaj7#5',
       Acorde: chordNote + 'maj7#5',
       Notas: Chord.get(chordNote + 'maj7#5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['lydian augmented']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5A', '2M', '4P', '7M']),
       Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4P') + ')',
       Cadência: '',
     });
@@ -62,21 +62,21 @@ export class HarmonicoComponent implements OnInit {
     // IVm7
     chordNote = Note.transpose(note, '4P');
     minorMode.push({
-      Romano: 'IVm7',
+      Grau: 'IVm7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
-      Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '2M', '4A', '7m']),
+      Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4A') + ')',
       Cadência: '',
     });
 
     // V7
     chordNote = Note.transpose(note, '5P');
     minorMode.push({
-      Romano: 'V7',
+      Grau: 'V7',
       Acorde: chordNote + '7',
       Notas: Chord.get(chordNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
       Cadência: '',
     });
@@ -84,10 +84,10 @@ export class HarmonicoComponent implements OnInit {
     // VImaj7
     chordNote = Note.transpose(note, '6m');
     minorMode.push({
-      Romano: 'VImaj7',
+      Grau: 'VImaj7',
       Acorde: chordNote + 'maj7',
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M')
         + ', ' + Note.transpose(chordNote, '4A') + ', ' + Note.transpose(chordNote, '6M') + ')',
       Cadência: '',
@@ -96,10 +96,10 @@ export class HarmonicoComponent implements OnInit {
     // VIIm7b5
     chordNote = Note.transpose(note, '7M');
     minorMode.push({
-      Romano: 'VIIdim7',
+      Grau: 'VIIdim7',
       Acorde: chordNote + 'dim7',
       Notas: Chord.get(chordNote + 'dim7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['diminished whole tone']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '3M') + ', ' + Note.transpose(chordNote, '6m') + ')',
       Cadência: '',
     });

@@ -10,13 +10,9 @@ import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interfa
   styleUrls: ['./secondary-dominants.component.css']
 })
 export class SecondaryDominantsComponent implements OnInit {
-  header = ['Acorde', 'Notas', 'Escalas', 'Extenções'];
+  header = ['Grau', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
   secondaryDominants: INotes[] = [];
-  progressionEg1 = '';
-  progressionEg2 = '';
-  progressionEg3 = '';
-  progressionEg4 = '';
-  progressionEg5 = '';
+  extendedDominants: INotes[] = [];
 
   constructor(private tonalService: TonalService) { }
 
@@ -24,7 +20,27 @@ export class SecondaryDominantsComponent implements OnInit {
     this.tonalService.currentTonality.subscribe(value => {
       const note = value[value.length - 1];
       this.secondaryDominants = this.GetSecondaryDominants(note);
+      this.extendedDominants = this.GetExtendedDominants(note);
     });
+  }
+
+  GetExtendedDominants(note: string) {
+    const result: INotes[] = [];
+    let changeNote = '';
+
+    changeNote = Note.transpose(note, '4A');
+    result.push({
+      Grau: '',
+      Acorde: changeNote + '7',
+      Notas: Chord.get(changeNote + '7').notes.toString(),
+      Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '7m', '2M', '6m']),
+      Extenções: '(9, b13) <br> (' +
+        Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '6m') + ')',
+      Cadência: ''
+    });
+
+    return result;
   }
 
   GetSecondaryDominants(note: string) {
@@ -34,8 +50,8 @@ export class SecondaryDominantsComponent implements OnInit {
     // V7/II
     changeNote = Note.transpose(note, '6M');
     result.push({
-      Romano: '',
-      Acorde: 'V7/II <br>' + changeNote + '7',
+      Grau: 'V/II',
+      Acorde: changeNote + '7',
       Notas: Chord.get(changeNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '7m', '2M', '6m']),
       Extenções: '(9, b13) <br> (' +
@@ -47,8 +63,8 @@ export class SecondaryDominantsComponent implements OnInit {
     // V7/III
     changeNote = Note.transpose(note, '7M');
     result.push({
-      Romano: '',
-      Acorde: 'V7/III <br>' + changeNote + '7',
+      Grau: 'V/III',
+      Acorde: changeNote + '7',
       Notas: Chord.get(changeNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '5P', '6m', '7m', '2A']),
       Extenções: '(b9, #9, b13) <br> (' +
@@ -61,8 +77,8 @@ export class SecondaryDominantsComponent implements OnInit {
     // V7b5/III
     changeNote = Note.transpose(note, '7M');
     result.push({
-      Romano: '',
-      Acorde: 'V7b5/III <br>' + changeNote + '7',
+      Grau: 'V7b5/III',
+      Acorde: changeNote + '7',
       Notas: Chord.get(changeNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '5d', '6m', '7m']),
       Extenções: '(b9, #9, b13) <br> (' +
@@ -74,8 +90,8 @@ export class SecondaryDominantsComponent implements OnInit {
 
     // V7/IV
     result.push({
-      Romano: '',
-      Acorde: 'V7/IV <br>' + note + '7',
+      Grau: 'V/IV',
+      Acorde: note + '7',
       Notas: Chord.get(note + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(note, ['Mixolídio'], [], []),
       Extenções: '(9, 13) <br> (' +
@@ -87,8 +103,8 @@ export class SecondaryDominantsComponent implements OnInit {
     // V7/V
     changeNote = Note.transpose(note, '2M');
     result.push({
-      Romano: '',
-      Acorde: 'V7/V <br>' + changeNote + '7',
+      Grau: 'V/V',
+      Acorde: changeNote + '7',
       Notas: Chord.get(changeNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(changeNote, ['Mixolídio'], [], []),
       Extenções: '(9, 13) <br> (' +
@@ -100,8 +116,8 @@ export class SecondaryDominantsComponent implements OnInit {
     // V7/VI
     changeNote = Note.transpose(note, '3M');
     result.push({
-      Romano: '',
-      Acorde: 'V7/VI <br>' + changeNote + '7',
+      Grau: 'V/VI',
+      Acorde: changeNote + '7',
       Notas: Chord.get(changeNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '5P', '6m', '7m', '2A']),
       Extenções: '(b9, #9, b13) <br> (' +

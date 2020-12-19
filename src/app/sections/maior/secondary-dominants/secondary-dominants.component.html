@@ -5,24 +5,24 @@
       <p>Dominantes Secundárias</p>
     </header>
     <div class="row">
-      <div class="col-4 col-12-medium">
+      <div class="col-3 col-12-medium">
         <p>Uma forma de ampliarmos as cores e fronteiras da nossa tonalidade são acordes Dominantes Secundários.
-          Usaremos um recurso que já empregado, a resolução V7 -> IMaj7. Dominante Secundária o auamento da
-          expectativa (V7) para resolvermos uma quinta abaixo (IMaj7).</p>
-        <p>Como exemplo poderiamos considerar a progressão IIIm7 -> VIm7 (o acorde de VIm7 fica uma quinta abaixo do
-          IIIm7). O que faremos é transforma-lo em um acorde maior (V7) para aumentarmos a expectativa de resolução,
-          ficando
-          III7 -> VIm7.</p>
-        <p>Como não existe III7 na tonolidade diatonica maior, notaremos esse acorde como V7/VI, justamente por que o
-          resolveremos na VIm7.</p>
-          <p>Algumas dicas para uso das Dominantes Secundárias:</p>
-          <ul>
-            <li>A quarta nota da escala deve ser evitada.</li>
-            <li>Sugerimos que acordes acrescidos da 9 e 13 resolvam em acordes maiores (ex. V7/V(13) -> V7).</li>
-            <li>Assim como acordes acrescidos de b9, #9 ou b13 resolvam em acordes menores (ex. V7/VI(b13) -> VIm7).</li>
-          </ul>
+          Usaremos um recurso que já empregamos a resolução V → I. Dominante Secundária é o auamento da
+          expectativa (V) para resolvermos uma quinta abaixo (I), só que faremos isso com os outros graus.</p>
+        <p>Como exemplo poderiamos considerar a progressão III- → VI- (o acorde de VI fica uma quinta abaixo do
+          III). O que faremos é transforma-lo em um acorde maior (como o quinto grau que é a maior tensão para o
+          primeiro grau) para aumentarmos a expectativa de resolução, ficando III7 → VI-. Como não existe III7 (o
+          terceiro grau é ) na tonolidade diatonica maior, notaremos esse acorde como V7/VI, justamente por que o
+          resolveremos no VI grau.</p>
+        <p>Algumas dicas para uso das Dominantes Secundárias:</p>
+        <ul>
+          <li>A quarta nota da escala deve ser evitada.</li>
+          <li>Sugerimos que acordes acrescidos da 9a e 13a resolvam em acordes maiores (ex. V/V(13) → V).</li>
+          <li>Assim como acordes acrescidos de b9a, #9a ou b13a resolvam em acordes menores (ex. V/VI(b13) → VI-).
+          </li>
+        </ul>
       </div>
-      <div class="col-8 col-12-medium">
+      <div class="col-9 col-12-medium">
         <h2>Acordes de Dominantes Secundárias</h2>
         <table class="table">
           <thead>
@@ -32,6 +32,30 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of secondaryDominants">
+              <td *ngFor="let column of header">
+                <div *ngIf="column === 'Acorde'">
+                  <div [innerHTML]="item.Roman"></div>
+                  <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
+                </div>
+                <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Extendendo as Dominantes Secundárias</h2>
+        <p>Conseguimos aumentar a tensão/relaxamento com a progressão do grau corrente em
+          direção a uma quinta abaixo. Portanto seria possível encadearmos por exemplo, V/III → V/VI → V/II → V/V →
+          V → I.</p>
+        <p>Seguindo este mesmo padrão poderiamos colocar antes de V/III mais uma dominante secundária acima, ou seja
+          uma dominante secundária em que a progressão daria um salto de quinta abaixo como todas as outras.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th *ngFor="let column of header" scope="col">{{column}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of extendedDominants">
               <td *ngFor="let column of header">
                 <div *ngIf="column === 'Acorde'">
                   <div [innerHTML]="item.Roman"></div>
