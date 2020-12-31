@@ -12,7 +12,7 @@ export class FrigioComponent implements OnInit {
   header = ['Acorde', 'Notas', 'Escalas', 'Extenções'];
   phrygianMode: INotes[] = [];
 
-  constructor(private tonalService: TonalService) { 
+  constructor(private tonalService: TonalService) {
     this.tonalService.currentTonality.subscribe(value => {
       const note = value[value.length - 1];
       this.phrygianMode = this.GetMinorPhrygianMode(note);
@@ -32,8 +32,9 @@ export class FrigioComponent implements OnInit {
       Grau: 'Im7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -43,8 +44,9 @@ export class FrigioComponent implements OnInit {
       Grau: 'IImaj7',
       Acorde: chordNote + 'maj7',
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -54,8 +56,9 @@ export class FrigioComponent implements OnInit {
       Grau: 'III7',
       Acorde: chordNote + '7',
       Notas: Chord.get(chordNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -65,8 +68,9 @@ export class FrigioComponent implements OnInit {
       Grau: 'IVm7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -76,8 +80,9 @@ export class FrigioComponent implements OnInit {
       Grau: 'Vm7b5',
       Acorde: chordNote + 'm7b5',
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -87,9 +92,10 @@ export class FrigioComponent implements OnInit {
       Grau: 'VImaj7',
       Acorde: chordNote + 'maj7',
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' +
         Note.transpose(chordNote, '4P') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -99,8 +105,9 @@ export class FrigioComponent implements OnInit {
       Grau: 'VIIm7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian']),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -110,5 +117,5 @@ export class FrigioComponent implements OnInit {
   loadChords(chord: INotes) {
     this.tonalService.pushChord(chord);
   }
-  
+
 }

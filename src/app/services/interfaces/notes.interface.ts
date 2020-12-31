@@ -4,5 +4,6 @@ export interface INotes {
     Notas: string;
     Escalas: string;
     Extenções: string;
+    NotasExtendidas: string;
     Cadência: string;
 }

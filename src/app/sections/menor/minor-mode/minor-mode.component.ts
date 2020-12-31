@@ -33,6 +33,7 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '2M', '4P', '7m']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -44,6 +45,7 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5d', '6m', '4P', '7m']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -55,6 +57,7 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '2M', '6M', '7M']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -66,6 +69,7 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '2M', '4P', '7m']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -77,6 +81,7 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '4P', '7m']),
       Extenções: '(11) <br>' + '(' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -89,6 +94,7 @@ export class MinorModeComponent implements OnInit {
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '2M', '4A', '6M', '7M']),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' +
         Note.transpose(chordNote, '4A') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -100,6 +106,7 @@ export class MinorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '2M', '6M', '7m']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 

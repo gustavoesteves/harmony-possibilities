@@ -21,7 +21,7 @@ export const Escalas: IEscala[] = [
     { Nome: 'Dório #4', Notas: ['1P', '2M', '3m', '4A', '5P', '6M', '7m'], Acordes: ['m7'] },
     { Nome: 'Frígio #3', Notas: ['1P', '2m', '3M', '4P', '5P', '6m', '7m'], Acordes: ['7'] },
     { Nome: 'Lídio #2', Notas: ['1P', '2A', '3M', '4A', '5P', '6M', '7M'], Acordes: ['Maj7'] },
-    { Nome: 'Dominante alterada', Notas: ['1P', '2m', '3m', '3M', '5d', '6m', '7m'], Acordes: ['dim7', '7b5'] },
+    { Nome: 'Dominante alterada', Notas: ['1P', '2m', '3m', '4d', '5d', '6m', '7m'], Acordes: ['dim7', '7b5'] },
     { Nome: 'Eólio #7', Notas: ['1P', '2M', '3m', '4P', '5P', '6m', '7M'], Acordes: ['mMaj7'] },
     { Nome: 'Lócrio #6', Notas: ['1P', '2m', '3m', '4P', '5d', '6M', '7m'], Acordes: ['m7b5'] },
 

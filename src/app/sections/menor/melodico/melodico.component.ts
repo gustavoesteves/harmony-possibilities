@@ -9,7 +9,7 @@ import { INotes } from 'src/app/services/interfaces/notes.interface';
   styleUrls: ['./melodico.component.css']
 })
 export class MelodicoComponent implements OnInit {
-  header = ['Acorde', 'Notas', 'Escalas', 'Extenções'];
+  header = ['Grau', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
   melodicMode: INotes[] = [];
 
   constructor(private tonalService: TonalService) {
@@ -17,7 +17,7 @@ export class MelodicoComponent implements OnInit {
       const note = value[value.length - 1];
       this.melodicMode = this.GetMinorMelodicMode(note);
     });
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -32,8 +32,9 @@ export class MelodicoComponent implements OnInit {
       Grau: 'ImMaj7',
       Acorde: chordNote + 'mMaj7',
       Notas: Chord.get(chordNote + 'mM7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['melodic minor'], [], []),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '7M', '4P', '2M']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -43,8 +44,9 @@ export class MelodicoComponent implements OnInit {
       Grau: 'IIm7',
       Acorde: chordNote + 'm7',
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian'], [], []),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '7m', '2m', '4P']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2m') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -54,8 +56,9 @@ export class MelodicoComponent implements OnInit {
       Grau: 'IIImaj7#5',
       Acorde: chordNote + 'maj7#5',
       Notas: Chord.get(chordNote + 'maj7#5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['lydian augmented'], [], []),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5A', '7M', '2M', '4A']),
       Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4A') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -65,8 +68,9 @@ export class MelodicoComponent implements OnInit {
       Grau: 'IV7',
       Acorde: chordNote + '7',
       Notas: Chord.get(chordNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian'], [], []),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '7m', '2M', '6M']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -76,8 +80,9 @@ export class MelodicoComponent implements OnInit {
       Grau: 'V7',
       Acorde: chordNote + '7',
       Notas: Chord.get(chordNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian'], [], []),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '7m', '2M', '6m']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -87,8 +92,9 @@ export class MelodicoComponent implements OnInit {
       Grau: 'VIm7b5',
       Acorde: chordNote + 'm7b5',
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished'], [], []),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -98,8 +104,9 @@ export class MelodicoComponent implements OnInit {
       Grau: 'VIIm7b5',
       Acorde: chordNote + 'm7b5',
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished'], [], []),
-      Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '3M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5d', '7m', '4d']),
+      Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4d') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -109,5 +116,5 @@ export class MelodicoComponent implements OnInit {
   loadChords(chord: INotes) {
     this.tonalService.pushChord(chord);
   }
-  
+
 }

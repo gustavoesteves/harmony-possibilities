@@ -28,6 +28,8 @@ export class AppComponent implements OnInit {
     { Name: 'frigio', Status: '' },
     { Name: 'descricao-maior', Status: '' },
     { Name: 'descricao-menor', Status: '' },
+    { Name: 'construtor-acordes', Status: '' },
+    { Name: 'construtor-escalas', Status: '' },
   ];
 
   constructor(private tonalService: TonalService, private chorinho: Chorinho) {

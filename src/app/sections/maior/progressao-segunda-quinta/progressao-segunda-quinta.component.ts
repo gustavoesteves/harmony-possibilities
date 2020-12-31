@@ -35,9 +35,10 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '6m']),
       Extenções: '(11) <br>' +
         '(' + Note.transpose(changeNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: changeNote + 'm7' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'm7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7'
     });
 
     result.push({
@@ -47,6 +48,7 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
       Extenções: '(11) <br>' +
         '(' + Note.transpose(changeNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência:
         changeNote + 'm7b5' + ' &#8594; ' +
         Note.transpose(changeNote, '4P') + '7 &#8594; ' +
@@ -61,9 +63,10 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '6m']),
       Extenções: '(11, b13) <br>' +
         '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: changeNote + 'm7' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'm7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7'
     });
 
     result.push({
@@ -73,9 +76,10 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
       Extenções: '(11, b13) <br>' +
         '(' + Note.transpose(changeNote, '4M') + ', ' + Note.transpose(changeNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: changeNote + 'm7b5' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'm7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7'
     });
 
     changeNote = Note.transpose(note, '5P');
@@ -86,9 +90,10 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '6m']),
       Extenções: '(9, 13) <br>' +
         '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: changeNote + 'm7' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'Maj7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'Maj7'
     });
 
     result.push({
@@ -98,9 +103,10 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
       Extenções: '(9, 13) <br>' +
         '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: changeNote + 'm7b5' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'Maj7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'Maj7'
     });
 
     changeNote = Note.transpose(note, '6M');
@@ -111,9 +117,10 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3m', '5P', '7m', '4P', '2M']),
       Extenções: '(9, 11) <br>' +
         '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '4P') + ')',
+      NotasExtendidas: '',
       Cadência: changeNote + 'm7' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'm7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7'
     });
 
     result.push({
@@ -124,8 +131,9 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Extenções: '(9, 11) <br>' +
         '(' + Note.transpose(changeNote, '2M') + ', ' + Note.transpose(changeNote, '4P') + ')',
       Cadência: changeNote + 'm7b5' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'm7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7',
+      NotasExtendidas: '',
     });
 
     changeNote = Note.transpose(note, '7M');
@@ -137,8 +145,9 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Extenções: '(9, b13) <br>' +
         '(' + Note.transpose(changeNote, '2m') + ', ' + Note.transpose(changeNote, '6m') + ')',
       Cadência: changeNote + 'm7' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'm7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7',
+      NotasExtendidas: '',
     });
 
     result.push({
@@ -149,11 +158,16 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
       Extenções: '(9, b13) <br>' +
         '(' + Note.transpose(changeNote, '2m') + ', ' + Note.transpose(changeNote, '6m') + ')',
       Cadência: changeNote + 'm7b5' + ' &#8594; ' +
-      Note.transpose(changeNote, '4P') + '7 &#8594; ' +
-      Note.transpose(changeNote, '7m') + 'm7'
+        Note.transpose(changeNote, '4P') + '7 &#8594; ' +
+        Note.transpose(changeNote, '7m') + 'm7',
+      NotasExtendidas: '',
     });
 
     return result;
+  }
+
+  loadChords(chord: INotes) {
+    this.tonalService.pushChord(chord);
   }
 
 }

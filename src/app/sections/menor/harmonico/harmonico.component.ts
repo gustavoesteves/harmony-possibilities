@@ -34,6 +34,7 @@ export class HarmonicoComponent implements OnInit {
       Notas: Chord.get(chordNote + 'mM7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '2M', '4P', '7M']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -45,6 +46,7 @@ export class HarmonicoComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5d', '6M', '4P', '7m']),
       Extenções: '(11, 13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -56,6 +58,7 @@ export class HarmonicoComponent implements OnInit {
       Notas: Chord.get(chordNote + 'maj7#5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5A', '2M', '4P', '7M']),
       Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4P') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -67,6 +70,7 @@ export class HarmonicoComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '2M', '4A', '7m']),
       Extenções: '(9, #11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4A') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -78,6 +82,7 @@ export class HarmonicoComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -90,6 +95,7 @@ export class HarmonicoComponent implements OnInit {
       Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M')
         + ', ' + Note.transpose(chordNote, '4A') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 
@@ -101,6 +107,7 @@ export class HarmonicoComponent implements OnInit {
       Notas: Chord.get(chordNote + 'dim7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, [], [], []),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '3M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: '',
     });
 

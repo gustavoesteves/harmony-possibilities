@@ -37,6 +37,7 @@ export class SecondaryDominantsComponent implements OnInit {
       Extenções: '(9, b13) <br> (' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: ''
     });
 
@@ -57,6 +58,7 @@ export class SecondaryDominantsComponent implements OnInit {
       Extenções: '(9, b13) <br> (' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: ''
     });
 
@@ -71,6 +73,7 @@ export class SecondaryDominantsComponent implements OnInit {
         Note.transpose(changeNote, '2m') + ', ' +
         Note.transpose(changeNote, '3m') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: ''
     });
 
@@ -78,13 +81,14 @@ export class SecondaryDominantsComponent implements OnInit {
     changeNote = Note.transpose(note, '7M');
     result.push({
       Grau: 'V7b5/III',
-      Acorde: changeNote + '7',
-      Notas: Chord.get(changeNote + '7').notes.toString(),
+      Acorde: changeNote + '7b5',
+      Notas: Chord.get(changeNote + '7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '5d', '6m', '7m']),
       Extenções: '(b9, #9, b13) <br> (' +
         Note.transpose(changeNote, '2m') + ', ' +
         Note.transpose(changeNote, '3m') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: ''
     });
 
@@ -97,6 +101,7 @@ export class SecondaryDominantsComponent implements OnInit {
       Extenções: '(9, 13) <br> (' +
         Note.transpose(note, '2M') + ', ' +
         Note.transpose(note, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: ''
     });
 
@@ -110,6 +115,7 @@ export class SecondaryDominantsComponent implements OnInit {
       Extenções: '(9, 13) <br> (' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '6M') + ')',
+      NotasExtendidas: '',
       Cadência: ''
     });
 
@@ -124,6 +130,7 @@ export class SecondaryDominantsComponent implements OnInit {
         Note.transpose(changeNote, '2m') + ', ' +
         Note.transpose(changeNote, '2A') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
+      NotasExtendidas: '',
       Cadência: ''
     });
 

@@ -32,6 +32,7 @@ export class MajorModeComponent implements OnInit {
       Notas: Chord.get(note + 'maj7').notes.toString(),
       Escalas: this.tonalService.GetScales(note, ['Jônico'], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(note, '2M') + ', ' + Note.transpose(note, '6M') + ')',
+      NotasExtendidas: Note.transpose(note, '2M') + ',' + Note.transpose(note, '6M'),
       Cadência: ''
     });
 
@@ -43,6 +44,7 @@ export class MajorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['Dórico'], [], []),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: Note.transpose(chordNote, '2M') + ',' + Note.transpose(chordNote, '4M'),
       Cadência: ''
     });
 
@@ -54,6 +56,7 @@ export class MajorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['Frígio'], [], []),
       Extenções: '(11) <br>' + '(' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: Note.transpose(chordNote, '4M'),
       Cadência: ''
     });
 
@@ -66,6 +69,8 @@ export class MajorModeComponent implements OnInit {
       Escalas: this.tonalService.GetScales(chordNote, ['Lídio'], [], []),
       Extenções: '(9, #11, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' +
         Note.transpose(chordNote, '4A') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: Note.transpose(chordNote, '2M') + ',' +
+      Note.transpose(chordNote, '4A') + ',' + Note.transpose(chordNote, '6M'),  
       Cadência: ''
     });
 
@@ -77,6 +82,7 @@ export class MajorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + '7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['Mixolídio'], [], []),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
+      NotasExtendidas: Note.transpose(chordNote, '2M') + ',' + Note.transpose(chordNote, '6M'),
       Cadência: ''
     });
 
@@ -88,6 +94,7 @@ export class MajorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['Eólio'], [], []),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
+      NotasExtendidas: Note.transpose(chordNote, '2M') + ',' + Note.transpose(chordNote, '4M'),
       Cadência: ''
     });
 
@@ -99,6 +106,7 @@ export class MajorModeComponent implements OnInit {
       Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
       Escalas: this.tonalService.GetScales(chordNote, ['Lócrio'], [], []),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
+      NotasExtendidas: Note.transpose(chordNote, '4M') + ',' + Note.transpose(chordNote, '6m'),
       Cadência: ''
     });
 

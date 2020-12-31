@@ -17,41 +17,64 @@ export class DrawChordsComponent implements OnInit {
   @ViewChild('drawChordsChart', { static: true }) divDrawChordsChart: ElementRef;
   instrument: IInstruments;
   instruments: IInstruments[] = [];
-  menuAcordes = [];
+  chord: INotes;
   acorde = '';
-  btnAcorde = 'button primary small';
-  btnFuncao = 'button small';
-  menuAtivo = 'acorde';
   checkedNotes = [];
+  checkedExtencoes = [];
+  notesTriade = [];
+  baixo = '';
 
   constructor(private tonalService: TonalService, private drawService: DrawService) {
-  }
-
-  ngOnInit(): void {
     this.tonalService.currentInstrument.subscribe(value => {
       this.instrument = value[value.length - 1];
     });
     this.tonalService.currentChord.subscribe(value => {
-      this.InitializationChords(value[value.length - 1]);
+      this.chord = value[value.length - 1]; 
+      this.InitializationChords(this.chord);
     });
     this.instruments = Instruments;
   }
 
-  changeView(ativo: string) {
-    this.menuAtivo = ativo;
-    if (ativo === 'acorde') {
-      this.btnFuncao = 'button small';
-      this.btnAcorde = 'button primary small';
+  ngOnInit(): void {
+  }
+
+  InitializationChords(value: INotes) {
+    if (value != null) {
+      // montando menu
+      this.acorde = value.Acorde[0];
+      // montando acorde
+      if (this.MontandoCheckBox(value)) {
+        this.drawChords();
+      }
     }
-    else if (ativo === 'funcao') {
-      this.btnFuncao = 'button primary small';
-      this.btnAcorde = 'button small';
+  }
+
+  MontandoCheckBox(value: INotes): Boolean {
+    let count = 1;
+    for (const nota of value.Notas) {
+      if (nota !== ',') {
+        this.notesTriade.push({ note: nota, checked: true, value: count });
+        count++;
+      }
     }
+    count = 1;
+    for (const nota of value.NotasExtendidas) {
+      if (nota !== ',') {
+        this.checkedExtencoes.push({ note: nota, checked: false, value: count });
+        count++;
+      }
+    }
+    return true;
   }
 
   onSelectInstrument(item: string): void {
     this.tonalService.pushInstrument(item);
     // montando acorde
+    this.drawChords();
+  }
+
+  onSelectBaixo(item: string): void {
+    this.baixo = item;
     this.drawChords();
   }
 
@@ -61,38 +84,20 @@ export class DrawChordsComponent implements OnInit {
       this.checkedNotes.find(value => value.note === note).value = max;
     }
     else { this.checkedNotes.find(value => value.note === note).value = 0; }
+    this.gerarAcorde();
   }
 
-  InitializationChords(value: INotes) {
-    /*
-    if (value != null) {
-      // montando menu
-      this.acorde = value.Acordes[0];
-      this.menuAcordes.length = 0;
-      for (let index = 0; index < value.Acordes.length - 1; index++) {
-        this.menuAcordes.push(value.Acordes[index]);
-      }
-      // montando acorde
-      this.drawChords();
-      // montando as notas de funções harmonicas
-      this.montaNotasFuncao(value);
+  gerarAcorde() {
+    this.notesTriade.length = 0;
+    for (const item of this.checkedNotes.filter(item => item.value > 0).sort((a, b) => { return a.value - b.value })) {
+      this.notesTriade.push(item.note);
     }
-    */
-  }
-
-  montaNotasFuncao(value: INoteExtended) {
-    this.checkedNotes.length = 0;
-    for (const nota of value.Notas) {
-      this.checkedNotes.push({ note: nota, checked: false, value: 0 });
-    }
-    for (const extencao of value.Extenções) {
-      this.checkedNotes.push({ note: extencao, checked: false, value: 0 });
-    }
+    this.drawChords();
   }
 
   drawChords() {
-    const notesTriade = this.drawService.GetNotes(this.acorde);
-    this.FindAndDrawChords(notesTriade, notesTriade[0], this.divDrawChordsChart.nativeElement);
+    // const notesTriade = this.drawService.GetNotes(this.acorde);
+    this.FindAndDrawChords(this.notesTriade, this.baixo, this.divDrawChordsChart.nativeElement);
   }
 
   onSelect(item: string): void {
