@@ -1,19 +1,40 @@
-<h2>O Modo Menor Dório</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th *ngFor="let column of header" scope="col">{{column}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of dorianMode">
-      <td *ngFor="let column of header">
-        <div *ngIf="column === 'Acorde'">
-          <div [innerHTML]="item.Roman"></div>
-          <div class="loadChords" [innerHTML]="item.Acorde" (click)="loadChords(item)"></div>
-        </div>
-        <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<section>
+  <div class="content">
+    <header>
+      <h1>O Modo Menor</h1>
+      <p>Dórico</p>
+    </header>
+    <div class="row">
+      <div class="col-3 col-12-medium">
+        <p>Algumas dicas para uso das Dominantes Secundárias:</p>
+        <ul>
+          <li>A quarta nota da escala deve ser evitada.</li>
+          <li>Sugerimos que acordes acrescidos da 9a e 13a resolvam em acordes maiores (ex. V/V(13) → V).</li>
+          <li>Assim como acordes acrescidos de b9a, #9a ou b13a resolvam em acordes menores (ex. V/VI(b13) → VI-).
+          </li>
+        </ul>
+      </div>
+      <div class="col-9 col-12-medium">
+        <h2>Acordes do modo Menor Dórico</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th *ngFor="let column of header" scope="col">{{column}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of dorianMode">
+              <td *ngFor="let column of header">
+                <div *ngIf="column === 'Acorde'">
+                  <div [innerHTML]="item.Roman"></div>
+                  <a class="loadChords" href="#popup" [innerHTML]="item.Acorde" (click)="loadChords(item)"></a>
+                </div>
+                <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

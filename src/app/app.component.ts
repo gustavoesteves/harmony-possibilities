@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     { Name: 'descricao-menor', Status: '' },
     { Name: 'construtor-acordes', Status: '' },
     { Name: 'construtor-escalas', Status: '' },
+    { Name: 'pesquisa-escalas', Status: '' },
   ];
 
   constructor(private tonalService: TonalService, private chorinho: Chorinho) {

@@ -9,7 +9,7 @@ import { INotes } from 'src/app/services/interfaces/notes.interface';
   styleUrls: ['./dorico.component.css']
 })
 export class DoricoComponent implements OnInit {
-  header = ['Acorde', 'Notas', 'Escalas', 'Extenções'];
+  header = ['Grau', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
   dorianMode: INotes[] = [];
 
   constructor(private tonalService: TonalService) {
@@ -31,10 +31,16 @@ export class DoricoComponent implements OnInit {
     minorMode.push({
       Grau: 'Im7',
       Acorde: chordNote + 'm7',
-      Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian'], [], []),
+      Notas:
+        Note.transpose(chordNote, '1P') + ', ' +
+        Note.transpose(chordNote, '3m') + ', ' +
+        Note.transpose(chordNote, '5P') + ', ' +
+        Note.transpose(chordNote, '7m'),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '7m', '2M', '4P']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(chordNote, '2M') + ', ' +
+        Note.transpose(chordNote, '4M'),
       Cadência: ''
     });
 
@@ -43,10 +49,16 @@ export class DoricoComponent implements OnInit {
     minorMode.push({
       Grau: 'IIm7',
       Acorde: chordNote + 'm7',
-      Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian'], [], []),
+      Notas:
+        Note.transpose(chordNote, '1P') + ', ' +
+        Note.transpose(chordNote, '3m') + ', ' +
+        Note.transpose(chordNote, '5P') + ', ' +
+        Note.transpose(chordNote, '7m'),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '7m', '2m', '4P']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2m') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(chordNote, '2m') + ', ' +
+        Note.transpose(chordNote, '4M'),
       Cadência: ''
     });
 
@@ -55,10 +67,16 @@ export class DoricoComponent implements OnInit {
     minorMode.push({
       Grau: 'IIImaj7',
       Acorde: chordNote + 'maj7',
-      Notas: Chord.get(chordNote + 'maj7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian'], [], []),
+      Notas:
+        Note.transpose(chordNote, '1P') + ', ' +
+        Note.transpose(chordNote, '3M') + ', ' +
+        Note.transpose(chordNote, '5P') + ', ' +
+        Note.transpose(chordNote, '7M'),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '7M', '2M', '6M']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(chordNote, '2M') + ', ' +
+        Note.transpose(chordNote, '6M'),
       Cadência: ''
     });
 
@@ -67,10 +85,16 @@ export class DoricoComponent implements OnInit {
     minorMode.push({
       Grau: 'IV7',
       Acorde: chordNote + '7',
-      Notas: Chord.get(chordNote + '7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['mixolydian'], [], []),
+      Notas:
+        Note.transpose(chordNote, '1P') + ', ' +
+        Note.transpose(chordNote, '3M') + ', ' +
+        Note.transpose(chordNote, '5P') + ', ' +
+        Note.transpose(chordNote, '7m'),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '7m', '2M', '6M']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(chordNote, '2M') + ', ' +
+        Note.transpose(chordNote, '6M'),
       Cadência: ''
     });
 
@@ -79,10 +103,16 @@ export class DoricoComponent implements OnInit {
     minorMode.push({
       Grau: 'Vm7',
       Acorde: chordNote + 'm7',
-      Notas: Chord.get(chordNote + 'm7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['dorian', 'phrygian', 'aeolian'], [], []),
+      Notas:
+        Note.transpose(chordNote, '1P') + ', ' +
+        Note.transpose(chordNote, '3m') + ', ' +
+        Note.transpose(chordNote, '5P') + ', ' +
+        Note.transpose(chordNote, '7m'),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5P', '7m', '2M', '4P']),
       Extenções: '(9, 11) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '4M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(chordNote, '2M') + ', ' +
+        Note.transpose(chordNote, '4M'),
       Cadência: ''
     });
 
@@ -91,10 +121,16 @@ export class DoricoComponent implements OnInit {
     minorMode.push({
       Grau: 'VIm7b5',
       Acorde: chordNote + 'm7b5',
-      Notas: Chord.get(chordNote + 'm7b5').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['locrian', 'half-diminished'], [], []),
+      Notas:
+        Note.transpose(chordNote, '1P') + ', ' +
+        Note.transpose(chordNote, '3m') + ', ' +
+        Note.transpose(chordNote, '5d') + ', ' +
+        Note.transpose(chordNote, '7m'),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3m', '5d', '7m', '4P', '6m']),
       Extenções: '(11, b13) <br>' + '(' + Note.transpose(chordNote, '4M') + ', ' + Note.transpose(chordNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(chordNote, '4M') + ', ' +
+        Note.transpose(chordNote, '6m'),
       Cadência: ''
     });
 
@@ -103,10 +139,16 @@ export class DoricoComponent implements OnInit {
     minorMode.push({
       Grau: 'VIImaj7',
       Acorde: chordNote + 'maj7',
-      Notas: Chord.get(chordNote + 'maj7').notes.toString(),
-      Escalas: this.tonalService.GetScales(chordNote, ['major', 'lydian'], [], []),
+      Notas:
+        Note.transpose(chordNote, '1P') + ', ' +
+        Note.transpose(chordNote, '3M') + ', ' +
+        Note.transpose(chordNote, '5P') + ', ' +
+        Note.transpose(chordNote, '7M'),
+      Escalas: this.tonalService.GetScales(chordNote, [], [], ['3M', '5P', '7M', '2M', '6M']),
       Extenções: '(9, 13) <br>' + '(' + Note.transpose(chordNote, '2M') + ', ' + Note.transpose(chordNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(chordNote, '2M') + ', ' +
+        Note.transpose(chordNote, '6M'),
       Cadência: ''
     });
 

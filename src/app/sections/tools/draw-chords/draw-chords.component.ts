@@ -3,7 +3,6 @@ import { TonalService } from '../../../services/tonal.service';
 import { IInstruments } from '../../../services/interfaces/instruments.interface';
 import { findFingerings } from 'chord-fingering';
 import { ChordBox } from 'vexchords';
-import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 import { Instruments } from 'src/app/services/db/instruments.db';
 import { DrawService } from 'src/app/services/draw.service';
 import { INotes } from 'src/app/services/interfaces/notes.interface';
@@ -17,65 +16,49 @@ export class DrawChordsComponent implements OnInit {
   @ViewChild('drawChordsChart', { static: true }) divDrawChordsChart: ElementRef;
   instrument: IInstruments;
   instruments: IInstruments[] = [];
-  chord: INotes;
-  acorde = '';
-  checkedNotes = [];
-  checkedExtencoes = [];
-  notesTriade = [];
+  valueAcorde: INotes;
+  menuAcordes = [];
+  menuBass = [];
   baixo = '';
+  notesTriade = [];
+  acorde = '';
+  checkedNotes: ICheckedNotes[] = [];
+  checkedExtencoes: ICheckedNotes[] = [];
 
   constructor(private tonalService: TonalService, private drawService: DrawService) {
+  }
+
+  ngOnInit(): void {
     this.tonalService.currentInstrument.subscribe(value => {
       this.instrument = value[value.length - 1];
     });
     this.tonalService.currentChord.subscribe(value => {
-      this.chord = value[value.length - 1]; 
-      this.InitializationChords(this.chord);
+      this.valueAcorde = value[value.length - 1];
+      this.InitializationChords(value[value.length - 1]);
     });
     this.instruments = Instruments;
-  }
-
-  ngOnInit(): void {
-  }
-
-  InitializationChords(value: INotes) {
-    if (value != null) {
-      // montando menu
-      this.acorde = value.Acorde[0];
-      // montando acorde
-      if (this.MontandoCheckBox(value)) {
-        this.drawChords();
-      }
-    }
-  }
-
-  MontandoCheckBox(value: INotes): Boolean {
-    let count = 1;
-    for (const nota of value.Notas) {
-      if (nota !== ',') {
-        this.notesTriade.push({ note: nota, checked: true, value: count });
-        count++;
-      }
-    }
-    count = 1;
-    for (const nota of value.NotasExtendidas) {
-      if (nota !== ',') {
-        this.checkedExtencoes.push({ note: nota, checked: false, value: count });
-        count++;
-      }
-    }
-    return true;
   }
 
   onSelectInstrument(item: string): void {
     this.tonalService.pushInstrument(item);
     // montando acorde
-    this.drawChords();
+    this.FindAndDrawChords();
   }
 
-  onSelectBaixo(item: string): void {
+  onSelectBass(item: string): void {
     this.baixo = item;
-    this.drawChords();
+    // montando notas
+    this.menuBass.length = 0;
+    this.checkedNotes.length = 0;
+    let count = 1;
+    for (const item of this.valueAcorde.Notas.split(', ')) {
+      this.menuBass.push(item);
+      if (item !== this.baixo) {
+        this.checkedNotes.push({ note: item, checked: true, value: count++ });
+      }
+    }
+    // montando acorde
+    this.FindAndDrawChords();
   }
 
   gravaValor(status: boolean, note: string) {
@@ -83,32 +66,70 @@ export class DrawChordsComponent implements OnInit {
       let max = Math.max.apply(Math, this.checkedNotes.map(function (o) { return o.value; })) + 1;
       this.checkedNotes.find(value => value.note === note).value = max;
     }
-    else { this.checkedNotes.find(value => value.note === note).value = 0; }
-    this.gerarAcorde();
-  }
-
-  gerarAcorde() {
-    this.notesTriade.length = 0;
-    for (const item of this.checkedNotes.filter(item => item.value > 0).sort((a, b) => { return a.value - b.value })) {
-      this.notesTriade.push(item.note);
+    else {
+      this.checkedNotes.find(value => value.note === note).value = 0;
     }
-    this.drawChords();
+    this.FindAndDrawChords();
   }
 
-  drawChords() {
-    // const notesTriade = this.drawService.GetNotes(this.acorde);
-    this.FindAndDrawChords(this.notesTriade, this.baixo, this.divDrawChordsChart.nativeElement);
+  geraValorExtencoes(status: boolean, note: string) {
+    if (status) {
+      let max = Math.max.apply(Math, this.checkedExtencoes.map(function (o) { return o.value; })) + 1;
+      this.checkedExtencoes.find(value => value.note === note).value = max;
+    }
+    else {
+      this.checkedExtencoes.find(value => value.note === note).value = 0;
+    }
+    this.FindAndDrawChords();
   }
 
-  onSelect(item: string): void {
-    this.acorde = item;
-    this.drawChords();
+  InitializationChords(value: INotes) {
+    if (value != null) {
+      // montando menu
+      this.acorde = value.Acorde[0];
+      // menu baixo
+      this.menuBass.length = 0;
+      this.baixo = value.Notas[0];
+      this.checkedNotes.length = 0;
+      this.checkedExtencoes.length = 0;
+      let count = 1;
+      for (const item of value.Notas.split(', ')) {
+        this.menuBass.push(item);
+        if (item !== this.baixo) {
+          this.checkedNotes.push({ note: item, checked: true, value: count++ });
+        }
+      }
+      for (const item of value.NotasExtendidas.split(', ')) {
+        this.checkedExtencoes.push({ note: item, checked: false, value: 0 });
+      }
+      // montando acorde
+      this.FindAndDrawChords();
+      // montando as notas de funções harmonicas
+      //this.montaNotasFuncao(value);
+    }
   }
 
-  FindAndDrawChords(notes: string[], bass: string, selector: any) {
-    selector.innerHTML = '';
+  getTriade(): string[] {
+    let notesTriade = [];
+    notesTriade.push(this.baixo);
+    for (const item of this.checkedNotes) {
+      if (item.checked) {
+        notesTriade.push(item.note);
+      }
+    }
+    for (const item of this.checkedExtencoes) {
+      if (item.checked) {
+        notesTriade.push(item.note);
+      }
+    }
+    return notesTriade;
+  }
+
+  FindAndDrawChords() {
+    this.divDrawChordsChart.nativeElement.innerHTML = '';
     let findsChords: string[] = [];
-    findsChords.push(findFingerings(notes, [], bass, this.instrument.Notes));
+    let notes = this.getTriade();
+    findsChords.push(findFingerings(this.getTriade(), [], this.baixo, this.instrument.Notes));
 
     // verificando se quantidade de acordes esta muito baixa para retirar a quinta    
     if (findsChords[0].length < 10 && notes.length > 3) {
@@ -118,7 +139,7 @@ export class DrawChordsComponent implements OnInit {
         if (contaQuinta !== 2) { quintaFora.push(note); }
         contaQuinta++;
       }
-      findsChords.push(findFingerings(quintaFora, [], bass, this.instrument.Notes));
+      findsChords.push(findFingerings(quintaFora, [], this.baixo, this.instrument.Notes));
     }
     // imprimindo acordes na tela
     let count = 0;
@@ -126,7 +147,7 @@ export class DrawChordsComponent implements OnInit {
       for (let j = 0; j < findsChords[i].length; j++) {
         if (count < 21) {
           const chordTranslate = this.drawService.GetTranslate(findsChords[i][j]);
-          new ChordBox(selector, {
+          new ChordBox(this.divDrawChordsChart.nativeElement, {
             numStrings: this.instrument.NumStrings,
             numFrets: 5
           }).draw({
@@ -139,5 +160,10 @@ export class DrawChordsComponent implements OnInit {
       }
     }
   }
+}
 
+interface ICheckedNotes {
+  note: string;
+  checked: boolean;
+  value: number;
 }

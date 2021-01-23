@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Chord, Note, Scale } from '@tonaljs/tonal';
 import { INotes } from '../../../services/interfaces/notes.interface';
 import { TonalService } from '../../../services/tonal.service';
-import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 
 @Component({
   selector: 'app-optional-chords',
@@ -43,6 +42,7 @@ export class OptionalChordsComponent implements OnInit {
         fifithNote + ', ' +
         Note.transpose(fifithNote, '3M') + ', ' +
         Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m') + ', ' +
         Note.transpose(fifithNote, '4P'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '5P', '7m', '4P']),
       Extenções: '',
@@ -61,39 +61,53 @@ export class OptionalChordsComponent implements OnInit {
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (b9)',
-      Notas: Chord.get(fifithNote + '7b9').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [
         'Frígio #3',
         'Mixolídio b2'], [], []),
       Extenções: '(9b) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas: Note.transpose(fifithNote, '2m'),
       Cadência: ''
     });
 
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (13)',
-      Notas: Chord.get(fifithNote + '13').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [
         'Mixolídio',
         'Mixolídio #4'], [], []),
       Extenções: '(13) <br>' +
         '(' + Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas: Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (b9 13)',
-      Notas: Chord.get(fifithNote + '13b9').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [
         'Mixolídio b2'], [], []),
       Extenções: '(9b, 13) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ', ' +
         Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
@@ -108,26 +122,36 @@ export class OptionalChordsComponent implements OnInit {
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (b13)',
-      Notas: Chord.get(fifithNote + '7b6').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [
         'Eólio #3',
         'Frígio #3'], [], []),
       Extenções: '(13b) <br>' +
         '(' + Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas: Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (b9 b13)',
-      Notas: Chord.get(fifithNote + '7b9b13').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [
         'Frígio #3'], [], []),
       Extenções: '(9b 13b) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ', ' +
         Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
@@ -142,48 +166,71 @@ export class OptionalChordsComponent implements OnInit {
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (#9)',
-      Notas: Chord.get(fifithNote + '7#9').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m']),
       Extenções: '(9#) <br>' +
         '(' + Note.transpose(fifithNote, '2A') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas: Note.transpose(fifithNote, '2A'),
       Cadência: ''
     });
 
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (b9 #9)',
-      Notas: Chord.get(fifithNote + '7b9#9').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m']),
       Extenções: '(b9 #9) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ', ' +
         Note.transpose(fifithNote, '2A') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '2A'),
       Cadência: ''
     });
 
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (#9 b13)',
-      Notas: Chord.get(fifithNote + '7#9b13').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m', '6m']),
       Extenções: '(#9 b13) <br>' +
         '(' + Note.transpose(fifithNote, '2A') + ', ' +
         Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2A') + ', ' +
+        Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
     result.push({
       Grau: '',
       Acorde: fifithNote + '7 (b9 #9 b13)',
-      Notas: Chord.get(fifithNote + '7#9').notes.toString(),
+      Notas:
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '3m', '6m']),
       Extenções: '(b9 #9 b13) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ', ' +
         Note.transpose(fifithNote, '2A') + ', ' +
         Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '2A') + ', ' +
+        Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
@@ -199,8 +246,8 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
         Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d']),
       Extenções: '',
@@ -213,14 +260,13 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5(b9)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '2m'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d', '2m']),
       Extenções: '(b9) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas: Note.transpose(fifithNote, '2m'),
       Cadência: ''
     });
 
@@ -229,14 +275,13 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5(#9)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '3m'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d', '3m']),
       Extenções: '(#9) <br>' +
         '(' + Note.transpose(fifithNote, '2A') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas: Note.transpose(fifithNote, '2A'),
       Cadência: ''
     });
 
@@ -245,14 +290,13 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5(b13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '6m'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d', '6m']),
       Extenções: '(b13) <br>' +
         '(' + Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas: Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
@@ -261,16 +305,16 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5(b9 #9)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '2m') + ',' +
-        Note.transpose(fifithNote, '3m'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d', '2m', '3m']),
       Extenções: '(b9 #9) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ',' +
         Note.transpose(fifithNote, '3m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '3m'),
       Cadência: ''
     });
 
@@ -279,16 +323,16 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5(b9 b13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '2m') + ',' +
-        Note.transpose(fifithNote, '6m'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d', '2m', '6m']),
       Extenções: '(b9 #9) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ',' +
         Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
@@ -297,16 +341,16 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5(#9 b13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '3m') + ',' +
-        Note.transpose(fifithNote, '6m'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d', '3m', '6m']),
       Extenções: '(b9 #9) <br>' +
         '(' + Note.transpose(fifithNote, '3m') + ',' +
         Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '3m') + ', ' +
+        Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
@@ -315,18 +359,18 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7b5(b9 #9 b13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5d') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '2m') + ',' +
-        Note.transpose(fifithNote, '3m') + ',' +
-        Note.transpose(fifithNote, '6m'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5d') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5d', '2m', '3m', '6m']),
       Extenções: '(b9 #9 b13) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ',' +
         Note.transpose(fifithNote, '3m') + ', ' +
         Note.transpose(fifithNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '3m') + ', ' +
+        Note.transpose(fifithNote, '6m'),
       Cadência: ''
     });
 
@@ -344,16 +388,16 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7(b9 13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5P') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '2m') + ',' +
-        Note.transpose(fifithNote, '6M'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5P', '2m', '6M']),
       Extenções: '(b9 13) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ',' +
         Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
@@ -362,16 +406,16 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7(#9 13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5P') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '3m') + ',' +
-        Note.transpose(fifithNote, '6M'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5P', '3m', '6M']),
       Extenções: '(#9 13) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ',' +
         Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
@@ -380,16 +424,16 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7(#11 13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5P') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '4A') + ',' +
-        Note.transpose(fifithNote, '6M'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5P', '4A', '6M']),
       Extenções: '(#11 13) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ',' +
         Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
@@ -398,18 +442,18 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7(b9 #9 13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5P') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '2m') + ',' +
-        Note.transpose(fifithNote, '3m') + ',' +
-        Note.transpose(fifithNote, '6M'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5P', '2m', '3m', '6M']),
       Extenções: '(b9 #9 13) <br>' +
-        '(' + Note.transpose(fifithNote, '2m') + ',' +
-        Note.transpose(fifithNote, '3m') + ',' +
+        '(' + Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '3m') + ', ' +
         Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '3m') + ', ' +
+        Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
@@ -418,18 +462,18 @@ export class OptionalChordsComponent implements OnInit {
       Acorde: fifithNote + '7(#9 #11 13)',
       Notas:
         fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5P') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '3m') + ',' +
-        Note.transpose(fifithNote, '4A') + ',' +
-        Note.transpose(fifithNote, '6M'),
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5P', '4A', '3m', '6M']),
       Extenções: '(#9 #11 13) <br>' +
-        '(' + Note.transpose(fifithNote, '3m') + ',' +
-        Note.transpose(fifithNote, '4A') + ',' +
+        '(' + Note.transpose(fifithNote, '3m') + ', ' +
+        Note.transpose(fifithNote, '4A') + ', ' +
         Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '3m') + ', ' +
+        Note.transpose(fifithNote, '4A') + ', ' +
+        Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
@@ -437,21 +481,21 @@ export class OptionalChordsComponent implements OnInit {
       Grau: '',
       Acorde: fifithNote + '7(b9 #9 #11 13)',
       Notas:
-        fifithNote + ',' +
-        Note.transpose(fifithNote, '3M') + ',' +
-        Note.transpose(fifithNote, '5P') + ',' +
-        Note.transpose(fifithNote, '7m') + ',' +
-        Note.transpose(fifithNote, '2m') + ',' +
-        Note.transpose(fifithNote, '3m') + ',' +
-        Note.transpose(fifithNote, '4A') + ',' +
-        Note.transpose(fifithNote, '6M'),
+        fifithNote + ', ' +
+        Note.transpose(fifithNote, '3M') + ', ' +
+        Note.transpose(fifithNote, '5P') + ', ' +
+        Note.transpose(fifithNote, '7m'),
       Escalas: this.tonalService.GetScales(fifithNote, [], [], ['3M', '7m', '5P', '2m', '3m', '4A', '6M']),
       Extenções: '(b9 #9 #11 13) <br>' +
         '(' + Note.transpose(fifithNote, '2m') + ',' +
         Note.transpose(fifithNote, '3m') + ',' +
         Note.transpose(fifithNote, '4A') + ',' +
         Note.transpose(fifithNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(fifithNote, '2m') + ', ' +
+        Note.transpose(fifithNote, '3m') + ', ' +
+        Note.transpose(fifithNote, '4A') + ', ' +
+        Note.transpose(fifithNote, '6M'),
       Cadência: ''
     });
 
@@ -469,7 +513,7 @@ export class OptionalChordsComponent implements OnInit {
     return '';
   }
 
-  loadChords(chord: INoteExtended) {
+  loadChords(chord: INotes) {
     this.tonalService.pushChord(chord);
   }
 }

@@ -32,12 +32,18 @@ export class SecondaryDominantsComponent implements OnInit {
     result.push({
       Grau: '',
       Acorde: changeNote + '7',
-      Notas: Chord.get(changeNote + '7').notes.toString(),
+      Notas:
+        Note.transpose(changeNote, '1P') + ', ' +
+        Note.transpose(changeNote, '3M') + ', ' +
+        Note.transpose(changeNote, '5P') + ', ' +
+        Note.transpose(changeNote, '7m'),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '7m', '2M', '6m']),
       Extenções: '(9, b13) <br> (' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '6m'),
       Cadência: ''
     });
 
@@ -53,12 +59,18 @@ export class SecondaryDominantsComponent implements OnInit {
     result.push({
       Grau: 'V/II',
       Acorde: changeNote + '7',
-      Notas: Chord.get(changeNote + '7').notes.toString(),
+      Notas:
+        Note.transpose(changeNote, '1P') + ', ' +
+        Note.transpose(changeNote, '3M') + ', ' +
+        Note.transpose(changeNote, '5P') + ', ' +
+        Note.transpose(changeNote, '7m'),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '7m', '2M', '6m']),
       Extenções: '(9, b13) <br> (' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '6m'),
       Cadência: ''
     });
 
@@ -67,13 +79,20 @@ export class SecondaryDominantsComponent implements OnInit {
     result.push({
       Grau: 'V/III',
       Acorde: changeNote + '7',
-      Notas: Chord.get(changeNote + '7').notes.toString(),
+      Notas:
+        Note.transpose(changeNote, '1P') + ', ' +
+        Note.transpose(changeNote, '3M') + ', ' +
+        Note.transpose(changeNote, '5P') + ', ' +
+        Note.transpose(changeNote, '7m'),
       Escalas: this.tonalService.GetScales(changeNote, [], [], ['3M', '5P', '6m', '7m', '2A']),
       Extenções: '(b9, #9, b13) <br> (' +
         Note.transpose(changeNote, '2m') + ', ' +
         Note.transpose(changeNote, '3m') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(changeNote, '2m') + ', ' +
+        Note.transpose(changeNote, '3m') + ', ' +
+        Note.transpose(changeNote, '6m'),
       Cadência: ''
     });
 
@@ -88,7 +107,10 @@ export class SecondaryDominantsComponent implements OnInit {
         Note.transpose(changeNote, '2m') + ', ' +
         Note.transpose(changeNote, '3m') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(changeNote, '2m') + ', ' +
+        Note.transpose(changeNote, '3m') + ', ' +
+        Note.transpose(changeNote, '6m'),
       Cadência: ''
     });
 
@@ -101,7 +123,9 @@ export class SecondaryDominantsComponent implements OnInit {
       Extenções: '(9, 13) <br> (' +
         Note.transpose(note, '2M') + ', ' +
         Note.transpose(note, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(note, '2M') + ', ' +
+        Note.transpose(note, '6M'),
       Cadência: ''
     });
 
@@ -115,7 +139,9 @@ export class SecondaryDominantsComponent implements OnInit {
       Extenções: '(9, 13) <br> (' +
         Note.transpose(changeNote, '2M') + ', ' +
         Note.transpose(changeNote, '6M') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(changeNote, '2M') + ', ' +
+        Note.transpose(changeNote, '6M'),
       Cadência: ''
     });
 
@@ -130,7 +156,10 @@ export class SecondaryDominantsComponent implements OnInit {
         Note.transpose(changeNote, '2m') + ', ' +
         Note.transpose(changeNote, '2A') + ', ' +
         Note.transpose(changeNote, '6m') + ')',
-      NotasExtendidas: '',
+      NotasExtendidas:
+        Note.transpose(changeNote, '2m') + ', ' +
+        Note.transpose(changeNote, '2A') + ', ' +
+        Note.transpose(changeNote, '6m'),
       Cadência: ''
     });
 

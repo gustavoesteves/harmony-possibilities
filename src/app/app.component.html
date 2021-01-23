@@ -83,7 +83,9 @@
       <div *ngIf="menu === 'construtor-escalas'">
         <app-construtor-escalas></app-construtor-escalas>
       </div>
-
+      <div *ngIf="menu === 'pesquisa-escalas'">
+        <app-escalas-acorde></app-escalas-acorde>
+      </div>
     </div>
   </div>
 
@@ -182,6 +184,7 @@
               <li><a href="#">Frases aleatórias Menor</a></li>
               <li><a class={{menuSelecionado[12].Status}} (click)="changeMenu('construtor-acordes')">Construtor de acordes</a></li>
               <li><a class={{menuSelecionado[13].Status}} (click)="changeMenu('construtor-escalas')">Construtor de escalas</a></li>
+              <li><a class={{menuSelecionado[14].Status}} (click)="changeMenu('pesquisa-escalas')">Pesquisa escalas</a></li>
             </ul>
           </li>
 
