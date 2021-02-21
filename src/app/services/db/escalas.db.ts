@@ -10,7 +10,7 @@ export const Escalas: IEscala[] = [
     { Nome: 'Lócrio', Notas: ['1P', '2m', '3m', '4P', '5d', '6m', '7m'], Acordes: ['m7b5'] },
 
     { Nome: 'Alterada', Notas: ['1P', '2m', '3m', '4P', '5P', '6M', '7M'], Acordes: ['7alt', 'm7b5'] },
-    { Nome: 'Dórian #7', Notas: ['1P', '2M', '3m', '4P', '5P', '6M', '7M'], Acordes: ['mMaj7'] },
+    { Nome: 'Dórico #7', Notas: ['1P', '2M', '3m', '4P', '5P', '6M', '7M'], Acordes: ['mMaj7'] },
     { Nome: 'Frígio #6', Notas: ['1P', '2m', '3m', '4P', '5P', '6M', '7m'], Acordes: ['m7'] },
     { Nome: 'Lídio #5', Notas: ['1P', '2M', '3M', '4A', '5A', '6M', '7M'], Acordes: ['Maj7#5'] },
     { Nome: 'Mixolídio #4', Notas: ['1P', '2M', '3M', '4A', '5P', '6M', '7m'], Acordes: ['7'] },
@@ -18,7 +18,7 @@ export const Escalas: IEscala[] = [
     { Nome: 'Meia diminuta', Notas: ['1P', '2M', '3m', '4P', '5d', '6m', '7m'], Acordes: ['m7b5'] },
 
     { Nome: 'Jônico #5', Notas: ['1P', '2M', '3M', '4P', '5A', '6M', '7M'], Acordes: ['Maj7#5'] },
-    { Nome: 'Dório #4', Notas: ['1P', '2M', '3m', '4A', '5P', '6M', '7m'], Acordes: ['m7'] },
+    { Nome: 'Dórico #4', Notas: ['1P', '2M', '3m', '4A', '5P', '6M', '7m'], Acordes: ['m7'] },
     { Nome: 'Frígio #3', Notas: ['1P', '2m', '3M', '4P', '5P', '6m', '7m'], Acordes: ['7'] },
     { Nome: 'Lídio #2', Notas: ['1P', '2A', '3M', '4A', '5P', '6M', '7M'], Acordes: ['Maj7'] },
     { Nome: 'Dominante alterada', Notas: ['1P', '2m', '3m', '4d', '5d', '6m', '7m'], Acordes: ['dim7', '7b5'] },

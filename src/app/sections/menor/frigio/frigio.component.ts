@@ -9,7 +9,7 @@ import { INotes } from 'src/app/services/interfaces/notes.interface';
   styleUrls: ['./frigio.component.css']
 })
 export class FrigioComponent implements OnInit {
-  header = ['Acorde', 'Notas', 'Escalas', 'Extenções'];
+  header = ['Grau', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
   phrygianMode: INotes[] = [];
 
   constructor(private tonalService: TonalService) {

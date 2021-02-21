@@ -36,6 +36,12 @@ import { BaiaoComponent } from './sections/harmonia-aplicada/baiao/baiao.compone
 import { FrevoComponent } from './sections/harmonia-aplicada/frevo/frevo.component';
 import { ValsaMineiraComponent } from './sections/harmonia-aplicada/valsa-mineira/valsa-mineira.component';
 import { EscalasAcordeComponent } from './sections/tools/escalas-acorde/escalas-acorde.component';
+import { ModulacaoComponent } from './sections/tools/modulacao/modulacao.component';
+import { NaturalComponent } from './sections/menor/natural/natural.component';
+import { MenorJazzComponent } from './sections/menor/menor-jazz/menor-jazz.component';
+import { LidioSustenidoComponent } from './sections/menor/lidio-sustenido/lidio-sustenido.component';
+import { LidioBemolComponent } from './sections/menor/lidio-bemol/lidio-bemol.component';
+import { LocrioBequadroComponent } from './sections/menor/locrio-bequadro/locrio-bequadro.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +70,13 @@ import { EscalasAcordeComponent } from './sections/tools/escalas-acorde/escalas-
     ProgressaoSegundaQuintaComponent,
     DescricaoComponent,
     DescricaoMenorComponent,
-    EscalasAcordeComponent
+    EscalasAcordeComponent,
+    ModulacaoComponent,
+    NaturalComponent,
+    MenorJazzComponent,
+    LidioSustenidoComponent,
+    LidioBemolComponent,
+    LocrioBequadroComponent
   ],
   imports: [
     BrowserModule,

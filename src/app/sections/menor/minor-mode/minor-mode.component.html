@@ -2,32 +2,48 @@
   <div class="content">
     <header>
       <h1>O Modo Menor</h1>
-      <p>Natural</p>
+      <p>Acordes</p>
     </header>
     <div class="row">
       <div class="col-3 col-12-medium">
+        <h3>Modo menor</h3>
+        <section class="alt">
+          <form>
+            <select class="form-control" id="SelectModoMenor" (change)="onSelectModoMenor($event.target.value)">
+              <option *ngFor="let item of modos">{{item.Name}}</option>
+            </select>
+          </form>
+        </section>
         <p>O modo menor Natural é nosso conhecido modo Eólio.</p>
       </div>
       <div class="col-9 col-12-medium">
-        <h2>Acordes do modo menor Natural</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th *ngFor="let column of header" scope="col">{{column}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of minorMode">
-              <td *ngFor="let column of header">
-                <div *ngIf="column === 'Acorde'">
-                  <div [innerHTML]="item.Roman"></div>
-                  <a class="loadChords" href="#popup" [innerHTML]="item.Acorde" (click)="loadChords(item)"></a>
-                </div>
-                <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div *ngIf="modo === 'Natural'">
+          <app-natural></app-natural>
+        </div>
+        <div *ngIf="modo === 'Harmônico'">
+          <app-harmonico></app-harmonico>
+        </div>
+        <div *ngIf="modo === 'Melódico'">
+          <app-melodico></app-melodico>
+        </div>
+        <div *ngIf="modo === 'Dórico'">
+          <app-dorico></app-dorico>
+        </div>
+        <div *ngIf="modo === 'Frígio'">
+          <app-frigio></app-frigio>
+        </div>
+        <div *ngIf="modo === 'Menor Jazz'">
+          <app-menor-jazz></app-menor-jazz>
+        </div>
+        <div *ngIf="modo === 'Lídio #5'">
+          <app-lidio-sustenido></app-lidio-sustenido>
+        </div>
+        <div *ngIf="modo === 'Lídio b7'">
+          <app-lidio-bemol></app-lidio-bemol>
+        </div>
+        <div *ngIf="modo === 'Lócrio ♮2'">
+          <app-locrio-bequadro></app-locrio-bequadro>
+        </div>
       </div>
     </div>
   </div>

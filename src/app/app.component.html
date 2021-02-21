@@ -58,18 +58,6 @@
       <div *ngIf="menu === 'natural'">
         <app-minor-mode></app-minor-mode>
       </div>
-      <div *ngIf="menu === 'hamonico'">
-        <app-harmonico></app-harmonico>
-      </div>
-      <div *ngIf="menu === 'melodico'">
-        <app-melodico></app-melodico>
-      </div>
-      <div *ngIf="menu === 'dorico'">
-        <app-dorico></app-dorico>
-      </div>
-      <div *ngIf="menu === 'frigio'">
-        <app-frigio></app-frigio>
-      </div>
 
       <!-- Harmonia Aplicada -->
 
@@ -85,6 +73,9 @@
       </div>
       <div *ngIf="menu === 'pesquisa-escalas'">
         <app-escalas-acorde></app-escalas-acorde>
+      </div>
+      <div *ngIf="menu === 'modulacao'">
+        <app-modulacao></app-modulacao>
       </div>
     </div>
   </div>
@@ -145,11 +136,7 @@
               <li>
                 <span class={{menuSelecionado[11].Status}} (click)="changeMenu('descricao-menor')">O Modo Menor</span>
                 <ul>
-                  <li><a class={{menuSelecionado[5].Status}} (click)="changeMenu('natural')">Natural</a></li>
-                  <li><a class={{menuSelecionado[6].Status}} (click)="changeMenu('hamonico')">Harmônico</a></li>
-                  <li><a class={{menuSelecionado[7].Status}} (click)="changeMenu('melodico')">Melódico</a></li>
-                  <li><a class={{menuSelecionado[8].Status}} (click)="changeMenu('dorico')">Dórico</a></li>
-                  <li><a class={{menuSelecionado[9].Status}} (click)="changeMenu('frigio')">Frígio</a></li>
+                  <li><a class={{menuSelecionado[5].Status}} (click)="changeMenu('natural')">Acordes</a></li>
                   <li><a class="" href="#">Dominantes</a></li>
                   <li><a class="" href="#">Dominantes secundárias</a></li>
                   <li><a class="" href="#">Subdominantes</a></li>
@@ -185,6 +172,7 @@
               <li><a class={{menuSelecionado[12].Status}} (click)="changeMenu('construtor-acordes')">Construtor de acordes</a></li>
               <li><a class={{menuSelecionado[13].Status}} (click)="changeMenu('construtor-escalas')">Construtor de escalas</a></li>
               <li><a class={{menuSelecionado[14].Status}} (click)="changeMenu('pesquisa-escalas')">Pesquisa escalas</a></li>
+              <li><a class={{menuSelecionado[15].Status}} (click)="changeMenu('modulacao')">Modulação</a></li>
             </ul>
           </li>
 
