@@ -16,10 +16,10 @@ import { DescricaoComponent } from './sections/maior/descricao/descricao.compone
 
 // Modo Menor
 import { MinorModeComponent } from './sections/menor/minor-mode/minor-mode.component';
-import { HarmonicoComponent } from './sections/menor/harmonico/harmonico.component';
-import { MelodicoComponent } from './sections/menor/melodico/melodico.component';
-import { DoricoComponent } from './sections/menor/dorico/dorico.component';
-import { FrigioComponent } from './sections/menor/frigio/frigio.component';
+import { HarmonicoComponent } from './sections/menor/modos/harmonico/harmonico.component';
+import { MelodicoComponent } from './sections/menor/modos/melodico/melodico.component';
+import { DoricoComponent } from './sections/menor/modos/dorico/dorico.component';
+import { FrigioComponent } from './sections/menor/modos/frigio/frigio.component';
 import { DescricaoMenorComponent } from './sections/menor/descricao/descricao.component';
 
 // Modo Tools
@@ -37,11 +37,11 @@ import { FrevoComponent } from './sections/harmonia-aplicada/frevo/frevo.compone
 import { ValsaMineiraComponent } from './sections/harmonia-aplicada/valsa-mineira/valsa-mineira.component';
 import { EscalasAcordeComponent } from './sections/tools/escalas-acorde/escalas-acorde.component';
 import { ModulacaoComponent } from './sections/tools/modulacao/modulacao.component';
-import { NaturalComponent } from './sections/menor/natural/natural.component';
-import { MenorJazzComponent } from './sections/menor/menor-jazz/menor-jazz.component';
-import { LidioSustenidoComponent } from './sections/menor/lidio-sustenido/lidio-sustenido.component';
-import { LidioBemolComponent } from './sections/menor/lidio-bemol/lidio-bemol.component';
-import { LocrioBequadroComponent } from './sections/menor/locrio-bequadro/locrio-bequadro.component';
+import { NaturalComponent } from './sections/menor/modos/natural/natural.component';
+import { MenorJazzComponent } from './sections/menor/modos/menor-jazz/menor-jazz.component';
+import { LidioSustenidoComponent } from './sections/menor/modos/lidio-sustenido/lidio-sustenido.component';
+import { LidioBemolComponent } from './sections/menor/modos/lidio-bemol/lidio-bemol.component';
+import { LocrioBequadroComponent } from './sections/menor/modos/locrio-bequadro/locrio-bequadro.component';
 
 @NgModule({
   declarations: [
