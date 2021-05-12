@@ -8,14 +8,17 @@
   </div>
   <div class="row">
     <div class="col-3 col-12-medium">
+      <h3>Baixo do acorde</h3>
+      <section class="alt">
+        <form>
+          <select name="demo-category" (change)="onSelectBass($event.target.value)">
+            <option *ngFor="let item of menuBass">{{item}}</option>
+          </select>
+        </form>
+      </section>
       <h3>Escolha as notas</h3>
       <section class="alt">
         <form>
-          <ul class="actions">
-            <li><button type="button" class={{btnNotas}} (click)="changeView('notas')">Notas</button></li>
-            <li><button type="button" class={{btnIntervalos}} (click)="changeView('intervalos')">Intervalos</button>
-            </li>
-          </ul>
           <div *ngIf="menuAtivo === 'notas'">
             <span *ngFor="let item of checkedNotes">
               <input type="checkbox" name="item.note" [attr.id]="item.note" [(ngModel)]="item.checked"
@@ -23,13 +26,7 @@
               <label [attr.for]="item.note">{{ item.note }}</label>
             </span>
           </div>
-          <div *ngIf="menuAtivo === 'intervalos'">
-            <span *ngFor="let item of checkedIntervals">
-              <input type="checkbox" name="item.note" [attr.id]="item.note" [(ngModel)]="item.checked"
-                (change)="gravaValor(item.checked, item.note)" />
-              <label [attr.for]="item.note">{{ item.note }}</label>
-            </span>
-          </div>
+          <button type="button" class="button primary small" (click)="pesquisandoEscalas()">Pesquisa</button>
         </form>
       </section>
     </div>

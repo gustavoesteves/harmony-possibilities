@@ -22,47 +22,68 @@ export class EscalasAcordeComponent implements OnInit {
     { note: 'Bb', checked: false, value: '7m' },
     { note: 'B', checked: false, value: '7M' },
   ];
-  checkedIntervals = [
-    { note: 'T', checked: false, value: 0 },
-    { note: '2m', checked: false, value: 0 },
-    { note: '2M', checked: false, value: 0 },
-    { note: '3m', checked: false, value: 0 },
-    { note: '3M', checked: false, value: 0 },
-    { note: '4J', checked: false, value: 0 },
-    { note: '4a/5dim', checked: false, value: 0 },
-    { note: '5J', checked: false, value: 0 },
-    { note: '5a/6m', checked: false, value: 0 },
-    { note: '6M', checked: false, value: 0 },
-    { note: '7m', checked: false, value: 0 },
-    { note: '7M', checked: false, value: 0 }
+  cycleOfFourth = [
+    'A', 'Bb', 'Cb', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'
+  ];
+  cycleOfFifth = [
+    'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'
   ];
   notesTriade = [];
   menuAtivo = 'notas';
-  btnNotas = 'button primary small';
-  btnIntervalos = 'button small';
   escalas = [];
+  menuBass = [
+    'A', 'A#', 'Bb', 'B', 'Cb', 'C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab'
+  ];
+  baixo = '';
   header = ['Escalas'];
 
-  constructor(private tonalService: TonalService) { }
+  constructor(private tonalService: TonalService) {
+    this.baixo = this.menuBass[0];
+    this.setCheckNotes();
+  }
 
   ngOnInit(): void {
   }
 
-  changeView(ativo: string) {
-    this.menuAtivo = ativo;
-    this.btnNotas === "intervalor" ? 'button small' : 'button primary small';
-    this.btnIntervalos === "intervalor" ? 'button small' : 'button primary small';
+  setCheckNotes() {
+    if (this.baixo.search(/#/g) >= 0) {
+      this.getScale(this.cycleOfFifth);      
+    } else if (this.baixo.search(/b/g) >= 0 || this.baixo === 'F') {
+      this.getScale(this.cycleOfFourth);
+    } else {
+      this.getScale(this.cycleOfFifth);
+    }
+  }
+
+  getScale(scale: string[]) {
+    let _scale = scale.slice(scale.indexOf(this.baixo), scale.length);
+    if (scale.slice(0, scale.indexOf(this.baixo)).length > 0) {
+      for (let index = 0; index < scale.slice(0, scale.indexOf(this.baixo)).length; index++) {
+        _scale.push(scale[index]);
+      }
+    }
+    for (let index = 0; index < this.checkedNotes.length; index++) {
+      this.checkedNotes[index].note = _scale[index];
+    }
+  }
+
+  onSelectBass(item: string) {
+    this.baixo = item;
+    this.setCheckNotes();
   }
 
   gravaValor(status: boolean, note: string) {
-    this.escalas = [];
     this.notesTriade.length = 0;
     for (const item of this.checkedNotes) {
       if (item.checked) {
-        this.notesTriade.push(item.value);        
+        this.notesTriade.push(item.value);
       }
     }
-    this.escalas.push({ Escalas: this.tonalService.GetScales(this.checkedNotes[0].note, [], [], this.notesTriade) });
+  }
+
+  pesquisandoEscalas() {
+    this.escalas = [];
+    this.escalas.push({ Escalas: this.tonalService.GetScales(this.baixo, [], [], this.notesTriade) });
   }
 
 }
