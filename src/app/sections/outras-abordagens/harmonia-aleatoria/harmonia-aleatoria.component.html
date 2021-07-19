@@ -1,1 +1,25 @@
-<p>harmonia-aleatoria works!</p>
+<section>
+  <div class="content">
+    <header>
+      <h1>Outras abordagens</h1>
+    </header>
+    <div class="row">
+      <div class="col-12 col-12-medium">
+        <h2>Harmonia aleatória</h2>
+        <p>A harmonização aleatória foi um sistema composicional criado por Kenny Werner, que sustenta a idéia de que
+          qualquer acorde pode vir precedido ou posto após a qualquer acorde.</p>
+        <p>Abaixo temos um pequeno aplicativo que irá gerar os acordes de forma aleatória para exercitarmos esse
+          princípio composicional.</p>
+        <h3>Quantidade de compassos</h3>
+        <ul class="actions">
+          <li><button type="button" class={{comp4}} (click)="changeCompasso(4)">4</button></li>
+          <li><button type="button" class={{comp6}} (click)="changeCompasso(6)">6</button></li>
+          <li><button type="button" class={{comp8}} (click)="changeCompasso(8)">8</button></li>
+          <li><button type="button" class={{comp12}} (click)="changeCompasso(12)">12</button></li>
+          <li><button type="button" class={{comp16}} (click)="changeCompasso(16)">16</button></li>
+        </ul>
+        <li><button class="button primary large" (click)="onClick()">Frase Aleatória</button></li>
+      </div>
+    </div>
+  </div>
+</section>

@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
     { Name: 'modulacao', Status: '' },
     { Name: 'choro', Status: '' },
     { Name: 'tabela-tonalidades', Status: '' },
+    { Name: 'harmonia-aleatoria', Status: '' }, 
   ];
 
   constructor(private tonalService: TonalService, private chorinho: Chorinho) {
