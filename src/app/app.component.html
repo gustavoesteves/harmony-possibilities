@@ -59,7 +59,15 @@
         <app-minor-mode></app-minor-mode>
       </div>
 
+      <!-- Outras abordagens-->
+      <div *ngIf="menu === 'tabela-tonalidades'">
+        <app-tabela-tonalidades></app-tabela-tonalidades>
+      </div>
+
       <!-- Harmonia Aplicada -->
+      <div *ngIf="menu === 'choro'">
+        <app-harmony-sequency></app-harmony-sequency>
+      </div>
 
       <!-- Ferramentas -->
       <div *ngIf="menu === 'frase-maior'">
@@ -119,7 +127,7 @@
           <li>
             <a (click)="changeMenu('home')">Home</a>
           </li>
-
+          <!-- Abordagem Contemporanea -->
           <li>
             <span class={{contemporaneo}} (click)="openMenu('contemporaneo')">Abordagem conteporânea</span>
             <ul>
@@ -151,9 +159,22 @@
                   <li><a href="#">Subdominantes</a></li>
                 </ul>
               </li>
+              <li>
+                <span class={{menuSelecionado[11].Status}} (click)="changeMenu('outras-abordagens')">Outras abordagens</span>
+                <ul>
+                  <li><a href="#">Harmonia negativa</a></li>
+                  <li><a href="#">Neotonalismo</a></li>
+                  <li><a href="#">Harmonia aleatória</a></li>
+                  <li><a href="#">Modulação</a></li>
+                  <li><a href="#">Tríades similares</a></li>
+                  <li><a href="#">Enarmonia do trítono</a></li>
+                  <li><a href="#">Tríades seriais</a></li>
+                  <li><a class={{menuSelecionado[17].Status}} (click)="changeMenu('tabela-tonalidades')">Tabela de características das tonalidades</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
-
+          <!-- Abordagem Clássica-->
           <li>
             <span class={{classico}}>Abordagem clássica</span>
             <ul>
@@ -163,7 +184,7 @@
               </li>
             </ul>
           </li>
-
+          <!-- Ferramentas -->
           <li>
             <span class={{config}} (click)="openMenu('config')">Ferramentas</span>
             <ul>
@@ -175,11 +196,11 @@
               <li><a class={{menuSelecionado[15].Status}} (click)="changeMenu('modulacao')">Modulação</a></li>
             </ul>
           </li>
-
+          <!-- Harmonia Aplicada -->
           <li>
             <span class={{harmonia}} (click)="openMenu('harmonia')">Harmonia Aplicada</span>
             <ul>
-              <li><a href="#">Choro</a></li>
+              <li><a class={{menuSelecionado[16].Status}} (click)="changeMenu('choro')">Choro</a></li>
               <li><a href="#">Samba</a></li>
               <li><a href="#">Baião</a></li>
               <li><a href="#">Frevo</a></li>

@@ -42,6 +42,10 @@ import { MenorJazzComponent } from './sections/menor/modos/menor-jazz/menor-jazz
 import { LidioSustenidoComponent } from './sections/menor/modos/lidio-sustenido/lidio-sustenido.component';
 import { LidioBemolComponent } from './sections/menor/modos/lidio-bemol/lidio-bemol.component';
 import { LocrioBequadroComponent } from './sections/menor/modos/locrio-bequadro/locrio-bequadro.component';
+import { TabelaTonalidadesComponent } from './sections/outras-abordagens/tabela-tonalidades/tabela-tonalidades.component';
+import { HarmoniaNegativaComponent } from './sections/outras-abordagens/harmonia-negativa/harmonia-negativa.component';
+import { NeotonalismoComponent } from './sections/outras-abordagens/neotonalismo/neotonalismo.component';
+import { HarmoniaAleatoriaComponent } from './sections/outras-abordagens/harmonia-aleatoria/harmonia-aleatoria.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +80,11 @@ import { LocrioBequadroComponent } from './sections/menor/modos/locrio-bequadro/
     MenorJazzComponent,
     LidioSustenidoComponent,
     LidioBemolComponent,
-    LocrioBequadroComponent
+    LocrioBequadroComponent,
+    TabelaTonalidadesComponent,
+    HarmoniaNegativaComponent,
+    NeotonalismoComponent,
+    HarmoniaAleatoriaComponent
   ],
   imports: [
     BrowserModule,
