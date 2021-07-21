@@ -1,6 +1,5 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { Chord } from '@tonaljs/tonal';
+import { Chord, Interval, Note } from '@tonaljs/tonal';
 import { INotes } from 'src/app/services/interfaces/notes.interface';
 import { TonalService } from '../../../services/tonal.service';
 
@@ -10,7 +9,7 @@ import { TonalService } from '../../../services/tonal.service';
   styleUrls: ['./harmonia-aleatoria.component.css']
 })
 export class HarmoniaAleatoriaComponent implements OnInit {
-  header = ['Compasso', 'Acorde'];
+  header = ['Compasso', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
   body: Body[] = [];
   compassos = 4;
   tom = [
@@ -50,8 +49,8 @@ export class HarmoniaAleatoriaComponent implements OnInit {
     { type: 'maj9#11' },
     { type: 'maj13#11' },
     { type: 'add9' },
-    { type: '6add9' },
-    { type: 'maj7b5' },
+    { type: '6/9' },
+    { type: 'M7b5' },
     { type: 'maj7#5' },
     { type: 'm6' },
     { type: 'm9' },
@@ -71,10 +70,10 @@ export class HarmoniaAleatoriaComponent implements OnInit {
     { type: '7#5' },
     { type: '7b9' },
     { type: '7#9' },
-    { type: '7(b5 b9)' },
-    { type: '7(b5 #9)' },
+    { type: '7b5b9' },
+    { type: '7b5#9' },
     { type: '7#5b9' },
-    { type: '7(#5 #9)' },
+    { type: '7#5#9' },
     { type: '9b5' },
     { type: '9#5' },
     { type: '13#11' },
@@ -91,17 +90,25 @@ export class HarmoniaAleatoriaComponent implements OnInit {
   onClick() {
     this.body = [];
     for (let index = 0; index < this.compassos; index++) {
+      // montando acorde aleatório
       const chord = this.tom[Math.floor(Math.random() * this.tom.length)].key +
         this.chordTypes[Math.floor(Math.random() * this.chordTypes.length)].type;
+      let bass = '';
       let notas = '';
       let extencoes = '';
       let count = 1;
+      let escala = [];
+      // pegando notas e extenções do acorde
       for (const iterator of Chord.get(chord).notes) {
+        if (count === 1) {
+          bass = iterator;
+        }
         if (count > 3) {
           extencoes += iterator + ', ';
-        } else{
+        } else {
           notas += iterator + ', ';
         }
+        escala.push(Interval.distance(bass, iterator));
         count++;
       };
       notas = notas.substring(0, notas.length - 2);
@@ -116,7 +123,10 @@ export class HarmoniaAleatoriaComponent implements OnInit {
           Extenções: '',
           NotasExtendidas: extencoes,
           Cadência: ''
-        }
+        },
+        Notas: notas,
+        Escalas: this.tonalService.GetScales(bass, [], [], escala),
+        Extenções: extencoes
       });
     }
   }
@@ -132,9 +142,8 @@ export class HarmoniaAleatoriaComponent implements OnInit {
 
 interface Body {
   Compasso: number,
-  Acorde: INotes
+  Acorde: INotes,
+  Notas: string,
+  Escalas: string,
+  Extenções: string
 };
-function value(value: any, any: any, index: number, arg3: (number: any) => void) {
-  throw new Error('Function not implemented.');
-}
-
