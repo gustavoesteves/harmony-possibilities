@@ -60,6 +60,9 @@
       </div>
 
       <!-- Outras abordagens-->
+      <div *ngIf="menu === 'harmonia-negativa'">
+        <app-harmonia-negativa></app-harmonia-negativa>
+      </div>
       <div *ngIf="menu === 'harmonia-aleatoria'">
         <app-harmonia-aleatoria></app-harmonia-aleatoria>
       </div>
@@ -165,7 +168,7 @@
               <li>
                 <span class={{menuSelecionado[11].Status}} (click)="changeMenu('outras-abordagens')">Outras abordagens</span>
                 <ul>
-                  <li><a href="#">Harmonia negativa</a></li>
+                  <li><a class={{menuSelecionado[19].Status}} (click)="changeMenu('harmonia-negativa')">Harmonia negativa</a></li>
                   <li><a href="#">Neotonalismo</a></li>
                   <li><a class={{menuSelecionado[18].Status}} (click)="changeMenu('harmonia-aleatoria')">Harmonia aleatória</a></li>
                   <li><a href="#">Modulação</a></li>
