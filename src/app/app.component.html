@@ -69,6 +69,12 @@
       <div *ngIf="menu === 'tabela-tonalidades'">
         <app-tabela-tonalidades></app-tabela-tonalidades>
       </div>
+      <div *ngIf="menu === 'modulacao'">
+        <app-modulacao></app-modulacao>
+      </div>
+      <div *ngIf="menu === 'acorde-emprestimo'">
+        <app-acorde-emprestimo></app-acorde-emprestimo>
+      </div>
 
       <!-- Harmonia Aplicada -->
       <div *ngIf="menu === 'choro'">
@@ -87,9 +93,6 @@
       </div>
       <div *ngIf="menu === 'pesquisa-escalas'">
         <app-escalas-acorde></app-escalas-acorde>
-      </div>
-      <div *ngIf="menu === 'modulacao'">
-        <app-modulacao></app-modulacao>
       </div>
     </div>
   </div>
@@ -135,7 +138,7 @@
           </li>
           <!-- Abordagem Contemporanea -->
           <li>
-            <span class={{contemporaneo}} (click)="openMenu('contemporaneo')">Abordagem conteporânea</span>
+            <span class={{contemporaneo}} (click)="openMenu('contemporaneo')">Harmonia Funcional</span>
             <ul>
               <li>
                 <span class={{menuSelecionado[10].Status}} (click)="changeMenu('descricao-maior')">O Modo Maior</span>
@@ -166,12 +169,13 @@
                 </ul>
               </li>
               <li>
-                <span class={{menuSelecionado[11].Status}} (click)="changeMenu('outras-abordagens')">Outras abordagens</span>
+                <span class={{menuSelecionado[11].Status}} (click)="changeMenu('outras-abordagens')">Outras técnicas e abordagens</span>
                 <ul>
+                  <li><a class={{menuSelecionado[20].Status}} (click)="changeMenu('acorde-emprestimo')">Acordes de empréstimo</a></li>
+                  <li><a class={{menuSelecionado[15].Status}} (click)="changeMenu('modulacao')">Modulação</a></li>
                   <li><a class={{menuSelecionado[19].Status}} (click)="changeMenu('harmonia-negativa')">Harmonia negativa</a></li>
                   <li><a href="#">Neotonalismo</a></li>
                   <li><a class={{menuSelecionado[18].Status}} (click)="changeMenu('harmonia-aleatoria')">Harmonia aleatória</a></li>
-                  <li><a href="#">Modulação</a></li>
                   <li><a href="#">Tríades similares</a></li>
                   <li><a href="#">Enarmonia do trítono</a></li>
                   <li><a href="#">Tríades seriais</a></li>
@@ -199,7 +203,7 @@
               <li><a class={{menuSelecionado[12].Status}} (click)="changeMenu('construtor-acordes')">Construtor de acordes</a></li>
               <li><a class={{menuSelecionado[13].Status}} (click)="changeMenu('construtor-escalas')">Construtor de escalas</a></li>
               <li><a class={{menuSelecionado[14].Status}} (click)="changeMenu('pesquisa-escalas')">Pesquisa escalas</a></li>
-              <li><a class={{menuSelecionado[15].Status}} (click)="changeMenu('modulacao')">Modulação</a></li>
+              <li><a href="#" (click)="changeMenu('inversao-acorde')">Inversão de acorde</a></li>
             </ul>
           </li>
           <!-- Harmonia Aplicada -->

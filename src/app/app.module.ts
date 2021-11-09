@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './sections/home/home.component';
 
 // Modo Maior
 import { MajorModeComponent } from './sections/maior/major-mode/major-mode.component';
@@ -21,6 +22,20 @@ import { MelodicoComponent } from './sections/menor/modos/melodico/melodico.comp
 import { DoricoComponent } from './sections/menor/modos/dorico/dorico.component';
 import { FrigioComponent } from './sections/menor/modos/frigio/frigio.component';
 import { DescricaoMenorComponent } from './sections/menor/descricao/descricao.component';
+import { NaturalComponent } from './sections/menor/modos/natural/natural.component';
+import { MenorJazzComponent } from './sections/menor/modos/menor-jazz/menor-jazz.component';
+import { LidioSustenidoComponent } from './sections/menor/modos/lidio-sustenido/lidio-sustenido.component';
+import { LidioBemolComponent } from './sections/menor/modos/lidio-bemol/lidio-bemol.component';
+import { LocrioBequadroComponent } from './sections/menor/modos/locrio-bequadro/locrio-bequadro.component';
+
+// Harmonia Modal
+
+// outras abordagens
+import { TabelaTonalidadesComponent } from './sections/outras-abordagens/tabela-tonalidades/tabela-tonalidades.component';
+import { HarmoniaNegativaComponent } from './sections/outras-abordagens/harmonia-negativa/harmonia-negativa.component';
+import { NeotonalismoComponent } from './sections/outras-abordagens/neotonalismo/neotonalismo.component';
+import { HarmoniaAleatoriaComponent } from './sections/outras-abordagens/harmonia-aleatoria/harmonia-aleatoria.component';
+import { ModulacaoComponent } from './sections/outras-abordagens/modulacao/modulacao.component';
 
 // Modo Tools
 import { DrawChordsComponent } from './sections/tools/draw-chords/draw-chords.component';
@@ -28,24 +43,15 @@ import { XmlmusicGenerateComponent } from './sections/tools/xmlmusic-generate/xm
 import { ConstrutorAcordesComponent } from './sections/tools/construtor-acordes/construtor-acordes.component';
 import { ConstrutorEscalasComponent } from './sections/tools/construtor-escalas/construtor-escalas.component';
 import { FraseMenorComponent } from './sections/tools/frase-menor/frase-menor.component';
+import { EscalasAcordeComponent } from './sections/tools/escalas-acorde/escalas-acorde.component';
 
+// harmonia aplicada
 import { HarmonySequencyComponent } from './sections/harmonia-aplicada/harmony-sequency/harmony-sequency.component';
-import { HomeComponent } from './sections/home/home.component';
 import { SambaComponent } from './sections/harmonia-aplicada/samba/samba.component';
 import { BaiaoComponent } from './sections/harmonia-aplicada/baiao/baiao.component';
 import { FrevoComponent } from './sections/harmonia-aplicada/frevo/frevo.component';
 import { ValsaMineiraComponent } from './sections/harmonia-aplicada/valsa-mineira/valsa-mineira.component';
-import { EscalasAcordeComponent } from './sections/tools/escalas-acorde/escalas-acorde.component';
-import { ModulacaoComponent } from './sections/tools/modulacao/modulacao.component';
-import { NaturalComponent } from './sections/menor/modos/natural/natural.component';
-import { MenorJazzComponent } from './sections/menor/modos/menor-jazz/menor-jazz.component';
-import { LidioSustenidoComponent } from './sections/menor/modos/lidio-sustenido/lidio-sustenido.component';
-import { LidioBemolComponent } from './sections/menor/modos/lidio-bemol/lidio-bemol.component';
-import { LocrioBequadroComponent } from './sections/menor/modos/locrio-bequadro/locrio-bequadro.component';
-import { TabelaTonalidadesComponent } from './sections/outras-abordagens/tabela-tonalidades/tabela-tonalidades.component';
-import { HarmoniaNegativaComponent } from './sections/outras-abordagens/harmonia-negativa/harmonia-negativa.component';
-import { NeotonalismoComponent } from './sections/outras-abordagens/neotonalismo/neotonalismo.component';
-import { HarmoniaAleatoriaComponent } from './sections/outras-abordagens/harmonia-aleatoria/harmonia-aleatoria.component';
+import { AcordeEmprestimoComponent } from './sections/outras-abordagens/acorde-emprestimo/acorde-emprestimo.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +90,8 @@ import { HarmoniaAleatoriaComponent } from './sections/outras-abordagens/harmoni
     TabelaTonalidadesComponent,
     HarmoniaNegativaComponent,
     NeotonalismoComponent,
-    HarmoniaAleatoriaComponent
+    HarmoniaAleatoriaComponent,
+    AcordeEmprestimoComponent
   ],
   imports: [
     BrowserModule,

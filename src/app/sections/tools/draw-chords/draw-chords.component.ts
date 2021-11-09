@@ -24,11 +24,11 @@ export class DrawChordsComponent implements OnInit {
   acorde = '';
   checkedNotes: ICheckedNotes[] = [];
   checkedExtencoes: ICheckedNotes[] = [];
+  menuAtivo = '';
+  btnNotas = 'button primary small';
+  btnIntervalos = 'button small';
 
   constructor(private tonalService: TonalService, private drawService: DrawService) {
-  }
-
-  ngOnInit(): void {
     this.tonalService.currentInstrument.subscribe(value => {
       this.instrument = value[value.length - 1];
     });
@@ -37,6 +37,9 @@ export class DrawChordsComponent implements OnInit {
       this.InitializationChords(value[value.length - 1]);
     });
     this.instruments = Instruments;
+  }
+
+  ngOnInit(): void {
   }
 
   onSelectInstrument(item: string): void {
@@ -86,18 +89,21 @@ export class DrawChordsComponent implements OnInit {
   InitializationChords(value: INotes) {
     if (value != null) {
       // montando menu
-      this.acorde = value.Acorde[0];
       // menu baixo
       this.menuBass.length = 0;
-      this.baixo = value.Notas[0];
       this.checkedNotes.length = 0;
       this.checkedExtencoes.length = 0;
       let count = 1;
       for (const item of value.Notas.split(', ')) {
+        if (count === 1) {
+          this.baixo = item;        
+          this.acorde = item;
+        }
         this.menuBass.push(item);
         if (item !== this.baixo) {
           this.checkedNotes.push({ note: item, checked: true, value: count++ });
         }
+        count++;
       }
       for (const item of value.NotasExtendidas.split(', ')) {
         this.checkedExtencoes.push({ note: item, checked: false, value: 0 });
@@ -158,6 +164,18 @@ export class DrawChordsComponent implements OnInit {
         }
         count++;
       }
+    }
+  }
+
+  changeView(ativo: string){
+    this.menuAtivo = ativo;
+    if (ativo === 'intervalos') {
+      this.btnNotas = 'button small';
+      this.btnIntervalos = 'button primary small';
+    }
+    else if (ativo === 'notas') {
+      this.btnNotas = 'button primary small';
+      this.btnIntervalos = 'button small';
     }
   }
 }

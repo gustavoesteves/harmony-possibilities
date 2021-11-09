@@ -1,44 +1,55 @@
-<div class="row">
-  <div class="col-3 col-12-medium">
-    <h3>Intrumentos</h3>
-    <section class="alt">
-      <form>
-        <select class="form-control" id="SelectInstrument" (change)="onSelectInstrument($event.target.value)">
-          <option *ngFor="let item of instruments">{{item.Name}}</option>
-        </select>
-      </form>
-    </section>
-    <h3>Baixo do acorde</h3>
-    <section class="alt">
-      <form>
-        <select name="demo-category" (change)="onSelectBass($event.target.value)">
-          <option *ngFor="let item of menuBass">{{item}}</option>
-        </select>
-      </form>
-    </section>
-    <h3>Notas do acorde</h3>
-    <section class="alt">
-      <form>
-        <span *ngFor="let item of checkedNotes">
-          <input type="checkbox" name="item.note" [attr.id]="item.note" [(ngModel)]="item.checked"
-            (change)="gravaValor(item.checked, item.note)" />
-          <label [attr.for]="item.note">{{ item.note }}</label>
-        </span>
-      </form>
-    </section>
-    <h3>Extenções do acorde</h3>
-    <section class="alt">
-      <form>
-        <span *ngFor="let item of checkedExtencoes">
-          <input type="checkbox" name="item.note" [attr.id]="item.note" [(ngModel)]="item.checked"
-            (change)="geraValorExtencoes(item.checked, item.note)" />
-          <label [attr.for]="item.note">{{ item.note }}</label>
-        </span>
-      </form>
-    </section>
+<section class="alt">
+  <form>
+    <ul class="actions">
+      <li><button type="button" class={{btnNotas}} (click)="changeView('notas')">Acordes</button></li>
+      <li><button type="button" class={{btnIntervalos}} (click)="changeView('intervalos')">Escalas relativas do acorde {{acorde}}</button>
+      </li>
+    </ul>
+  </form>
+  <div *ngIf="menuAtivo === 'notas'">
+    <div class="row">
+      <div class="col-3 col-12-medium">
+        <h3>Intrumentos</h3>
+        <section class="alt">
+          <form>
+            <select class="form-control" id="SelectInstrument" (change)="onSelectInstrument($event.target.value)">
+              <option *ngFor="let item of instruments">{{item.Name}}</option>
+            </select>
+          </form>
+        </section>
+        <h3>Baixo do acorde</h3>
+        <section class="alt">
+          <form>
+            <select name="demo-category" (change)="onSelectBass($event.target.value)">
+              <option *ngFor="let item of menuBass">{{item}}</option>
+            </select>
+          </form>
+        </section>
+        <h3>Notas do acorde</h3>
+        <section class="alt">
+          <form>
+            <span *ngFor="let item of checkedNotes">
+              <input type="checkbox" name="item.note" [attr.id]="item.note" [(ngModel)]="item.checked"
+                (change)="gravaValor(item.checked, item.note)" />
+              <label [attr.for]="item.note">{{ item.note }}</label>
+            </span>
+          </form>
+        </section>
+        <h3>Extenções do acorde</h3>
+        <section class="alt">
+          <form>
+            <span *ngFor="let item of checkedExtencoes">
+              <input type="checkbox" name="item.note" [attr.id]="item.note" [(ngModel)]="item.checked"
+                (change)="geraValorExtencoes(item.checked, item.note)" />
+              <label [attr.for]="item.note">{{ item.note }}</label>
+            </span>
+          </form>
+        </section>
+      </div>
+      <div class="col-9 col-12-medium">
+      </div>
+    </div>    
   </div>
-  <div class="col-9 col-12-medium">
-    <h2>Diagrama de acordes em {{acorde}}</h2>
-    <div #drawChordsChart class="inner"></div>
-  </div>
-</div>
+  <div #drawChordsChart class="inner"></div>
+  <div *ngIf="menuAtivo === 'intervalos'"></div>
+</section>
