@@ -1,0 +1,105 @@
+<section>
+  <div class="content">
+    <header>
+      <h1>Harmonia Aplicada</h1>
+      <p>Resumo</p>
+    </header>
+
+    <div class="row">
+      <div class="col-3 col-12-medium">
+        Estabeleceremos aqui um pequeno resumo dos principais conceitos vistos durante a harmonia funcional. O Modo
+        maior suas dominantes, dominantes secundárias, subdominantes e a progressão II -> V.
+      </div>
+      <div class="col-9 col-12-medium">
+        <h2>Acordes do modo maior</h2>
+        <div class="row">
+          <div class="col-6 col-12-medium">
+            <h3>Modo Maior</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th *ngFor="let column of header" scope="col">{{column}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of majorList">
+                  <td *ngFor="let column of header">
+                    <div *ngIf="column === 'Acorde'">
+                      <a class="loadChords" href="#popup" [innerHTML]="item.Acorde" (click)="loadChords(item)"></a>
+                    </div>
+                    <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-6 col-12-medium">
+            <h3>Dominantes secundárias</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th *ngFor="let column of headerDominanteSecundaria" scope="col">{{column}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of majorListDominanteSecundaria">
+                  <td *ngFor="let column of headerDominanteSecundaria">
+                    <div *ngIf="column === 'Acorde'">
+                      <a class="loadChords" href="#popup" [innerHTML]="item.Acorde" (click)="loadChords(item)"></a>
+                    </div>
+                    <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-6 col-12-medium">
+            <h3>Progressão II- &#8594; V</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th *ngFor="let column of headerProgressao" scope="col">{{column}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of majorListProgressao">
+                  <td *ngFor="let column of headerProgressao">
+                    <div *ngIf="column === 'Acorde'">
+                      <a class="loadChords" href="#popup" [innerHTML]="item.Acorde" (click)="loadChords(item)"></a>
+                    </div>
+                    <div *ngIf="column != 'Acorde'" [innerHTML]="item[column]"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-6 col-12-medium">
+            <h3>Subdominantes</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3 col-12-medium">Abordaremos nas proximas tabelas os acordes de emprestimo relativos a nossa
+        tônica, sendo: dominante,
+        subdominantes e homonimos.
+      </div>
+      <div class="col-9 col-12-medium">
+        <h2>Acordes de emprestimo</h2>
+        <div class="row">
+          <div class="col-4 col-12-medium">
+            <h3>Região Dominante</h3>
+          </div>
+          <div class="col-4 col-12-medium">
+            <h3>Região Subdominate</h3>
+          </div>
+          <div class="col-4 col-12-medium">
+            <h3>Região Homonima</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

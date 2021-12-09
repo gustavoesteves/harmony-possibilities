@@ -77,6 +77,9 @@
       </div>
 
       <!-- Harmonia Aplicada -->
+      <div *ngIf="menu === 'resumo'">
+        <app-resumo></app-resumo>
+      </div>
       <div *ngIf="menu === 'choro'">
         <app-harmony-sequency></app-harmony-sequency>
       </div>
@@ -210,6 +213,7 @@
           <li>
             <span class={{harmonia}} (click)="openMenu('harmonia')">Harmonia Aplicada</span>
             <ul>
+              <li><a class={{menuSelecionado[21].Status}} (click)="changeMenu('resumo')">Resumo</a></li>
               <li><a class={{menuSelecionado[16].Status}} (click)="changeMenu('choro')">Choro</a></li>
               <li><a href="#">Samba</a></li>
               <li><a href="#">Baião</a></li>
