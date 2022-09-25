@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '@tonaljs/tonal';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { TonalService } from 'src/app/services/tonal.service';
 
 @Component({
@@ -73,7 +73,7 @@ export class AcordeEmprestimoComponent implements OnInit {
 
 interface Body {
   Grau: string,
-  Acorde: INotes,
+  Acorde: INotesComplete,
   Notas: string,
   Função: string,
   Substituir: string

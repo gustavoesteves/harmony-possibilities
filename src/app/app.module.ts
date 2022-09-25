@@ -14,6 +14,7 @@ import { SubstituteDominantsComponent } from './sections/maior/substitute-domina
 import { FraseMaiorComponent } from './sections/tools/frase-maior/frase-maior.component';
 import { ProgressaoSegundaQuintaComponent } from './sections/maior/progressao-segunda-quinta/progressao-segunda-quinta.component';
 import { DescricaoComponent } from './sections/maior/descricao/descricao.component';
+import { ResumoComponent } from './sections/maior/resumo/resumo.component';
 
 // Modo Menor
 import { MinorModeComponent } from './sections/menor/minor-mode/minor-mode.component';
@@ -52,7 +53,6 @@ import { BaiaoComponent } from './sections/harmonia-aplicada/baiao/baiao.compone
 import { FrevoComponent } from './sections/harmonia-aplicada/frevo/frevo.component';
 import { ValsaMineiraComponent } from './sections/harmonia-aplicada/valsa-mineira/valsa-mineira.component';
 import { AcordeEmprestimoComponent } from './sections/outras-abordagens/acorde-emprestimo/acorde-emprestimo.component';
-import { ResumoComponent } from './sections/harmonia-aplicada/resumo/resumo.component';
 
 @NgModule({
   declarations: [

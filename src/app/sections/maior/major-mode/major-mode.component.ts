@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chord, Note, Scale } from '@tonaljs/tonal';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { TonalService } from '../../../services/tonal.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { TonalService } from '../../../services/tonal.service';
 })
 export class MajorModeComponent implements OnInit {
   header = ['Grau', 'Acorde', 'Notas', 'Escalas', 'Extenções'];
-  majorMode: INotes[] = [];
+  majorMode: INotesComplete[] = [];
 
   constructor(private tonalService: TonalService) { }
 
@@ -22,7 +22,7 @@ export class MajorModeComponent implements OnInit {
   }
 
   GetMajorMode(note: string) {
-    const majorMode: INotes[] = [];
+    const majorMode: INotesComplete[] = [];
     let chordNote = '';
 
     // Imaj7

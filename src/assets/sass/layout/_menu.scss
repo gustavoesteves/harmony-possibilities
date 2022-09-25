@@ -10,7 +10,7 @@
   color: _palette(accent) !important;
 }
 
-#menu {
+.menu {
   ul {
     @include vendor('user-select', 'none');
     color: _palette(fg-bold);

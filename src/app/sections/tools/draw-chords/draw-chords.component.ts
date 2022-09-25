@@ -5,7 +5,8 @@ import { findFingerings } from 'chord-fingering';
 import { ChordBox } from 'vexchords';
 import { Instruments } from 'src/app/services/db/instruments.db';
 import { DrawService } from 'src/app/services/draw.service';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
+import { Chord } from '@tonaljs/tonal';
 
 @Component({
   selector: 'app-draw-chords',
@@ -54,7 +55,8 @@ export class DrawChordsComponent implements OnInit {
     this.menuBass.length = 0;
     this.checkedNotes.length = 0;
     let count = 1;
-    for (const item of this.valueAcorde.Notas.split(', ')) {
+    let _notas = Chord.get(this.valueAcorde.Acorde);
+    for (const item of _notas.notes) {
       this.menuBass.push(item);
       if (item !== this.baixo) {
         this.checkedNotes.push({ note: item, checked: true, value: count++ });
@@ -94,7 +96,7 @@ export class DrawChordsComponent implements OnInit {
       this.checkedNotes.length = 0;
       this.checkedExtencoes.length = 0;
       let count = 1;
-      for (const item of value.Notas.split(', ')) {
+      for (const item of Chord.get(value.Acorde).notes) {
         if (count === 1) {
           this.baixo = item;        
           this.acorde = item;
@@ -105,9 +107,11 @@ export class DrawChordsComponent implements OnInit {
         }
         count++;
       }
+      /*
       for (const item of value.NotasExtendidas.split(', ')) {
         this.checkedExtencoes.push({ note: item, checked: false, value: 0 });
       }
+      */
       // montando acorde
       this.FindAndDrawChords();
       // montando as notas de funções harmonicas

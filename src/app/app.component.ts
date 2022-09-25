@@ -12,7 +12,11 @@ export class AppComponent implements OnInit {
   sidebar = '';
   harmonia = 'opener';
   config = 'opener';
-  contemporaneo = 'opener';
+
+  modoMaior = 'opener';
+  modoMenor = 'opener';
+  modoModal = 'opener';
+
   classico = 'opener';
   menu = '';
   menuSelecionado: IConfigMenu[] = [
@@ -65,9 +69,19 @@ export class AppComponent implements OnInit {
   }
 
   openMenu(menu: string) {
-    if (menu === 'contemporaneo') {
-      this.contemporaneo = this.contemporaneo === 'opener' ? 'opener active' : 'opener';
+    if (menu === 'modoMaior') {
+      this.modoMaior = this.modoMaior === 'opener' ? 'opener active' : 'opener';
+      this.tonalService.pushMode('descricao-maior');
     }
+    if (menu === 'modoMenor') {
+      this.modoMenor = this.modoMenor === 'opener' ? 'opener active' : 'opener';
+      this.tonalService.pushMode('descricao-menor');
+    }
+    if (menu === 'modoModal') {
+      this.modoMaior = this.modoMaior === 'opener' ? 'opener active' : 'opener';
+      this.tonalService.pushMode('descricao-maior');
+    }
+
     if (menu === 'harmonia') {
       this.harmonia = this.harmonia === "opener" ? 'opener active' : 'opener';
     }

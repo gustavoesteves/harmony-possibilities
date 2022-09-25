@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TonalService } from 'src/app/services/tonal.service';
 import { Note, Chord } from '@tonaljs/tonal';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 
 @Component({
   selector: 'app-frigio',
@@ -23,7 +23,7 @@ export class FrigioComponent implements OnInit {
   }
 
   GetMinorPhrygianMode(note: string) {
-    const minorMode: INotes[] = [];
+    const minorMode: INotesComplete[] = [];
     let chordNote = '';
 
     /* O modo

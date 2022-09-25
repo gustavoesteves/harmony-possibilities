@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chord, Note, Scale } from '@tonaljs/tonal';
-import { INotes } from '../../../services/interfaces/notes.interface';
+import { INotes, INotesComplete } from '../../../services/interfaces/notes.interface';
 import { TonalService } from '../../../services/tonal.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class OptionalChordsComponent implements OnInit {
   }
 
   GetAcordeSus(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
     result.push({
@@ -54,7 +54,7 @@ export class OptionalChordsComponent implements OnInit {
   }
 
   GetOptionalChords(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
 
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
@@ -115,7 +115,7 @@ export class OptionalChordsComponent implements OnInit {
   }
 
   GetSegundaOpcional(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
 
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
@@ -159,7 +159,7 @@ export class OptionalChordsComponent implements OnInit {
   }
 
   GetTerceiraOpcional(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
 
     // Fifth
     const fifithNote = Note.transpose(note, '5P');
@@ -238,7 +238,7 @@ export class OptionalChordsComponent implements OnInit {
   }
 
   GetAlteredDominant(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
 
     const fifithNote = Note.transpose(note, '5P');
     result.push({
@@ -378,7 +378,7 @@ export class OptionalChordsComponent implements OnInit {
   }
 
   GetSymetricDominant(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
     // V7(b9 13), V7(#9 13), V7(#11 13), V7(9b #9 13), V7(#9 #11 13), V7(9b #9 #11 13)
 
     // Fifth

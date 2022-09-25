@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TonalService } from 'src/app/services/tonal.service';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { Note, Chord } from '@tonaljs/tonal';
 import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 
@@ -25,7 +25,7 @@ export class SecondaryDominantsComponent implements OnInit {
   }
 
   GetExtendedDominants(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
     let changeNote = '';
 
     changeNote = Note.transpose(note, '4A');
@@ -51,7 +51,7 @@ export class SecondaryDominantsComponent implements OnInit {
   }
 
   GetSecondaryDominants(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
     let changeNote = '';
 
     // V7/II

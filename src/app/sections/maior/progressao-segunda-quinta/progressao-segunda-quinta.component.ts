@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { note, Note, Chord } from '@tonaljs/tonal';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { TonalService } from 'src/app/services/tonal.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class ProgressaoSegundaQuintaComponent implements OnInit {
   }
 
   GetTwoFiveSecondaryDominant(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
     let changeNote = '';
 
     // II de V7/II

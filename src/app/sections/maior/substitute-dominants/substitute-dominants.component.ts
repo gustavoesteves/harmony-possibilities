@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TonalService } from 'src/app/services/tonal.service';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { Note, Chord } from '@tonaljs/tonal';
 import { INoteExtended } from 'src/app/services/interfaces/notesExtended.interface';
 
@@ -23,7 +23,7 @@ export class SubstituteDominantsComponent implements OnInit {
   }
 
   GetSubstituteDominants(note: string) {
-    const result: INotes[] = [];
+    const result: INotesComplete[] = [];
     let changeNote = '';
 
     // subV/I

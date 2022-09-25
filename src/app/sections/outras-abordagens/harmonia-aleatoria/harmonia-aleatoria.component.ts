@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chord, Interval, Note } from '@tonaljs/tonal';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { TonalService } from '../../../services/tonal.service';
 
 @Component({
@@ -142,7 +142,7 @@ export class HarmoniaAleatoriaComponent implements OnInit {
 
 interface Body {
   Compasso: number,
-  Acorde: INotes,
+  Acorde: INotesComplete,
   Notas: string,
   Escalas: string,
   Extenções: string

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '@tonaljs/tonal';
-import { INotes } from 'src/app/services/interfaces/notes.interface';
+import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { TonalService } from 'src/app/services/tonal.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class LidioBemolComponent implements OnInit {
   }
 
   GetMinorNaturalMode(note: string) {
-    const minorMode: INotes[] = [];
+    const minorMode: INotesComplete[] = [];
     let chordNote = '';
 
     //Lidio b7
