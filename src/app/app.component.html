@@ -162,16 +162,7 @@
             </ul>
           </li>
           <li>
-            <span class={{modoModal}} (click)="openMenu('modoModal')">Harmonia modal</span>
-            <ul>
-              <li><a href="#">Acordes</a></li>
-              <li><a href="#">Dominantes</a></li>
-              <li><a href="#">Dominantes secundárias</a></li>
-              <li><a href="#">Subdominantes</a></li>
-            </ul>
-          </li>
-          <li>
-            <span class={{menuSelecionado[11].Status}} (click)="changeMenu('outras-abordagens')">Outras técnicas e
+            <span class={{menuOutrasAbordagens}} (click)="openMenu('menuOutrasAbordagens')">Outras técnicas e
               abordagens</span>
             <ul>
               <li><a class={{menuSelecionado[20].Status}} (click)="changeMenu('acorde-emprestimo')">Acordes de
@@ -193,6 +184,23 @@
       </nav>
       <nav class="menu">
         <header class="major">
+          <h2>Harmonia Modal</h2>
+        </header>
+        <ul>
+          <!-- Abordagem Modal-->
+          <li>
+            <span class={{modoModal}}>Abordagem modal</span>
+            <ul>
+              <li>
+                <span>O modo maior e acordes próprios da escala</span>
+                <ul></ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <nav class="menu">
+        <header class="major">
           <h2>Harmonia Clássica</h2>
         </header>
         <ul>
@@ -204,6 +212,41 @@
                 <span>O modo maior e acordes próprios da escala</span>
                 <ul></ul>
               </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <nav class="menu">
+        <header class="major">
+          <h2>Contraponto</h2>
+        </header>
+        <ul>
+          <li>
+            <span class={{duasVozes}} (click)="openMenu('duasVozes')">Contraponto a duas vozes</span>
+            <ul>
+              <li><a href="#">Primeira espécie</a></li>
+              <li><a href="#">Segunda espécie</a></li>
+              <li><a href="#">Terceira espécie</a></li>
+              <li><a href="#">Quarta espécie</a></li>
+              <li><a href="#">Organização rítmica</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span class={{linhaMelodica}} (click)="openMenu('linhaMelodica')">A linha melodica</span>
+            <ul>
+              <li><a href="#">O motivo</a></li>
+              <li><a href="#">O tema</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span class={{linhaMelodica}} (click)="openMenu('linhaMelodica')">Contraponto livre a duas vozes</span>
+            <ul>
+              <li><a href="#">O motivo</a></li>
+              <li><a href="#">O tema</a></li>
             </ul>
           </li>
         </ul>

@@ -16,8 +16,11 @@ export class AppComponent implements OnInit {
   modoMaior = 'opener';
   modoMenor = 'opener';
   modoModal = 'opener';
-
+  menuOutrasAbordagens = 'opener';
   classico = 'opener';
+  duasVozes = 'opener';
+  linhaMelodica = 'opener';
+
   menu = '';
   menuSelecionado: IConfigMenu[] = [
     { Name: 'maior', Status: '' },
@@ -77,9 +80,14 @@ export class AppComponent implements OnInit {
       this.modoMenor = this.modoMenor === 'opener' ? 'opener active' : 'opener';
       this.tonalService.pushMode('descricao-menor');
     }
-    if (menu === 'modoModal') {
-      this.modoMaior = this.modoMaior === 'opener' ? 'opener active' : 'opener';
-      this.tonalService.pushMode('descricao-maior');
+    if (menu === 'menuOutrasAbordagens') {
+      this.menuOutrasAbordagens = this.menuOutrasAbordagens === 'opener' ? 'opener active' : 'opener';
+    }
+    if (menu === 'duasVozes') {
+      this.duasVozes = this.duasVozes === 'opener' ? 'opener active' : 'opener';
+    }
+    if (menu === 'linhaMelodica') {
+      this.linhaMelodica = this.linhaMelodica === 'opener' ? 'opener active' : 'opener';
     }
 
     if (menu === 'harmonia') {
