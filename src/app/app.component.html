@@ -188,15 +188,14 @@
         </header>
         <ul>
           <!-- Abordagem Modal-->
-          <li>
-            <span class={{modoModal}}>Abordagem modal</span>
-            <ul>
-              <li>
-                <span>O modo maior e acordes próprios da escala</span>
-                <ul></ul>
-              </li>
-            </ul>
-          </li>
+          <li><a href="#">Modos e progressões modais</a></li>
+          <li><a href="#">Estabelecendo a tônica modal</a></li>
+          <li><a href="#">Lídio</a></li>
+          <li><a href="#">Mixolídio</a></li>
+          <li><a href="#">Dórico</a></li>
+          <li><a href="#">Eólico</a></li>
+          <li><a href="#">Frígio</a></li>
+          <li><a href="#">Lócrio</a></li>
         </ul>
       </nav>
       <nav class="menu">
@@ -206,14 +205,36 @@
         <ul>
           <!-- Abordagem Clássica-->
           <li>
-            <span class={{classico}}>Abordagem clássica</span>
+            <span class={{classicoMaior}} (click)="openMenu('classicoMaior')">O modo maior</span>
             <ul>
-              <li>
-                <span>O modo maior e acordes próprios da escala</span>
-                <ul></ul>
-              </li>
+              <li><a href="#">Tríades da escala</a></li>
+              <li><a href="#">Encadeamentos</a></li>
+              <li><a href="#">O VII grau</a></li>
+              <li><a href="#">Inversões dos acordes</a></li>
+              <li><a href="#">Encadeamentos de sétima</a></li>
             </ul>
           </li>
+          <li>
+            <span class={{classicoMenor}} (click)="openMenu('classicoMenor')">O modo menor</span>
+            <ul>
+              <li><a href="#">Tríades da escala</a></li>
+              <li><a href="#">Encadeamentos sem notas comuns</a></li>
+              <li><a href="#">Condução melódica</a></li>
+              <li><a href="#">Encadeamentos de sétima</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Modulação</a></li>
+          <li><a href="#">Dominantes secundárias</a></li>
+          <li><a href="#">Compasso e harmonia</a></li>
+          <li><a href="#">Círculos de quartas e quintas</a></li>
+          <li><a href="#">Subdominantes</a></li>
+          <li><a href="#">Tríades aumentadas e diminutas</a></li>
+          <li><a href="#">Tonalidades intermediárias</a></li>
+          <li><a href="#">Harmonização de Corais</a></li>
+          <li><a href="#">Retardo, notas de passagens, ornamentos...</a></li>
+          <li><a href="#">Acordes de nona</a></li>
+          <li><a href="#">Tons inteiros</a></li>
+          <li><a href="#">Acordes por quarta</a></li>
         </ul>
       </nav>
       <nav class="menu">

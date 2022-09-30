@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   modoMenor = 'opener';
   modoModal = 'opener';
   menuOutrasAbordagens = 'opener';
-  classico = 'opener';
+  classicoMaior = 'opener';
+  classicoMenor = 'opener';
   duasVozes = 'opener';
   linhaMelodica = 'opener';
 
@@ -89,7 +90,12 @@ export class AppComponent implements OnInit {
     if (menu === 'linhaMelodica') {
       this.linhaMelodica = this.linhaMelodica === 'opener' ? 'opener active' : 'opener';
     }
-
+    if (menu === 'classicoMaior') {
+      this.classicoMaior = this.classicoMaior === 'opener' ? 'opener active' : 'opener';
+    }
+    if (menu === 'classicoMenor') {
+      this.classicoMenor = this.classicoMenor === 'opener' ? 'opener active' : 'opener';
+    }
     if (menu === 'harmonia') {
       this.harmonia = this.harmonia === "opener" ? 'opener active' : 'opener';
     }
