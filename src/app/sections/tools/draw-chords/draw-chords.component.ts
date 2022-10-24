@@ -7,6 +7,7 @@ import { Instruments } from 'src/app/services/db/instruments.db';
 import { DrawService } from 'src/app/services/draw.service';
 import { INotes, INotesComplete } from 'src/app/services/interfaces/notes.interface';
 import { Chord } from '@tonaljs/tonal';
+import { Instrument } from "piano-chart";
 
 @Component({
   selector: 'app-draw-chords',
@@ -25,9 +26,30 @@ export class DrawChordsComponent implements OnInit {
   acorde = '';
   checkedNotes: ICheckedNotes[] = [];
   checkedExtencoes: ICheckedNotes[] = [];
-  menuAtivo = '';
+  checkedIntervals: ICheckedNotes[] = [];
+  menuAtivo = 'notas';
   btnNotas = 'button primary small';
   btnIntervalos = 'button small';
+
+  allNotes = [
+    { note: 'C', value: 0 },
+    { note: 'C#', value: 1 },
+    { note: 'Db', value: 1 },
+    { note: 'D', value: 2 },
+    { note: 'D#', value: 3 },
+    { note: 'Eb', value: 3 },
+    { note: 'E', value: 4 },
+    { note: 'F', value: 5 },
+    { note: 'F#', value: 6 },
+    { note: 'Gb', value: 6 },
+    { note: 'G', value: 7 },
+    { note: 'G#', value: 8 },
+    { note: 'Ab', value: 8 },
+    { note: 'A', value: 9 },
+    { note: 'A#', value: 10 },
+    { note: 'Bb', value: 10 },
+    { note: 'B', value: 11 },
+  ];
 
   constructor(private tonalService: TonalService, private drawService: DrawService) {
     this.tonalService.currentInstrument.subscribe(value => {
@@ -98,7 +120,7 @@ export class DrawChordsComponent implements OnInit {
       let count = 1;
       for (const item of Chord.get(value.Acorde).notes) {
         if (count === 1) {
-          this.baixo = item;        
+          this.baixo = item;
           this.acorde = item;
         }
         this.menuBass.push(item);
@@ -139,39 +161,51 @@ export class DrawChordsComponent implements OnInit {
     this.divDrawChordsChart.nativeElement.innerHTML = '';
     let findsChords: string[] = [];
     let notes = this.getTriade();
-    findsChords.push(findFingerings(this.getTriade(), [], this.baixo, this.instrument.Notes));
+    if (this.instrument.NumStrings > 0) {
+      findsChords.push(findFingerings(this.getTriade(), [], this.baixo, this.instrument.Notes));
 
-    // verificando se quantidade de acordes esta muito baixa para retirar a quinta    
-    if (findsChords[0].length < 10 && notes.length > 3) {
-      let quintaFora: string[] = [];
-      let contaQuinta = 0;
-      for (const note of notes) {
-        if (contaQuinta !== 2) { quintaFora.push(note); }
-        contaQuinta++;
-      }
-      findsChords.push(findFingerings(quintaFora, [], this.baixo, this.instrument.Notes));
-    }
-    // imprimindo acordes na tela
-    let count = 0;
-    for (let i = 0; i < findsChords.length; i++) {
-      for (let j = 0; j < findsChords[i].length; j++) {
-        if (count < 21) {
-          const chordTranslate = this.drawService.GetTranslate(findsChords[i][j]);
-          new ChordBox(this.divDrawChordsChart.nativeElement, {
-            numStrings: this.instrument.NumStrings,
-            numFrets: 5
-          }).draw({
-            chord: chordTranslate.Chord,
-            position: chordTranslate.Position,
-            tuning: this.instrument.Notes
-          });
+      // verificando se quantidade de acordes esta muito baixa para retirar a quinta    
+      if (findsChords[0].length < 10 && notes.length > 3) {
+        let quintaFora: string[] = [];
+        let contaQuinta = 0;
+        for (const note of notes) {
+          if (contaQuinta !== 2) { quintaFora.push(note); }
+          contaQuinta++;
         }
-        count++;
+        findsChords.push(findFingerings(quintaFora, [], this.baixo, this.instrument.Notes));
       }
+      // imprimindo acordes na tela
+      let count = 0;
+      for (let i = 0; i < findsChords.length; i++) {
+        for (let j = 0; j < findsChords[i].length; j++) {
+          if (count < 21) {
+            const chordTranslate = this.drawService.GetTranslate(findsChords[i][j]);
+            new ChordBox(this.divDrawChordsChart.nativeElement, {
+              numStrings: this.instrument.NumStrings,
+              numFrets: 5
+            }).draw({
+              chord: chordTranslate.Chord,
+              position: chordTranslate.Position,
+              tuning: this.instrument.Notes
+            });
+          }
+          count++;
+        }
+      }
+    } else {
+      let piano = new Instrument(this.divDrawChordsChart.nativeElement);
+      piano.create();
+      notes.forEach(element => {
+        if (this.allNotes.find(value => value.note === element).value >= this.allNotes.find(value => value.note === notes[0]).value) {
+          piano.keyDown(element + '3');
+        } else {
+          piano.keyDown(element + '4');
+        }
+      });
     }
   }
 
-  changeView(ativo: string){
+  changeView(ativo: string) {
     this.menuAtivo = ativo;
     if (ativo === 'intervalos') {
       this.btnNotas = 'button small';

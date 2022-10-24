@@ -14,6 +14,7 @@ export class ConstrutorAcordesComponent implements OnInit {
   @ViewChild('drawChordsChart', { static: true }) divDrawChordsChart: ElementRef;
   instruments: IInstruments[] = Instruments;
   instrument: IInstruments = Instruments[0];
+  checkedExtencoes: ICheckedNotes[] = [];  menuAtivo = 'notas';
   // notas checadas
   checkedNotes = [
     { note: 'C', checked: false, value: 0 },
@@ -49,7 +50,6 @@ export class ConstrutorAcordesComponent implements OnInit {
     { note: '7M', checked: false, value: 0 }
   ];
   notesTriade = [];
-  menuAtivo = 'notas';
   btnNotas = 'button primary small';
   btnIntervalos = 'button small';
 
@@ -132,5 +132,10 @@ export class ConstrutorAcordesComponent implements OnInit {
       }
     }
   }
+}
 
+interface ICheckedNotes {
+  note: string;
+  checked: boolean;
+  value: number;
 }

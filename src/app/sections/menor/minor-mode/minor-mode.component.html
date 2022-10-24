@@ -9,6 +9,9 @@
         <h3>Modo menor</h3>
         <section class="alt">
           <form>
+            <ul class="alt">
+              <li *ngFor="let item of modos">{{item.Name}}</li>
+            </ul>
             <select class="form-control" id="SelectModoMenor" (change)="onSelectModoMenor($event.target.value)">
               <option *ngFor="let item of modos">{{item.Name}}</option>
             </select>

@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   constructor(private tonalService: TonalService, private chorinho: Chorinho) {
     this.tonalService.pushModeInit(['sequence']);
     this.tonalService.pushTonalityInit(['C']);
-    this.tonalService.pushInstrumentIni([Instruments[6]]);
+    this.tonalService.pushInstrumentIni([Instruments[0]]);
     this.chorinho.BuildChordProgressionInit();
     this.tonalService.pushMode('home');
   }

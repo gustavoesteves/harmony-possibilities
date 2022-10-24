@@ -29,6 +29,14 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -39,7 +47,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -65,6 +72,9 @@
             "browserTarget": "harmony-possibilities:build"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "harmony-possibilities:build:development"
+            },
             "production": {
               "browserTarget": "harmony-possibilities:build:production"
             }
